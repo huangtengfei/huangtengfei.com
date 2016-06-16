@@ -1,0 +1,769 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在使用 AngularJS 进行开发的时候，表单填写是一个很常见的需求，而表单验证又是比较让人头疼的部分，本文对此做一个总结。
+在 Angular 的视图中使用的 form 已经不是 HTML 中的普通 form 了，而是一个被 Angular 封装过的指令。它可以完成普通 form 无法实现的功能，比如 form 嵌套，而且自带强大的验证功能。
+Angular 在对表单进行校验的时候会使用 ng">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS 表单验证">
+<meta property="og:url" content="http://yoursite.com/2016/03/25/angularjs-form-validate/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="在使用 AngularJS 进行开发的时候，表单填写是一个很常见的需求，而表单验证又是比较让人头疼的部分，本文对此做一个总结。
+在 Angular 的视图中使用的 form 已经不是 HTML 中的普通 form 了，而是一个被 Angular 封装过的指令。它可以完成普通 form 无法实现的功能，比如 form 嵌套，而且自带强大的验证功能。
+Angular 在对表单进行校验的时候会使用 ng">
+<meta property="og:updated_time" content="2016-06-15T06:38:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS 表单验证">
+<meta name="twitter:description" content="在使用 AngularJS 进行开发的时候，表单填写是一个很常见的需求，而表单验证又是比较让人头疼的部分，本文对此做一个总结。
+在 Angular 的视图中使用的 form 已经不是 HTML 中的普通 form 了，而是一个被 Angular 封装过的指令。它可以完成普通 form 无法实现的功能，比如 form 嵌套，而且自带强大的验证功能。
+Angular 在对表单进行校验的时候会使用 ng">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/25/angularjs-form-validate/"/>
+
+  <title> AngularJS 表单验证 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AngularJS 表单验证
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-25T00:00:00+08:00" content="2016-03-25">
+              2016-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/25/angularjs-form-validate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/angularjs-form-validate/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在使用 AngularJS 进行开发的时候，表单填写是一个很常见的需求，而表单验证又是比较让人头疼的部分，本文对此做一个总结。</p>
+<p>在 Angular 的视图中使用的 form 已经不是 HTML 中的普通 form 了，而是一个被 Angular 封装过的指令。它可以完成普通 form 无法实现的功能，比如 form 嵌套，而且自带强大的验证功能。</p>
+<p>Angular 在对表单进行校验的时候会使用 <code>ngModelController</code> 上的属性，如果不设置 <code>ng-model</code>，则 Angular 无法知道 <code>form.$invalid</code> 这个值是否为真。后面在自定义验证有对它的介绍。</p>
+<p>本文在对表单的验证时使用了 <code>ng-messages</code>，在文章最后也有对它的介绍。</p>
+<p>本文涉及到的源码在 <a href="https://github.com/huangtengfei/angular-demo/tree/gh-pages/demos/form" target="_blank" rel="external">这里</a>，实现效果在 <a href="http://huangtengfei.github.io/angular-demo/#/form" target="_blank" rel="external">这里</a>。</p>
+<a id="more"></a>
+<h2 id="原生表单验证"><a href="#原生表单验证" class="headerlink" title="原生表单验证"></a>原生表单验证</h2><p>在 form 层面，可以使用 <code>ng-disabled</code> 来控制提交按钮的状态，在 form 表单项全部验证通过前不可点击，下面介绍一下通用的表单项验证选项。</p>
+<h3 id="input-验证选项"><a href="#input-验证选项" class="headerlink" title="input 验证选项"></a>input 验证选项</h3><p>AngularJS 的 <a href="https://code.angularjs.org/1.3.0-beta.11/docs/api/ng/directive/input" target="_blank" rel="external">input 标签</a> 自带的验证选项有以下这些。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span></span><br><span class="line">  <span class="attr">ng-model</span>=<span class="string">""</span></span><br><span class="line">  [<span class="attr">name</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">required</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">ng-required</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">ng-minlength</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">ng-maxlength</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">ng-pattern</span>=<span class="string">""</span>]</span><br><span class="line">  [<span class="attr">ng-change</span>=<span class="string">""</span>]&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>a. 必填</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"myName"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span> <span class="attr">required</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>ng-required</code> 可以根据后面表达式的值设置是否 <code>required</code> 。</p>
+<p>在不满足 <code>required</code> 时 <code>form.myName.$error</code> 为 <code>{required: true}</code> 。</p>
+<p>b. 长度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"myName"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span> <span class="attr">ng-minlength</span>=<span class="string">"2"</span> <span class="attr">ng-maxlength</span>=<span class="string">"10"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在不满足 <code>ng-minlength</code>/<code>ng-maxlength</code> 时 <code>form.myName.$error</code> 为 <code>{minlength: true, maxlength: true}</code> 。</p>
+<p>直接使用 <code>minlength</code>/<code>maxlength</code> 也有相同效果，而且 <code>maxlength</code> 可以设置最多输入 x 个字符，超过之后无法再输入。</p>
+<p>c. 模式匹配</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"myDesc"</span> <span class="attr">ng-model</span>=<span class="string">"desc"</span> <span class="attr">ng-pattern</span>=<span class="string">"/^[a-zA-Z]&#123;1,20&#125;$/"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在不满足 <code>ng-pattern</code> 时 <code>form.myName.$error</code> 为 <code>{pattern: true}</code> 。</p>
+<p>d. 其他</p>
+<p>AngularJS 对特定格式也进行了校验。比如将 <code>type</code> 设置为 <code>url</code>，<code>email</code> 等，在没有特殊验证要求的情况下，可以直接使用这些自带的校验，或者通过自定义指令修改 Angular 内建验证器。不同 type 有不同的验证选项，具体参考 <a href="https://code.angularjs.org/1.3.0-beta.11/docs/api/ng/directive/input" target="_blank" rel="external">AngularJS API 文档</a>。</p>
+<h3 id="CSS-Classes"><a href="#CSS-Classes" class="headerlink" title="CSS Classes"></a>CSS Classes</h3><p>Angular 会根据表单状态自动给表单和表单项添加以下几组样式：</p>
+<ul>
+<li><code>ng-valid</code> 验证通过，与之相对的是 <code>ng-invalid</code></li>
+<li><code>ng-valid-[key]</code> 通过自定义验证器添加的验证通过的值，与之相对的是 <code>ng-invalid-[key]</code></li>
+<li><code>ng-pristine</code> 未交互状态，与之相对的是 <code>ng-dirty</code></li>
+<li><code>ng-touched</code> 未访问状态，与之相对的是 <code>ng-untouched</code></li>
+<li><code>ng-pending</code> 满足 <code>$asyncValidators</code> 的情况</li>
+</ul>
+<p>这些在 ngModelController 的属性中都有对应值。</p>
+<p>根据这些 class，可以为不同状态设置不同的样式，比如这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-class">.ng-valid</span><span class="selector-class">.ng-dirty</span> &#123;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#78FA89</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-class">.ng-invalid</span><span class="selector-class">.ng-dirty</span> &#123;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#FA787E</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义验证"><a href="#自定义验证" class="headerlink" title="自定义验证"></a>自定义验证</h2><p>在 <a href="http://huangtengfei.com/2016/03/angular-directive/" target="_blank" rel="external">AngularJS 指令入门</a> 一文中，提到过通过 require 属性和 controller 参数，可以实现指令之间的交互。那么，在自定义指令中使用 <code>require: &#39;ngModel&#39;</code> 就可以使用 <code>ngModel</code> 指令的 controller 属性的实例了。</p>
+<h3 id="ngModelController"><a href="#ngModelController" class="headerlink" title="ngModelController"></a>ngModelController</h3><p>ngModel 提供了数据绑定、验证、CSS更新、数据格式化和编译等操作。下面简单介绍一下 ngModelController 常用的属性和方法。</p>
+<h4 id="核心属性"><a href="#核心属性" class="headerlink" title="核心属性"></a>核心属性</h4><p>a. <code>$viewValue</code> 视图里的值</p>
+<p>b. <code>$modelValue</code> 数据模型里值</p>
+<p>在 <code>input</code> 事件触发的时候，<code>$viewValue</code> 会同步到 <code>$modelValue</code> 。默认情况下，这个是一旦 <code>input</code> 中的内容有改变就触发。AngularJS 1.3 引入了 <code>ng-model-options</code>，可以让这个同步延迟到 blur 或者延迟一定的时间之后。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span> <span class="attr">ng-model-options</span>=<span class="string">"&#123;updateOn:'blur'&#125;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span> <span class="attr">ng-model-options</span>=<span class="string">"&#123; debounce: 500 &#125;"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 <code>$viewValue</code> 的值同步到 <code>$modelValue</code> 时，会经过 <code>$parsers</code>、<code>$validators</code> 和 <code>$asyncValidators</code> 三个核心管道（后两个是 AngularJS 1.3 以后新加的）进行处理，通过后才更新到 <code>$modelValue</code> 上（如果验证器管道没通过，不会更新）。</p>
+<h4 id="核心管道"><a href="#核心管道" class="headerlink" title="核心管道"></a>核心管道</h4><p>a. <code>$parsers</code> 改变视图值的格式，并更新的到模型（<code>$viewValue</code> -&gt; <code>$modelValue</code>），与之相对的是 <code>$formatters</code>，刚好反过来。</p>
+<p>b. <code>$validators</code> 用来添加同步验证器</p>
+<p>c. <code>$asyncValidators</code> 用来添加异步验证器</p>
+<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><p>a. <code>$error</code> 没有通过的验证器名称及对应的错误信息</p>
+<p>b. <code>$valid</code> 表单项是否都通过验证，都通过时为 true，与之相对的是 <code>$invalid</code></p>
+<p>c. <code>$touched</code> 表单项是否被访问过，如果获得过焦点，在失去时该值为 true，与之相对的是 <code>$untouched</code></p>
+<p>d. <code>$dirty</code> 表示用户是否和表单项交互过（比如输入一些东西），只要有任何改变，该值为 true，与之相对的是 <code>$pristine</code></p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>a. <code>$render</code> 定义视图具体的渲染方式</p>
+<p>b. <code>$setViewValue</code> 设置视图值（需要手动触发一个 <code>$digest</code>），使用场景是在自定义指令中监听自定义事件（比如使用具有回调的 jQuery 插件）</p>
+<h3 id="自定义同步验证-amp-异步验证"><a href="#自定义同步验证-amp-异步验证" class="headerlink" title="自定义同步验证 &amp; 异步验证"></a>自定义同步验证 &amp; 异步验证</h3><p>在 <code>ngModelController</code> 中讲到，AngularJS 1.3 提供了验证器管道，同步验证只需要加到 <code>$validators</code> 上即可。</p>
+<p>比如，有这样一个常见的需求，对一个必填的名称表单项，要求只能输入中英文，最小长度为2位字符，那么可以这样实现。</p>
+<p>指令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">app.directive(<span class="string">'nameCheck'</span>, nameCheck);</span><br><span class="line"></span><br><span class="line">nameCheck.$inject = [<span class="string">'$http'</span>, <span class="string">'$q'</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nameCheck</span>(<span class="params">$http, $q</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> NAME_REG = <span class="regexp">/^[a-zA-Z\u4e00-\u9fa5]+$/</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">'A'</span>,</span><br><span class="line">        <span class="built_in">require</span>: <span class="string">'ngModel'</span>,</span><br><span class="line">        link:<span class="function"><span class="keyword">function</span>(<span class="params">$scope,element,attrs,ctrl</span>)</span>&#123;</span><br><span class="line">            <span class="comment">// 同步验证</span></span><br><span class="line">            ctrl.$validators.char = <span class="function"><span class="keyword">function</span>(<span class="params">modelValue, viewValue</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> value = modelValue || viewValue;</span><br><span class="line">                <span class="keyword">if</span>(!NAME_REG.test(value))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="comment">// 异步验证</span></span><br><span class="line">            ctrl.$asyncValidators.exist = <span class="function"><span class="keyword">function</span>(<span class="params">modelValue, viewValue</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> value = modelValue || viewValue; </span><br><span class="line">                <span class="keyword">var</span> deferred = $q.defer();</span><br><span class="line">                $http.get(<span class="string">'api/users/'</span> + value).then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(res.data.isExist)&#123;</span><br><span class="line">						deferred.reject(<span class="literal">false</span>);</span><br><span class="line">					&#125;</span><br><span class="line">					deferred.resolve(<span class="literal">true</span>);</span><br><span class="line">				&#125;)</span><br><span class="line">				<span class="keyword">return</span> deferred.promise;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主页面：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"myForm"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">ng-model</span>=<span class="string">"username"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name-check</span> <span class="attr">minlength</span>=<span class="string">"2"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-messages</span>=<span class="string">"myForm.username.$error"</span> <span class="attr">ng-messages-include</span>=<span class="string">"error.html"</span> <span class="attr">ng-show</span>=<span class="string">"myForm.username.$touched"</span>&gt;</span>    </span><br><span class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>错误信息页面：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-message</span>=<span class="string">"required"</span>&gt;</span>必填<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-message</span>=<span class="string">"char"</span>&gt;</span>非法字符<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-message</span>=<span class="string">"minlength"</span>&gt;</span>太短了<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-message</span>=<span class="string">"exist"</span>&gt;</span>名称已存在<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="ngMessages"><a href="#ngMessages" class="headerlink" title="ngMessages"></a>ngMessages</h2><p><code>ng-messages</code> 是 AngularJS 1.3 提供的一个用来增强模版显示的模块，主要用在处理复杂的错误信息。</p>
+<p>在以前的版本中，如果想处理错误信息的显示，可能需要定义一堆 <code>code</code> 再结合复杂的 <code>ng-if</code> 语句来实现。而且在输入同时满足多条错误规则的情况下，无法控制错误信息显示的优先级。这些，使用 <code>ng-messages</code> 可以完美解决。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>引入 <code>angular-messages.js</code></li>
+<li>添加依赖：<code>angular.module(&#39;app&#39;, [&#39;ngMessages&#39;])</code></li>
+</ol>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>有两种使用方法，一是将 <code>ng-messages</code> 当作属性指令使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"myForm"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"field"</span> <span class="attr">name</span>=<span class="string">"myField"</span> <span class="attr">required</span> <span class="attr">minlength</span>=<span class="string">"5"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-messages</span>=<span class="string">"myForm.myField.$error"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-message</span>=<span class="string">"required"</span>&gt;</span>必填<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-message</span>=<span class="string">"minlength"</span>&gt;</span>长度不够<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这样会按照各个错误信息书写的先后顺序进行单一显示，如果想同时显示所有的错误信息，加个 <code>ng-messages-multiple</code> ：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-messages</span>=<span class="string">"myForm.myField.$error"</span> <span class="attr">ng-messages-multiple</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>另一种是将 <code>ng-messages</code> 当作元素指令使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ng-messages</span> <span class="attr">for</span>=<span class="string">"myForm.myField.$error"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ng-message</span> <span class="attr">when</span>=<span class="string">"required"</span>&gt;</span>必填<span class="tag">&lt;/<span class="name">ng-message</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ng-message</span> <span class="attr">when</span>=<span class="string">"minlength"</span>&gt;</span>长度不够<span class="tag">&lt;/<span class="name">ng-message</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ng-messages</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果很多表单项的错误提示信息都一样，也可以把错误信息放在模版里，使用 <code>ng-messages-include</code> 指令来引用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-messages</span>=<span class="string">"myForm.username.$error"</span> <span class="attr">ng-messages-include</span>=<span class="string">"validateTemplate/error.html"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>错误模版文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-message</span>=<span class="string">"required"</span>&gt;</span>必填<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-message</span>=<span class="string">"minlength"</span>&gt;</span>长度不够<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>更详细的使用办法直接看 <code>angular-messages.js</code> 源文件里面的注释即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/18/angular-directive/" rel="next" title="AngularJS 指令入门">
+                <i class="fa fa-chevron-left"></i> AngularJS 指令入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/08/single-threaded-of-javascript/" rel="prev" title="JavaScript的单线程机制">
+                JavaScript的单线程机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/25/angularjs-form-validate/"
+           data-title="AngularJS 表单验证" data-url="http://yoursite.com/2016/03/25/angularjs-form-validate/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生表单验证"><span class="nav-number">1.</span> <span class="nav-text">原生表单验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#input-验证选项"><span class="nav-number">1.1.</span> <span class="nav-text">input 验证选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Classes"><span class="nav-number">1.2.</span> <span class="nav-text">CSS Classes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义验证"><span class="nav-number">2.</span> <span class="nav-text">自定义验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngModelController"><span class="nav-number">2.1.</span> <span class="nav-text">ngModelController</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心属性"><span class="nav-number">2.1.1.</span> <span class="nav-text">核心属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心管道"><span class="nav-number">2.1.2.</span> <span class="nav-text">核心管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">常用属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">2.1.4.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义同步验证-amp-异步验证"><span class="nav-number">2.2.</span> <span class="nav-text">自定义同步验证 & 异步验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngMessages"><span class="nav-number">3.</span> <span class="nav-text">ngMessages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">3.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">3.2.</span> <span class="nav-text">使用方法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

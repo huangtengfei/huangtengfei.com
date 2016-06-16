@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别ng-bind 单向数据绑定（$scope -&amp;gt; view），用于数据显示，简写形式是 {{}}。
+1&amp;lt;span ng-bind=&quot;val&quot;&amp;gt;&amp;lt;/span&amp;gt;
+两者的区别在于页面没有加载完毕 {{val}} 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 {{val}} 让用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 AngularJS 的数据绑定">
+<meta property="og:url" content="http://yoursite.com/2015/09/30/data-bind-of-angularjs/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别ng-bind 单向数据绑定（$scope -&amp;gt; view），用于数据显示，简写形式是 {{}}。
+1&amp;lt;span ng-bind=&quot;val&quot;&amp;gt;&amp;lt;/span&amp;gt;
+两者的区别在于页面没有加载完毕 {{val}} 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 {{val}} 让用户">
+<meta property="og:updated_time" content="2016-06-15T07:29:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 AngularJS 的数据绑定">
+<meta name="twitter:description" content="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别ng-bind 单向数据绑定（$scope -&amp;gt; view），用于数据显示，简写形式是 {{}}。
+1&amp;lt;span ng-bind=&quot;val&quot;&amp;gt;&amp;lt;/span&amp;gt;
+两者的区别在于页面没有加载完毕 {{val}} 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 {{val}} 让用户">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/30/data-bind-of-angularjs/"/>
+
+  <title> 关于 AngularJS 的数据绑定 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于 AngularJS 的数据绑定
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-30T00:00:00+08:00" content="2015-09-30">
+              2015-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/30/data-bind-of-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/data-bind-of-angularjs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别"><a href="#单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别" class="headerlink" title="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别"></a>单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别</h2><p><code>ng-bind</code> 单向数据绑定（<code>$scope -&gt; view</code>），用于数据显示，简写形式是 <code>{{}}</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-bind</span>=<span class="string">"val"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>两者的区别在于页面没有加载完毕 <code>{{val}}</code> 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 <code>{{val}}</code> 让用户看到）；而 <code>ng-bind</code> 则是在 Angular 渲染完毕后将数据显示。</p>
+<p><code>ng-model</code> 是双向数据绑定（<code>$scope -&gt; view</code> and <code>view -&gt; $scope</code>），用于绑定值会变化的表单元素等。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"val"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="双向数据绑定的原理"><a href="#双向数据绑定的原理" class="headerlink" title="双向数据绑定的原理"></a>双向数据绑定的原理</h2><p>双向数据绑定意味着当 <code>view</code> 中有任何数据发生变化会自动地反馈到 <code>scope</code> 的数据上，当 <code>scope</code> 模型发生变化时，<code>view</code> 中的数据也会更新到最新的值。很显然，这需要一个监控。</p>
+<p>事实上，AngularJS 确实在幕后为 <code>scope</code> 模型上设置了一个 监听队列，用来监听数据变化并更新 <code>view</code> 。</p>
+<p>每次绑定一个东西到 <code>view</code> 上时 AngularJS 就会往 <code>$watch</code> 队列里插入一条 <code>$watch</code>，用来检测它监视的 <code>model</code> 里是否有变化的东西。</p>
+<p>当浏览器接收到可以被 <code>angular context</code> 处理的事件时，<code>$digest</code> 循环就会触发。<code>$digest</code> 会遍历所有的 <code>$watch</code> 。</p>
+<h2 id="一次更新的操作（至少触发两次-digest-循环）"><a href="#一次更新的操作（至少触发两次-digest-循环）" class="headerlink" title="一次更新的操作（至少触发两次 \$digest() 循环）"></a>一次更新的操作（至少触发两次 \$digest() 循环）</h2><p>比如进行一次 <code>click</code> 操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button ng-click=<span class="string">"val=val+1"</span>&gt;increase <span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>按下按钮</li>
+<li>浏览器接收到一个事件，进入 <code>angular context</code></li>
+<li><code>$digest</code> 循环开始执行，查询每个 <code>$watch</code> 是否变化</li>
+<li>由于监视 <code>$scope.val</code> 的 <code>$watch</code> 报告了变化，它会强制再执行一次 <code>$digest</code> 循环。</li>
+<li>新的 <code>$digest</code> 循环没有检测到变化。</li>
+<li>浏览器拿回控制权，更新与 <code>$scope.val</code> 新值相应部分的 <code>DOM</code> 。</li>
+</ul>
+<h2 id="digest-循环会运行多少次？"><a href="#digest-循环会运行多少次？" class="headerlink" title="\$digest 循环会运行多少次？"></a>\$digest 循环会运行多少次？</h2><p><code>$digest</code> 循环不会只运行一次。在当前的一次循环结束后，它会再执行一次循环用来检查是否有 <code>models</code> 发生了变化。</p>
+<p>这就是脏检查（<code>Dirty Checking</code>），它用来处理在 <code>listener</code> 函数被执行时可能引起的 <code>model</code> 变化。因此 <code>$digest</code> 循环会持续运行直到 <code>model</code> 不再发生变化，或者 <code>$digest</code> 循环的次数达到了 <code>10</code> 次（超过 <code>10</code> 次后抛出一个异常，防止无限循环）。</p>
+<p>当 <code>$digest</code> 循环结束时，<code>DOM</code> 相应地变化。</p>
+<h2 id="apply-和-digest-的区别"><a href="#apply-和-digest-的区别" class="headerlink" title="\$apply() 和 \$digest() 的区别"></a>\$apply() 和 \$digest() 的区别</h2><p><code>$apply</code> 是 <code>$scope</code>（或者是 <code>direcvie</code> 里的 <code>link</code> 函数中的 <code>scope</code>）的一个函数，调用它会强制一次 <code>$digest</code> 循环（除非当前正在执行循环，这种情况下会抛出一个异常，这是我们不需要在那里执行 <code>$apply</code> 的标志）。</p>
+<p><code>$apply()</code> 和 <code>$digest()</code> 有两个区别。</p>
+<p>1） 最直接的差异是， <code>$apply</code> 可以带参数，它可以接受一个函数，然后在应用数据之后，调用这个函数。所以，一般在集成非 Angular 框架（比如jQuery）的代码时，可以把代码写在这个里面调用。</p>
+<p>2） 当调用 <code>$digest</code> 的时候，只触发当前作用域和它的子作用域上的监控，但是当调用 <code>$apply</code> 的时候，会触发作用域树上的所有监控。</p>
+<h2 id="什么时候手动调用-apply-方法？"><a href="#什么时候手动调用-apply-方法？" class="headerlink" title="什么时候手动调用 \$apply() 方法？"></a>什么时候手动调用 \$apply() 方法？</h2><p>取决于是否在 Angular 上下文环境（<code>angular context</code>）。</p>
+<p>典型的需要调用 <code>$apply()</code> 方法的场景是：</p>
+<p>1） 使用了 JavaScript 中的 <code>setTimeout()</code> 来更新一个 <code>scope model</code></p>
+<p>2） 用指令设置一个 <code>DOM</code> 事件 <code>listener</code> 并且在该 <code>listener</code> 中修改了一些 <code>models</code></p>
+<h3 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$scope.setMsg = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        $scope.message = <span class="string">'hello world'</span>;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'message:'</span> + $scope.message);  </span><br><span class="line">    &#125;, <span class="number">2000</span>);  </span><br><span class="line">&#125;  </span><br><span class="line">$scope.setMsg();</span><br></pre></td></tr></table></figure>
+<p>运行这个例子，会看到过了两秒钟之后，控制台确实会显示出已经更新的 <code>model</code>，然而，<code>view</code> 并没有更新。</p>
+<p>在 <code>$scope.getMessage</code> 加入 <code>$apply()</code> 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$scope.getMessage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        $scope.$apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">            $scope.message = <span class="string">'hello world'</span>;   </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'message:'</span> + $scope.message);  </span><br><span class="line">        &#125;);  </span><br><span class="line">    &#125;, <span class="number">2000</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再运行就 OK 了。</p>
+<p>不过，在 AngularJS 中应该尽量使用 <code>$timeout</code> Service 来代替 <code>setTimeout()</code>，因为前者会帮你调用 <code>$apply()</code>，让你不需要手动地调用它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$timeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $scope.message = <span class="string">'hello world'</span>;   </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'message:'</span> + $scope.message);  </span><br><span class="line">&#125;, <span class="number">2000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h3><p>实现一个 <code>click</code> 的指令，类似以下功能：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button ng-click=<span class="string">"val=val+1"</span>&gt;increase <span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>directive</code> 的编写如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.directive(<span class="string">"inc"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">scope, element, attr</span>) </span>&#123;</span><br><span class="line">        element.on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            scope.val++;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>跟场景一的结果一样，这个时候，点击按钮，界面上的数字并不会增加。但查看调试器，发现数据确实已经增加了。</p>
+<p>在 <code>scope.val++;</code> 一行后面添加 <code>scope.$apply();</code> 或者 <code>scope.$digest();</code> 就 OK 了。</p>
+<h2 id="apply-方法的两种形式"><a href="#apply-方法的两种形式" class="headerlink" title="\$apply() 方法的两种形式"></a>\$apply() 方法的两种形式</h2><p>1) 无参 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scope.$apply()</span><br></pre></td></tr></table></figure>
+<p>2) 有参 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$scope.$apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>应该总使用接受一个 <code>function</code> 作为参数的 <code>$apply()</code> 方法。这是因为当传入一个 <code>function</code> 到 <code>$apply()</code> 中的时候，这个 <code>function</code> 会被包装到一个 <code>try…catch</code> 块中，所以一旦有异常发生，该异常会被 <code>$exceptionHandler service</code> 处理。</p>
+<p>想象一下如果有个 <code>alert</code> 框显示错误给用户，然后有个第三方的库进行一个网络调用然后失败了，如果不把它封装进 <code>$apply</code> 里面，Angular 永远不会知道失败了，<code>alert</code> 框就永远不会弹出来了。</p>
+<h2 id="在-AngularJS-中使用-watch"><a href="#在-AngularJS-中使用-watch" class="headerlink" title="在 AngularJS 中使用 \$watch"></a>在 AngularJS 中使用 \$watch</h2><p>常用的使用方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$scope.name = <span class="string">'htf'</span>;</span><br><span class="line">$scope.$watch(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue, oldValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (newValue === oldValue) &#123; <span class="keyword">return</span>; &#125; </span><br><span class="line">    $scope.updated++;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>传入到 <code>$watch()</code> 中的第二个参数是一个回调函数，该函数在 <code>name</code> 的值发生变化的时候会被调用。</p>
+<p>如果要监听的是一个对象，那还需要第三个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$scope.data.name = <span class="string">'htf'</span>;</span><br><span class="line">$scope.$watch(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue, oldValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (newValue === oldValue) &#123; <span class="keyword">return</span>; &#125; </span><br><span class="line">    $scope.updated++;</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p>表示比较的是对象的值而不是引用，如果不加第三个参数 <code>true</code> ，在 <code>data.name</code> 变化时，不会触发相应操作，因为引用的是同一引用。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.angularjs.cn/A0a6" target="_blank" rel="external">理解\$watch ，\$apply 和 \$digest — 理解数据绑定过程</a></li>
+<li><a href="http://blog.csdn.net/dm_vincent/article/details/38705099" target="_blank" rel="external">理解Angular中的\$apply()以及\$digest()</a></li>
+<li><a href="https://github.com/xufei/blog/issues/10" target="_blank" rel="external">Angular沉思录（一）数据绑定</a></li>
+<li><a href="http://www.ituring.com.cn/article/39865" target="_blank" rel="external">构建自己的AngularJS，第一部分：Scope和Digest</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/29/javascript-module/" rel="next" title="JavaScript 模块化">
+                <i class="fa fa-chevron-left"></i> JavaScript 模块化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/04/the-use-of-providers-in-angularjs/" rel="prev" title="AngularJS 中 Provider 的用法及区别">
+                AngularJS 中 Provider 的用法及区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/09/30/data-bind-of-angularjs/"
+           data-title="关于 AngularJS 的数据绑定" data-url="http://yoursite.com/2015/09/30/data-bind-of-angularjs/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别"><span class="nav-number">1.</span> <span class="nav-text">单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向数据绑定的原理"><span class="nav-number">2.</span> <span class="nav-text">双向数据绑定的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次更新的操作（至少触发两次-digest-循环）"><span class="nav-number">3.</span> <span class="nav-text">一次更新的操作（至少触发两次 \$digest() 循环）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#digest-循环会运行多少次？"><span class="nav-number">4.</span> <span class="nav-text">\$digest 循环会运行多少次？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply-和-digest-的区别"><span class="nav-number">5.</span> <span class="nav-text">\$apply() 和 \$digest() 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么时候手动调用-apply-方法？"><span class="nav-number">6.</span> <span class="nav-text">什么时候手动调用 \$apply() 方法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景一"><span class="nav-number">6.1.</span> <span class="nav-text">场景一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#场景二"><span class="nav-number">6.2.</span> <span class="nav-text">场景二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply-方法的两种形式"><span class="nav-number">7.</span> <span class="nav-text">\$apply() 方法的两种形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-AngularJS-中使用-watch"><span class="nav-number">8.</span> <span class="nav-text">在 AngularJS 中使用 \$watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="prototype 与 __proto__ 的联系与区别重要的话放前面讲。首先，理解一个函数的原型属性 prototype 其实和实际的原型 __proto__  没有关系至关重要。
+prototype 只有在 Function 中有，而 __proto__ 在 Function 和 Object 中都有。
+关于Function在 JavaScript 中，除了五种原始类型（Boolean、Num">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解 JavaScript 中的原型">
+<meta property="og:url" content="http://yoursite.com/2015/09/07/prototype-of-javascript/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="prototype 与 __proto__ 的联系与区别重要的话放前面讲。首先，理解一个函数的原型属性 prototype 其实和实际的原型 __proto__  没有关系至关重要。
+prototype 只有在 Function 中有，而 __proto__ 在 Function 和 Object 中都有。
+关于Function在 JavaScript 中，除了五种原始类型（Boolean、Num">
+<meta property="og:updated_time" content="2016-06-15T07:58:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解 JavaScript 中的原型">
+<meta name="twitter:description" content="prototype 与 __proto__ 的联系与区别重要的话放前面讲。首先，理解一个函数的原型属性 prototype 其实和实际的原型 __proto__  没有关系至关重要。
+prototype 只有在 Function 中有，而 __proto__ 在 Function 和 Object 中都有。
+关于Function在 JavaScript 中，除了五种原始类型（Boolean、Num">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/07/prototype-of-javascript/"/>
+
+  <title> 理解 JavaScript 中的原型 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解 JavaScript 中的原型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-07T00:00:00+08:00" content="2015-09-07">
+              2015-09-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/07/prototype-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/07/prototype-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="prototype-与-proto-的联系与区别"><a href="#prototype-与-proto-的联系与区别" class="headerlink" title="prototype 与 __proto__ 的联系与区别"></a>prototype 与 __proto__ 的联系与区别</h2><p>重要的话放前面讲。首先，理解一个函数的原型属性 <code>prototype</code> 其实和实际的原型 <code>__proto__</code>  没有关系至关重要。</p>
+<p><code>prototype</code> 只有在 Function 中有，而 <code>__proto__</code> 在 Function 和 Object 中都有。</p>
+<h3 id="关于Function"><a href="#关于Function" class="headerlink" title="关于Function"></a>关于Function</h3><p>在 JavaScript 中，除了五种原始类型（<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Null</code>、<code>Underfined</code>），引用类型包括 <code>Array</code>、<code>Object</code>、<code>RegExp</code>、<code>Function</code>、<code>Date</code>、<code>Error</code>等，但从根本上只有两种，即 Function 和 Object，其他的引用类型都是从 Object 衍生出来。</p>
+<p>对于这两种类型的判断，前者（原始类型）判断用 <code>typeof</code>，后者（引用类型）用 <code>instanceof</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">typeof</span> a;   <span class="comment">// boolean</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = &#123;&#125;;</span><br><span class="line"><span class="keyword">typeof</span> b;   <span class="comment">// object</span></span><br><span class="line">b <span class="keyword">instanceof</span> <span class="built_in">Object</span>;    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = [];</span><br><span class="line"><span class="keyword">typeof</span> c;   <span class="comment">// object</span></span><br><span class="line">b <span class="keyword">instanceof</span> <span class="built_in">Array</span>;    <span class="comment">// false</span></span><br><span class="line">c <span class="keyword">instanceof</span> <span class="built_in">Array</span>;     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在 js 中，Function 和 Object 是平级的，而且 Function 能做但 Object 做不了的事情：</p>
+<p>第一，Fuction 可以被执行。</p>
+<p>第二，Fuction 可以被当做 Object 的构造函数。当使用 new 操作符后面跟着一个 Function 类型的变量时，这个 Function 变量会被当成构造函数返回一个 Object 对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
+<p>第三，Function 有内置的 <code>prototype</code> 属性，而 Object 没有。正是因为有了把 Function 当做构造函数的功能，才需要 prototype 属性。</p>
+<h3 id="关于继承（-proto-）"><a href="#关于继承（-proto-）" class="headerlink" title="关于继承（__proto__）"></a>关于继承（__proto__）</h3><p>继承仅限于引用类型，即 Function 和 Object。JavaScript中的继承是基于原型链来实现的，用来明确继承关系的就是 <code>__proto__</code> ，毕竟只有它同时存在于两者。</p>
+<p>用最简单的话来描述javascript中继承的本质：一个对象A的 <code>__proto__</code> 属性所指向的那个对象B就是它的原型对象（或者叫上级对象、父对象），对象A可以使用对象B中定义的属性和方法，同时也可以使用对象B的原型对象C的属性与方法，以此递归，这也就是所谓的原型链。</p>
+<p>下面是一个对象继承的栗子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">    name: <span class="string">'huangtengfei'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">    github: <span class="string">'github.com/huangtengfei'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> C = &#123;</span><br><span class="line">    blog: <span class="string">'huangtengfei.com'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">B.__proto__ = C;</span><br><span class="line">A.__proto__ = B;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(A.name);    <span class="comment">// huangtengfei</span></span><br><span class="line"><span class="built_in">console</span>.log(A.github);  <span class="comment">// github.com/huangtengfei</span></span><br><span class="line"><span class="built_in">console</span>.log(A.blog);    <span class="comment">// huangtengfei.com</span></span><br></pre></td></tr></table></figure>
+<h3 id="prototype的作用"><a href="#prototype的作用" class="headerlink" title="prototype的作用"></a>prototype的作用</h3><p>既然 <code>__proto__</code> 一个东西把继承问题就都解决了，那要 <code>prototype</code> 做甚？</p>
+<p>并不，因为 <code>__proto__</code> 并非官方标准中定义的属性，当把一个Function当做构造函数使用时，继承关系需要借助 <code>prototype</code> 实现。</p>
+<p>举个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name, github, blog</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.github = github;</span><br><span class="line">    <span class="keyword">this</span>.blog = blog;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.prototype.aboutMe = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> info = <span class="string">'my name is '</span> + <span class="keyword">this</span>.name +</span><br><span class="line">        <span class="string">'. my github is '</span> + <span class="keyword">this</span>.github + </span><br><span class="line">        <span class="string">'. my blog is '</span> + <span class="keyword">this</span>.blog;</span><br><span class="line">    <span class="built_in">console</span>.log(info);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'htf'</span>, <span class="string">'github.com/huangtengfei'</span>, <span class="string">'huangtengfei.com'</span>);</span><br><span class="line">foo.aboutMe();  </span><br><span class="line"><span class="comment">// my name is htf. my github is github.com/huangtengfei. </span></span><br><span class="line"><span class="comment">// my blog is huangtengfei.com</span></span><br></pre></td></tr></table></figure>
+<p>这是个典型的构建构造函数，然后创建对象的过程。那么，在 <code>var foo = new Foo()</code> 这一步发生了什么呢？</p>
+<p>第一步，Foo 函数被执行。Foo 函数在 foo 的作用域下被执行，所以这里 this 指代的就是 foo，这样 name、github、blog 三个属性才会被当做 foo 的属性被创建。</p>
+<p>第二步，将 <code>foo.__proto__</code> 指向 <code>Foo.prototype</code> 。这才是 javascript 构造函数的精髓所在，之后的原理和 关于继承 部分的代码一样，foo 就继承了 <code>Foo.prototype</code> 中（以及其原型链上）的属性与方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo.__proto__ === Foo.prototype)    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>对象的 <code>__proto__</code> 指向的是创建它的函数的 <code>prototype</code>，因此：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.__proto__ === <span class="built_in">Function</span>.prototype</span><br></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<p>__proto<strong> is the actual object that is used in the lookup chain to resolve methods, etc. prototype is the object that is used to build \</strong>proto__ when you create an object with new.</p>
+</blockquote>
+<p>意思就是：</p>
+<p><code>__proto__</code> 是真正用来查找原型链去获取方法的对象。</p>
+<p><code>prototype</code> 是在用 <code>new</code> 创建对象时用来构建 <code>__proto__</code> 的对象。</p>
+<p>更详细的区别可参考：<a href="http://www.th7.cn/web/js/201503/88712.shtml" target="_blank" rel="external">prototype与__proto__的联系与区别</a></p>
+<h2 id="获取对象原型的方法"><a href="#获取对象原型的方法" class="headerlink" title="获取对象原型的方法"></a>获取对象原型的方法</h2><p>ECMA引入了标准对象原型访问器 <code>Object.getPrototype(object)</code>，到目前为止只有 Firefox 和 Chrome 实现了此访问器。除了 IE，其他的浏览器支持非标准的访问器 <code>__proto__</code>，如果这两者都不起作用的，我们需要从对象的构造函数中找到的它原型属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;; </span><br><span class="line"></span><br><span class="line"><span class="comment">//Firefox 3.6 and Chrome 5 </span></span><br><span class="line"> <span class="built_in">Object</span>.getPrototypeOf(a);  <span class="comment">// [object Object]   </span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//Firefox 3.6, Chrome 5 and Safari 4 </span></span><br><span class="line">a.__proto__;    <span class="comment">// [object Object]   </span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//all browsers </span></span><br><span class="line"> a.constructor.prototype;   <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
+<p>任何时候，<code>a.__proto__</code> 和 <code>a.constructor.prototype</code> 是等价的。</p>
+<h2 id="constructor-与-prototype"><a href="#constructor-与-prototype" class="headerlink" title="constructor 与 prototype"></a>constructor 与 prototype</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">A.prototype.constructor == A;   <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line">a.constructor == A;     <span class="comment">// true</span></span><br><span class="line"><span class="comment">// (a's constructor property inherited from it's prototype)</span></span><br></pre></td></tr></table></figure>
+<p>图解可参考：<a href="http://www.jb51.net/article/30750.htm" target="_blank" rel="external">js原型链原理看图说明</a> 和 <a href="http://www.cnblogs.com/wangfupeng1988/p/3978131.html" target="_blank" rel="external">prototype原型</a></p>
+<h2 id="instance-of-和原型的关系"><a href="#instance-of-和原型的关系" class="headerlink" title="instance of 和原型的关系"></a>instance of 和原型的关系</h2><p>如果 a 的原型属于 A 的原型链（即 <code>a.__proto__ === A.prototype</code>），表达式 <code>a instance of A</code> 值为 true。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;   </span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A(); </span><br><span class="line"> </span><br><span class="line">a.__proto__ == A.prototype;     <span class="comment">// true</span></span><br><span class="line">a <span class="keyword">instanceof</span> A;     <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变a的原型指向 </span></span><br><span class="line">a.__proto__ = <span class="built_in">Function</span>.prototype;</span><br><span class="line">a <span class="keyword">instanceof</span> A;     <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="原型的作用"><a href="#原型的作用" class="headerlink" title="原型的作用"></a>原型的作用</h2><p>原型的作用当然是继承了。体现在以下两种情况：</p>
+<p>一、当多个实例共用一个通用原型的时候，原型对象的属性一旦定义，就可以被多个引用它的实例所继承。栗子可以看 <a href="http://huangtengfei.com/2015/09/the-oop-of-javascript/" target="_blank" rel="external">JavaScript 面向对象编程</a> 一文</p>
+<p>二、扩展原生构造函数 Function、String 等的功能，使其所有实例都拥有此扩展功能。</p>
+<p>比如下面一个栗子，对字符串本身进行指定数目的复制：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.times = <span class="function"><span class="keyword">function</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 构造空元素中间用当前字符串连接</span></span><br><span class="line">    <span class="keyword">return</span> count &lt; <span class="number">1</span> ? <span class="string">''</span> : <span class="keyword">new</span> <span class="built_in">Array</span>(count + <span class="number">1</span>).join(<span class="keyword">this</span>);</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="string">"hello!"</span>.times(<span class="number">3</span>);     <span class="comment">// "hello!hello!hello!";</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.jobbole.com/9648/" target="_blank" rel="external">理解JavaScript原型</a><br><a href="http://www.nowamagic.net/librarys/veda/detail/1648" target="_blank" rel="external">JavaScript探秘：强大的原型和原型链</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/06/scope-and-scope-chain-of-js/" rel="next" title="JavaScript 作用域与作用域链">
+                <i class="fa fa-chevron-left"></i> JavaScript 作用域与作用域链
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/08/the-reason-and-resolve-of-inline-margin/" rel="prev" title="浏览器对换行符理解造成内联排列产生间距的原因和解决办法">
+                浏览器对换行符理解造成内联排列产生间距的原因和解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/09/07/prototype-of-javascript/"
+           data-title="理解 JavaScript 中的原型" data-url="http://yoursite.com/2015/09/07/prototype-of-javascript/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype-与-proto-的联系与区别"><span class="nav-number">1.</span> <span class="nav-text">prototype 与 __proto__ 的联系与区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Function"><span class="nav-number">1.1.</span> <span class="nav-text">关于Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于继承（-proto-）"><span class="nav-number">1.2.</span> <span class="nav-text">关于继承（__proto__）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype的作用"><span class="nav-number">1.3.</span> <span class="nav-text">prototype的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取对象原型的方法"><span class="nav-number">2.</span> <span class="nav-text">获取对象原型的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor-与-prototype"><span class="nav-number">3.</span> <span class="nav-text">constructor 与 prototype</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instance-of-和原型的关系"><span class="nav-number">4.</span> <span class="nav-text">instance of 和原型的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型的作用"><span class="nav-number">5.</span> <span class="nav-text">原型的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

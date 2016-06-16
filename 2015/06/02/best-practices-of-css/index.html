@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端规范,CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="高维护性的CSS高效组织CSS代码组织CSS代码文件将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css
++css
+ ++lib
+ ++business
+ --default.css
+ --common.css
+ --ie-style.css
+default.css的作用是重置元素的默认样式，目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS最佳实践">
+<meta property="og:url" content="http://yoursite.com/2015/06/02/best-practices-of-css/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="高维护性的CSS高效组织CSS代码组织CSS代码文件将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css
++css
+ ++lib
+ ++business
+ --default.css
+ --common.css
+ --ie-style.css
+default.css的作用是重置元素的默认样式，目">
+<meta property="og:updated_time" content="2016-06-16T02:07:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS最佳实践">
+<meta name="twitter:description" content="高维护性的CSS高效组织CSS代码组织CSS代码文件将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css
++css
+ ++lib
+ ++business
+ --default.css
+ --common.css
+ --ie-style.css
+default.css的作用是重置元素的默认样式，目">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/02/best-practices-of-css/"/>
+
+  <title> CSS最佳实践 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS最佳实践
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-02T00:00:00+08:00" content="2015-06-02">
+              2015-06-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/02/best-practices-of-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/02/best-practices-of-css/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="高维护性的CSS"><a href="#高维护性的CSS" class="headerlink" title="高维护性的CSS"></a>高维护性的CSS</h2><h3 id="高效组织CSS代码"><a href="#高效组织CSS代码" class="headerlink" title="高效组织CSS代码"></a>高效组织CSS代码</h3><h4 id="组织CSS代码文件"><a href="#组织CSS代码文件" class="headerlink" title="组织CSS代码文件"></a>组织CSS代码文件</h4><p>将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css</p>
+<pre><code>+css
+ ++lib
+ ++business
+ --default.css
+ --common.css
+ --ie-style.css
+</code></pre><p>default.css的作用是重置元素的默认样式，目的是让元素在各浏览器中有统一的外观。</p>
+<a id="more"></a>
+<p>common.css中放置共通模块的样式和基础样式。共通模块包括页面对话框、提示框等共通组件样式以及页面头部、底部、侧边栏等共通UI样式。基础样式包括全局的页面布局设置、字体设置、背景和前景色等，以及一些用以提高代码复用度的公有class（如设置字体不可见的样式）。</p>
+<p>ie-style.css中放置兼容旧版IE浏览器的样式。以减轻非IE浏览器加载样式表的负担，并方便在不需要兼容时移除。在页面中使用IE浏览器独有的注释引用此样式文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE8]&gt;</span><br><span class="line">&lt;link rel='stylesheet' href="ie-style.css"&gt;</span><br><span class="line">&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其他CSS样式文件可按照具体业务放置不同文件夹，并进来保证每个模块对应的样式文件不超过200行，如果过大可继续划分为更小的模块（如business.header.css、business.content.css、business.footer.css）。这样划分是为了方便开发，在发布时可压缩为一个文件。</p>
+<h4 id="组织CSS代码"><a href="#组织CSS代码" class="headerlink" title="组织CSS代码"></a>组织CSS代码</h4><p>样式声明的顺序应按照模块中元素的层级关系来处理，同一级的元素按照页面位置从上到下、从左到右定义。先声明共通样式，然后声明个体样式。</p>
+<p>另外，可以使用动态样式语言Less和Sass编写高复用性和高扩展性的CSS代码。</p>
+<h3 id="使用CSS-Reset：统一浏览器显示效果"><a href="#使用CSS-Reset：统一浏览器显示效果" class="headerlink" title="使用CSS Reset：统一浏览器显示效果"></a>使用CSS Reset：统一浏览器显示效果</h3><p>前面default.css的作用就是CSS Reset，在重置样式时主要考虑以下几个方面：</p>
+<p>1）HTML5中的新标签</p>
+<p>因为在IE8/IE9中没定义HTML5中新标签的默认display样式，因此需要重置这些标签的display样式。</p>
+<p>2）padding、margin和border</p>
+<p>标签在浏览器之间的差异主要是由与这三个样式有关的默认样式产生，因此也才会有使用<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;<span class="attribute">margin</span>: <span class="number">0</span>; <span class="attribute">padding</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个流行的重置方案。</p>
+<p>3）字体设置<br><code>&lt;h1&gt;</code>~<code>&lt;h6&gt;</code>、<code>&lt;strong&gt;</code>、<code>&lt;em&gt;</code>等语义化的标签都有默认字体，然后在实际项目中，一般都会重定义这些样式。</p>
+<p>4）其他元素的样式重置</p>
+<p>比如列表项、表格元素和链接的重置等。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">    <span class="attribute">border-collapse</span>: collapse;</span><br><span class="line">    <span class="attribute">border-spacing</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于CSS Reset可参考《Web前端开发最佳实践》6.2章节示范。</p>
+<h3 id="给CSS样式定义排序"><a href="#给CSS样式定义排序" class="headerlink" title="给CSS样式定义排序"></a>给CSS样式定义排序</h3><p>通常有三种方式，按类型分组排序、按字母顺序排序和按定义长度排序，推荐使用第一种。</p>
+<p>按类型顺序排序是指把CSS属性分成显示与浮动、定位、尺寸、边框相关属性、字体样式、背景和其他样式7大类，把影响元素布局的样式（如float、margin、padding、height、width等）排在前面，把不影响布局的样式（如background、color、font等）放到后面，主次分明。</p>
+<p>使用CSScomb工具可以对CSS排序。</p>
+<h3 id="合理利用CSS的权重：提高代码重用性"><a href="#合理利用CSS的权重：提高代码重用性" class="headerlink" title="合理利用CSS的权重：提高代码重用性"></a>合理利用CSS的权重：提高代码重用性</h3><p>CSS样式的基础选择器有6种：</p>
+<ul>
+<li>ID选择器（如#reader_title{}）</li>
+<li>类选择器（如.reader_title{}）</li>
+<li>属性选择器（如a[href=’<a href="http://www.w3.org&#39;]）" target="_blank" rel="external">http://www.w3.org&#39;]）</a></li>
+<li>伪类和伪对象选择器（如:hover{} ::after{}）</li>
+<li>标签类型选择器（如a{}）</li>
+<li>通配选择器（如body * {}）</li>
+</ul>
+<p>所有在CSS样式中定义的选择符都是由这6种基础选择符组合而成的，组合方式有三种：</p>
+<ul>
+<li>后代选择符（如.reader .title{}）</li>
+<li>子选择符（如.reader&gt;.title{}）</li>
+<li>相邻选择符（如.reader+.title{}）</li>
+</ul>
+<p>基础选择器具有这样的优先级（前者是后者10倍）：<br>ID ＞ 类|伪类|属性选择 &gt; 标签类型|伪对象 &gt; 通配符</p>
+<p>定义选择符的原则是尽量使选择符的权重低，目的是保证样式在应用于多个元素时容易被覆盖。具体原则有以下三个：</p>
+<p>1）尽量不要使用ID选择器<br>2）减少子选择器的层级<br>3）使用组合的CSS类选择器</p>
+<h3 id="兼容IE浏览器"><a href="#兼容IE浏览器" class="headerlink" title="兼容IE浏览器"></a>兼容IE浏览器</h3><p>1）熟悉IE浏览器中常见的样式兼容问题</p>
+<p>参见 <a href="http://code.tutsplus.com/tutorials/9-most-common-ie-bugs-and-how-to-fix-them--net-7764" target="_blank" rel="external">9种在IE中常见的兼容问题</a></p>
+<p>2）分离样式兼容代码 </p>
+<p>方法一：使用条件注释，让不同浏览器加载不同的样式文件以达到让兼容代码和正常代码分离的目的，参见组织CSS代码小节的示例。</p>
+<p>方法二：为提高兼容样式的优先级，可以在根元素（<code>&lt;html&gt;</code> 或者 <code>&lt;body&gt;</code>）上针对不同浏览器添加不同的样式类。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE 7]&gt; &lt;html class="ie7"&gt; &lt;![endif]--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[if IE 8]&gt; &lt;html class="ie8"&gt; &lt;![endif]--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span> <span class="tag">&lt;<span class="name">html</span>&gt;</span> <span class="comment">&lt;!--&gt;&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="em、px还是"><a href="#em、px还是" class="headerlink" title="em、px还是%"></a>em、px还是%</h3><p>px为绝对单位，表示一个像素点。em和%为相对单位，em等同于元素上计算的字体大小值，%是相对于父元素尺寸的大小来计算的。</p>
+<p>在设置元素尺寸和字体大小时，有以下几个原则：</p>
+<p>1）尽量设置相对尺寸</p>
+<p>设置行高一般使用em，而设置高度或者宽度则一般使用百分比。</p>
+<p>2）只有在可预知元素尺寸的情况下才使用绝对尺寸</p>
+<p>比如设计上要求网页整体宽度固定、侧边栏宽度固定、页头页尾高度固定等，或者在展示图片、视频时要求固定尺寸。</p>
+<p>3）使用em设置字体大小</p>
+<p>在继承层级很多的时候，每个层级都设置有相对字体大小会导致不方便预知子元素的实际字体大小，因此，可使用rem单位（IE8不支持），rem是相对于根元素的字体大小来计算的，可以避免以上问题。</p>
+<h2 id="高效的CSS"><a href="#高效的CSS" class="headerlink" title="高效的CSS"></a>高效的CSS</h2><h3 id="使用高效的CSS选择器"><a href="#使用高效的CSS选择器" class="headerlink" title="使用高效的CSS选择器"></a>使用高效的CSS选择器</h3><p>在一个选择符中，最右边的选择器是关键选择器，关键选择器决定着浏览器初始匹配的元素数量。由于CSS选择器的匹配顺序是从右向左，因此定义CSS时最好遵循以下原则：</p>
+<ul>
+<li>避免使用通配符（*）</li>
+<li>避免使用标签选择器及单个属性选择器作为关键选择器</li>
+<li>不要在ID选择器前使用标签名（这是多余的）</li>
+<li>不要在选择符中定义过多的层级（最好不超过三层）</li>
+</ul>
+<h3 id="CSS相关的图片处理"><a href="#CSS相关的图片处理" class="headerlink" title="CSS相关的图片处理"></a>CSS相关的图片处理</h3><p>1）不要设置图片的尺寸</p>
+<p>一是超过实际尺寸的图片在网络传输中会占用更多带宽，二是在图片缩放时占用额外的CPU计算，所以最好的做法是针对原始图片单独做一套缩略图。</p>
+<p>2）使用CSS Sprite技术</p>
+<p>CSS Sprite通过合并图片能避免多次的图片请求，但存在开发和维护繁琐（调整图片位置）、使用不当导致性能的问题（合并后的图片过大时），因此需要注意：</p>
+<ul>
+<li>在项目后期使用CSS Sprite技术</li>
+<li>合理组织Sprite图（把相关的背景图放到同一张Sprite图中）</li>
+<li>控制Sprite图的尺寸和大小（长乘宽不超过2500，尺寸不超过200）</li>
+<li>合理控制背景图但也之间的距离以及背景图的位置（防止当背景图尺寸比实际应用的元素尺寸小时，背景图中出现其他无关的背景图）</li>
+<li>借助工具（使用Sprite Cow）</li>
+</ul>
+<h3 id="减少CSS代码量"><a href="#减少CSS代码量" class="headerlink" title="减少CSS代码量"></a>减少CSS代码量</h3><p>除了压缩代码以为，在开发过程中注意精简代码。</p>
+<p>1）合并相关CSS规则</p>
+<p>比如字体样式 font-family、font-style、font-size可以合并为一个 font 样式。</p>
+<p>2）定义简洁的属性值</p>
+<p>比如颜色值#FF33EE简化为#F3E、尺寸值0.8em可简化为.8em，尺寸值为0时可省略单位。</p>
+<p>3）合并相同的定义</p>
+<p>把相同的CSS合并定义，并且利用CSS的继承属性，把一些样式设置在父元素上。</p>
+<p>4）删除无效的定义</p>
+<p>通过Chrome自带的开发工具可以找到unused CSS rules</p>
+<h3 id="其他高性能CSS实践"><a href="#其他高性能CSS实践" class="headerlink" title="其他高性能CSS实践"></a>其他高性能CSS实践</h3><ul>
+<li>避免使用@import（使用@import导入新样式文件会阻止页面的并行下载）</li>
+<li>避免使用IE独有的样式，如图片滤镜和CSS表达式</li>
+</ul>
+<h2 id="CSS3相关最佳实践"><a href="#CSS3相关最佳实践" class="headerlink" title="CSS3相关最佳实践"></a>CSS3相关最佳实践</h2><h3 id="查看浏览器支持情况"><a href="#查看浏览器支持情况" class="headerlink" title="查看浏览器支持情况"></a>查看浏览器支持情况</h3><p>可以使用 <a href="http://caniuse.com/" target="_blank" rel="external">caniuse</a> 在线查看CSS3的浏览器兼容情况。</p>
+<h3 id="添加必要的浏览器前缀"><a href="#添加必要的浏览器前缀" class="headerlink" title="添加必要的浏览器前缀"></a>添加必要的浏览器前缀</h3><p>由于浏览器在支持CSS3新特性时，可能仅仅实现了标准定义的一个早期版本，因此需要添加浏览器前缀，有两种方法：</p>
+<ul>
+<li>使用工具 <a href="http://prefixr.com/" target="_blank" rel="external">Prefixr</a></li>
+<li>借助CSS与处理技术（Sass和Less）</li>
+</ul>
+<h3 id="做好CSS3中新特性的兼容处理"><a href="#做好CSS3中新特性的兼容处理" class="headerlink" title="做好CSS3中新特性的兼容处理"></a>做好CSS3中新特性的兼容处理</h3><p>使用 <a href="http://html5please.com/" target="_blank" rel="external">html5please</a> 更有效地使用HTML5和CSS3。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>《Web前端开发最佳实践》 党建 著</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端规范/" rel="tag">#前端规范</a>
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/10/sui-sui-nian/" rel="prev" title="碎碎念">
+                碎碎念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/06/02/best-practices-of-css/"
+           data-title="CSS最佳实践" data-url="http://yoursite.com/2015/06/02/best-practices-of-css/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高维护性的CSS"><span class="nav-number">1.</span> <span class="nav-text">高维护性的CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高效组织CSS代码"><span class="nav-number">1.1.</span> <span class="nav-text">高效组织CSS代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组织CSS代码文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">组织CSS代码文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组织CSS代码"><span class="nav-number">1.1.2.</span> <span class="nav-text">组织CSS代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CSS-Reset：统一浏览器显示效果"><span class="nav-number">1.2.</span> <span class="nav-text">使用CSS Reset：统一浏览器显示效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给CSS样式定义排序"><span class="nav-number">1.3.</span> <span class="nav-text">给CSS样式定义排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合理利用CSS的权重：提高代码重用性"><span class="nav-number">1.4.</span> <span class="nav-text">合理利用CSS的权重：提高代码重用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容IE浏览器"><span class="nav-number">1.5.</span> <span class="nav-text">兼容IE浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em、px还是"><span class="nav-number">1.6.</span> <span class="nav-text">em、px还是%</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高效的CSS"><span class="nav-number">2.</span> <span class="nav-text">高效的CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用高效的CSS选择器"><span class="nav-number">2.1.</span> <span class="nav-text">使用高效的CSS选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS相关的图片处理"><span class="nav-number">2.2.</span> <span class="nav-text">CSS相关的图片处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少CSS代码量"><span class="nav-number">2.3.</span> <span class="nav-text">减少CSS代码量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他高性能CSS实践"><span class="nav-number">2.4.</span> <span class="nav-text">其他高性能CSS实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3相关最佳实践"><span class="nav-number">3.</span> <span class="nav-text">CSS3相关最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看浏览器支持情况"><span class="nav-number">3.1.</span> <span class="nav-text">查看浏览器支持情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加必要的浏览器前缀"><span class="nav-number">3.2.</span> <span class="nav-text">添加必要的浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做好CSS3中新特性的兼容处理"><span class="nav-number">3.3.</span> <span class="nav-text">做好CSS3中新特性的兼容处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

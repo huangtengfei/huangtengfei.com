@@ -1,0 +1,733 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="杂感," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在飞哥@徐飞的号召下，我们小组这次基本上全员出动（除一个小伙伴临时有事没来），来膜拜大神，学习新姿势。（貌似我没有写是五花肉的前男友就顺利通过D2申请了，哈哈[骄傲脸]）。
+这次D2的主题是融合，演讲主题主要分两大块，一块是 Node.js，一块是 React + React Native（果然是2015最火技术），然而在我们这边的实际项目中并没有用到这两个，所以估计对我们小组的人员来说，全听懂还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="参加第10届 D2 的收获">
+<meta property="og:url" content="http://yoursite.com/2015/12/20/2015-d2/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="在飞哥@徐飞的号召下，我们小组这次基本上全员出动（除一个小伙伴临时有事没来），来膜拜大神，学习新姿势。（貌似我没有写是五花肉的前男友就顺利通过D2申请了，哈哈[骄傲脸]）。
+这次D2的主题是融合，演讲主题主要分两大块，一块是 Node.js，一块是 React + React Native（果然是2015最火技术），然而在我们这边的实际项目中并没有用到这两个，所以估计对我们小组的人员来说，全听懂还">
+<meta property="og:updated_time" content="2016-06-15T07:15:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="参加第10届 D2 的收获">
+<meta name="twitter:description" content="在飞哥@徐飞的号召下，我们小组这次基本上全员出动（除一个小伙伴临时有事没来），来膜拜大神，学习新姿势。（貌似我没有写是五花肉的前男友就顺利通过D2申请了，哈哈[骄傲脸]）。
+这次D2的主题是融合，演讲主题主要分两大块，一块是 Node.js，一块是 React + React Native（果然是2015最火技术），然而在我们这边的实际项目中并没有用到这两个，所以估计对我们小组的人员来说，全听懂还">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/12/20/2015-d2/"/>
+
+  <title> 参加第10届 D2 的收获 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                参加第10届 D2 的收获
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-20T00:00:00+08:00" content="2015-12-20">
+              2015-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/20/2015-d2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/2015-d2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在飞哥@<a href="https://www.zhihu.com/people/sharpmaster" target="_blank" rel="external">徐飞</a>的号召下，我们小组这次基本上全员出动（除一个小伙伴临时有事没来），来膜拜大神，学习新姿势。（貌似我没有写是五花肉的前男友就顺利通过D2申请了，哈哈[骄傲脸]）。</p>
+<p>这次D2的主题是融合，演讲主题主要分两大块，一块是 Node.js，一块是 React + React Native（果然是2015最火技术），然而在我们这边的实际项目中并没有用到这两个，所以估计对我们小组的人员来说，全听懂还是有困难的（经验丰富的大师兄和乔大师@乔梁除外）。好在自己之前做过一些跟 Node.js 相关的，在来之前也稍微补了一下 React ，写了小demo，所以也还能勉强听懂一些。</p>
+<p>上午第一场听的是不四老师@dead-horse 的用《Node.js 构建海量页面渲染服务》，看到了在阿里，Node.js 确实是被广泛使用的（仅次于PHP，不知道有没有记错。。。），并且用来承载一些核心业务（比如淘宝首页促销页等），并能经得起双十一这样高峰值的考验。</p>
+<a id="more"></a>
+<p>这场主题印象比较深的主要有下面几点（因为是自己要么没听过要么没用过的。。。）：</p>
+<ol>
+<li><p>koa和express的对比。在 express 里中间件顺序执行，而 <a href="http://koajs.com/" target="_blank" rel="external">koa</a> 是一个包裹在后面所有中间件的装饰器（比如将charset、gzip这些都放到各中间件完成），所以核心代码也比较精简</p>
+</li>
+<li><p>编写可测试的代码，持续集成。记得当时不四老师问了一句，你们 Node.js 的开发都写了测试吗，举一下手，结果没几个人举，然后不四老师说，没测试的代码你们真的敢放上去跑吗。。。想想我自己就是其中一个[羞愧脸]</p>
+</li>
+<li><p>使用 cluster 进行多核处理。master 只做进程管理，worker 异常退出后自动重启，http 服务优雅退出</p>
+</li>
+<li><p>日志管理。所有请求都有 accesslog 追踪，所有异常统一处理分类输出</p>
+</li>
+<li><p>基于 CDN 的 URL 统一，在 CDN 识别设备类型，为 pc 和移动端缓存不同页面</p>
+</li>
+</ol>
+<p>第二场一开始是去听杨文坚老师的《Component 化设计与实践》的，去到发现人爆满，站的位置都没有。。。听了一会，发现在飞哥之前的几篇组件化方面的<a href="https://github.com/xufei/blog/issues" target="_blank" rel="external">文章</a>里面已经看过，所以就出来了，想换场听李成银老师的《使用ES6/7特性开发Node.js项目》，结果发现根本挤不进去，于是就回报告厅听《Hybrid APP 框架的架构演进》了，去到的时候晓田老师已经讲完，主要听隐风老师讲如何将 Native 组件覆盖到 webview 上，觉得还是要以后自己做了相关的东西才能理解更深刻。</p>
+<p>中午跟几个小伙伴去食堂吃了饭，然后用飞哥拨的经费集体去喝了星巴克，回去之后还打电话叫飞哥出来一起在门口拍了张合照。。。</p>
+<p>因为上午主听了一场 Node.js 的，下午第一场选择了听承玉老师的《React 及其生态圈在蚂蚁金服的实践》，主要记了以下几点。</p>
+<ol>
+<li><p>Ant Design，一个基于 React 构建的一套 UI 组件库。听过但是没用过，打算以后使用 React的时候深入了解一下。。。。</p>
+</li>
+<li><p>了解了在蚂蚁金服内部是如何进行组件化实践的，像购物车、表单处理等，让后台人员也可以在简单培训后使用组件进行前端开发。</p>
+</li>
+<li><p>React Native 的一些优势。比如 100% 的 Native UI 和 API，编程语言能力，布局和样式能力，开发体验，开源，社区等。</p>
+</li>
+</ol>
+<p>其实同时进行的另外两场，朴灵老师的 《alinode 与 Node 应用性能管理》和 霍雍老师的 《Web接口管理工具 RAP》（最近刚好在做一个类似的 demo）也很想去听的，无奈冲突了，只能后面跟其他想听的主题一块看录像学习了。。。</p>
+<p>下午第二场先是去听了郭虹宇老师的《融合 Web 技术的 Native UI 架构》，后来还是发现自己没有进行过实际的 React Native 开发听起来感受不强烈，就换场去听了黄友昆老师的《Node.js 加速 Qzone》，首屏离线，点开就有，消除白屏，确实让体验更好了。然后是介绍了 使用 window 对象而不是直接传 request 和 response，做一个log工具，也很有借鉴意义。话说友昆老师的 PPT 做的好冷，比如提到最难点的时候那张 最南点500米。。。</p>
+<p>最后一场是听了宁朗老师的《DataV 数据可视化引擎》，最大的感觉就是很酷炫，不过对 WebGL没什么了解，所以没法对他们开发过程中踩的坑和解决方案感同身受，就当开眼界了。。。</p>
+<p>一天听的内容大概就是这些了，主要有几点感想：</p>
+<ol>
+<li><p>前端技术果然是日新月异的，越来越丰富，能做的事情也越来越多，Node.js，让前端工程师使用 javascript 进行后台开发，也就更有了话语权，而且就算不使用 Node.js 开发，大多前端构建工具也是基于 Node.js 环境的，所以不了解的可以了解一些，感兴趣的可以深入一下。</p>
+</li>
+<li><p>组件化确实是一个很好的理念，不过我们目前的开发主要是基于 MVVM 的 Angular，所以体会不是很深刻（其实也用 directive 进行了一些组件化实践）。了解各自的特点及应用场景，才能进行更好的技术选型，多进行技术储备肯定是没错的。</p>
+</li>
+<li><p>React Native，结合了 Web 应用和 Native 应用的优势，使 IOS/Android 的开发具备 Web 开发的体验，后面应该会有更多 React Native 的应用出现，因为一直想尝试做 APP 玩，所以对这个技术很感兴趣。。。</p>
+</li>
+</ol>
+<p>综上，这次的 D2 之行让第一次去参加技术论坛的我大开眼界，收获颇丰，以后类似的活动也一定积极参加，强烈建议各位前端小伙伴有机会就去围观~~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂感/" rel="tag">#杂感</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/10/the-note-of-20151210/" rel="next" title="组件化、Virtual DOM、MVVM">
+                <i class="fa fa-chevron-left"></i> 组件化、Virtual DOM、MVVM
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/28/summary-of-2015/" rel="prev" title="2015 小结">
+                2015 小结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/20/2015-d2/"
+           data-title="参加第10届 D2 的收获" data-url="http://yoursite.com/2015/12/20/2015-d2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
