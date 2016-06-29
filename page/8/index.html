@@ -278,6 +278,114 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/08/the-reason-and-resolve-of-inline-margin/" itemprop="url">
+                  浏览器对换行符理解造成内联排列产生间距的原因和解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-08T00:00:00+08:00" content="2015-09-08">
+              2015-09-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/08/the-reason-and-resolve-of-inline-margin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/08/the-reason-and-resolve-of-inline-margin/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>比如这样一段代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"image/file.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>task0002<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>并未设置间距，但在浏览器下却有间距。</p>
+<h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><p>并不是因为浏览器把换行符当成文本节点所以产生了间距。因为使用 <code>li.childNodes</code> 可以看出：</p>
+<p><code>IE6</code> <code>IE7</code> <code>IE8</code> 都会忽略换行符，不会认为是一个文本节点，但是这不会影响IE系列浏览器把标签间的换行符留出间距；</p>
+<p>其他的浏览器不仅把标签间的换行符当成文本节点，并且还在标签之间留出间距。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/08/the-reason-and-resolve-of-inline-margin/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/07/prototype-of-javascript/" itemprop="url">
                   理解 JavaScript 中的原型
                 </a>
@@ -685,113 +793,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/24/note-for-20150824/" itemprop="url">
-                  学习笔记 2015.8.24
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-24T00:00:00+08:00" content="2015-08-24">
-              2015-08-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/24/note-for-20150824/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/24/note-for-20150824/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="浏览器的判断"><a href="#浏览器的判断" class="headerlink" title="浏览器的判断"></a>浏览器的判断</h2><h3 id="各种浏览器的特征"><a href="#各种浏览器的特征" class="headerlink" title="各种浏览器的特征"></a>各种浏览器的特征</h3><p>IE：只有IE支持创建 <code>ActiveX</code> 控件，因此她有一个其他浏览器没有的东西，就是 <code>ActiveXObject</code> 函数。只要判断window对象存在 <code>ActiveXObject</code> 函数，就可以明确判断出当前浏览器是IE。</p>
-<p>Firefox：Firefox中的DOM元素都有一个 <code>getBoxObjectFor</code> 函数，用来获取该DOM元素的位置和大小。</p>
-<p>Opera：Opera提供了专门的浏览器标志 <code>window.opera</code> 属性。</p>
-<p>Safari：Safari浏览器中有一个其他浏览器没有的 <code>openDatabase</code> 函数，可做为判断Safari的标志。</p>
-<p>Chrome：Chrome 有一个 <code>MessageEvent</code> 函数，但Firefox也有。不过，好在Chrome并没有Firefox的 <code>getBoxObjectFor</code> 函数，根据这两个条件还是可以准确判断出Chrome浏览器的。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/24/note-for-20150824/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -837,7 +838,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

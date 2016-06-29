@@ -378,7 +378,7 @@ State 只能通过触发 action 来">
 </code></pre><p>react-redux 的思想是将容器（Smart/Container Components）组件和展示组件分离开，只在最顶层使用 Redux（使用 <code>state</code> 数据源），其余内部组件（Dumb/Presentational Components）仅仅是展示性的，所有数据通过 <code>props</code> 传入。</p>
 <p>react-redux 只有两个 API，即 <code>&lt;Provider&gt;</code> 和 <code>Connect</code> 。</p>
 <h3 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h3><p><code>&lt;Provider&gt;</code> 是一个容器组件，用来接收 Store ，并且让 Store 能对子组件可用，形如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    rootElement</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span>,</span><br><span class="line">    rootElement</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h3 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h3><p><code>Connect</code> 用来将包装好的组件连接到 Redux 。它最多接收 <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="external">4 个可选参数</a>，返回一个函数，用这个函数接收一个组件类作为参数，最后返回一个和 Redux 关联起来的新组件，形如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect()(App);</span><br></pre></td></tr></table></figure>
 <p>从技术上讲可以将任何一个组件 <code>connect()</code> 到 Redux Store，但这会使数据流难以追踪，所以尽量只对顶层组件做这个操作。</p>
@@ -555,7 +555,7 @@ State 只能通过触发 action 来">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

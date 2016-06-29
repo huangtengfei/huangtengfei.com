@@ -278,6 +278,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/17/how-to-write-chrome-extension/" itemprop="url">
+                  从零开始写一个 Chrome 扩展
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-17T00:00:00+08:00" content="2016-01-17">
+              2016-01-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/17/how-to-write-chrome-extension/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/17/how-to-write-chrome-extension/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>一个 Chrome 扩展其实就是一个配置文件 <code>manifest.json</code> 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。</p>
+<p>这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 <a href="https://github.com/huangtengfei/stock">stock</a> 和 <a href="https://github.com/huangtengfei/weather">weather</a> 。</p>
+<h2 id="Manifest-文件"><a href="#Manifest-文件" class="headerlink" title="Manifest 文件"></a>Manifest 文件</h2><h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><p><code>manifest.json</code> 是 Chrome 扩展的入口文件，定义了 扩展的名称（name）、版本（version）、描述（description）、图标位置（icons）和 Manifest 版本（manifest_version）等信息。</p>
+<p>其中，<code>name</code>、<code>version</code> 和 <code>manifest_version</code> 是必须的，而且 <code>manifest_version</code> 必须为 2 。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/17/how-to-write-chrome-extension/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/28/summary-of-2015/" itemprop="url">
                   2015 小结
                 </a>
@@ -685,111 +791,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/23/the-recommended-style-of-angular/" itemprop="url">
-                  AngularJS 常用模块书写建议
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-23T00:00:00+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/23/the-recommended-style-of-angular/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/the-recommended-style-of-angular/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文是依据 <a href="https://github.com/johnpapa/angular-styleguide">Angular Style Guide</a> 对 Angular 常用模块书写建议的翻译和总结，仅供参考。</p>
-<h2 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h2><p>使用 立即执行函数表达式（Immediately Invoked Function Expression）将 Angular 组件包裹起来，防止污染全局作用域 <a href="https://github.com/johnpapa/angular-styleguide#style-y010091">Style Y010</a> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="comment">// storage.js</span></span><br><span class="line">angular</span><br><span class="line">    .module(<span class="string">'app'</span>)</span><br><span class="line">    .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line"></span><br><span class="line"><span class="comment">// storage function is added as a global variable</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* recommended</span><br><span class="line">*</span><br><span class="line">* no globals are left behind</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">// storage.js </span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    angular</span><br><span class="line">        .module(<span class="string">'app'</span>)</span><br><span class="line">        .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/the-recommended-style-of-angular/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -835,7 +836,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

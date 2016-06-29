@@ -278,8 +278,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/17/data-type-of-javascript/" itemprop="url">
-                  JavaScript 中判断值类型的三种方法
+                <a class="post-title-link" href="/2015/08/24/note-for-20150824/" itemprop="url">
+                  学习笔记 2015.8.24
                 </a>
               
             
@@ -292,8 +292,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
-              2015-08-17
+            <time itemprop="dateCreated" datetime="2015-08-24T00:00:00+08:00" content="2015-08-24">
+              2015-08-24
             </time>
           </span>
 
@@ -303,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/17/data-type-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/17/data-type-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/08/24/note-for-20150824/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/24/note-for-20150824/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,17 +328,13 @@
 
       
         
-          <p>JavaScript有三种方法，可以确定一个值到底是什么类型。</p>
-<ul>
-<li>typeof运算符 </li>
-<li>instanceof运算符 </li>
-<li>Object.prototype.toString方法</li>
-</ul>
-<p>首先，来了解一下js中的数据类型种类。</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript的数据类型，共有六个类别和两个特殊值。</p>
-<p>六个类别的数据类型又可以分成两组：原始类型（primitive type）和合成类型（complex type）。</p>
+          <h2 id="浏览器的判断"><a href="#浏览器的判断" class="headerlink" title="浏览器的判断"></a>浏览器的判断</h2><h3 id="各种浏览器的特征"><a href="#各种浏览器的特征" class="headerlink" title="各种浏览器的特征"></a>各种浏览器的特征</h3><p>IE：只有IE支持创建 <code>ActiveX</code> 控件，因此她有一个其他浏览器没有的东西，就是 <code>ActiveXObject</code> 函数。只要判断window对象存在 <code>ActiveXObject</code> 函数，就可以明确判断出当前浏览器是IE。</p>
+<p>Firefox：Firefox中的DOM元素都有一个 <code>getBoxObjectFor</code> 函数，用来获取该DOM元素的位置和大小。</p>
+<p>Opera：Opera提供了专门的浏览器标志 <code>window.opera</code> 属性。</p>
+<p>Safari：Safari浏览器中有一个其他浏览器没有的 <code>openDatabase</code> 函数，可做为判断Safari的标志。</p>
+<p>Chrome：Chrome 有一个 <code>MessageEvent</code> 函数，但Firefox也有。不过，好在Chrome并没有Firefox的 <code>getBoxObjectFor</code> 函数，根据这两个条件还是可以准确判断出Chrome浏览器的。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/17/data-type-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/08/24/note-for-20150824/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -446,6 +442,117 @@
 </code></pre>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/17/note-for-20150817/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/17/data-type-of-javascript/" itemprop="url">
+                  JavaScript 中判断值类型的三种方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
+              2015-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/17/data-type-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/17/data-type-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>JavaScript有三种方法，可以确定一个值到底是什么类型。</p>
+<ul>
+<li>typeof运算符 </li>
+<li>instanceof运算符 </li>
+<li>Object.prototype.toString方法</li>
+</ul>
+<p>首先，来了解一下js中的数据类型种类。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript的数据类型，共有六个类别和两个特殊值。</p>
+<p>六个类别的数据类型又可以分成两组：原始类型（primitive type）和合成类型（complex type）。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/17/data-type-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -694,125 +801,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/12/directory-style-guide/" itemprop="url">
-                  项目目录结构规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-12T00:00:00+08:00" content="2015-08-12">
-              2015-08-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/12/directory-style-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/12/directory-style-guide/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="资源分类"><a href="#资源分类" class="headerlink" title="资源分类"></a>资源分类</h2><p>资源分成两大类：</p>
-<ul>
-<li>源代码资源：指开发者编写的源代码，包括js、html、css、template等。</li>
-<li>内容资源：指希望做为内容提供给访问者的资源，包括图片、字体、flash、pdf等。</li>
-</ul>
-<h2 id="目录命名原则"><a href="#目录命名原则" class="headerlink" title="目录命名原则"></a>目录命名原则</h2><p>简洁。有习惯性缩写的单词必须采用容易理解的缩写。如：源代码目录使用src，不使用source。下面是更多例子：</p>
-<ul>
-<li>img： 图片。 不允许使用image、images、imgs等。 </li>
-<li>js： javascript脚本。不允许使用script、scripts等。 </li>
-<li>css： 样式表。 不允许使用style、styles等。 </li>
-<li>swf： flash。不允许使用flash等。 </li>
-<li>src： 源文件目录。 不允许使用source等。 </li>
-<li>tpl：存放template资源文件。</li>
-<li>font： 存放字体资源文件。</li>
-<li>dep： 引入的第三方依赖包目录。 不允许使用lib、library、dependency等。</li>
-</ul>
-<p>不允许使用复数形式。如：imgs、docs是不被允许的。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/12/directory-style-guide/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -858,7 +846,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

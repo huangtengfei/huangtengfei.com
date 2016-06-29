@@ -278,6 +278,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/25/angularjs-form-validate/" itemprop="url">
+                  AngularJS 表单验证
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-25T00:00:00+08:00" content="2016-03-25">
+              2016-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/25/angularjs-form-validate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/angularjs-form-validate/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在使用 AngularJS 进行开发的时候，表单填写是一个很常见的需求，而表单验证又是比较让人头疼的部分，本文对此做一个总结。</p>
+<p>在 Angular 的视图中使用的 form 已经不是 HTML 中的普通 form 了，而是一个被 Angular 封装过的指令。它可以完成普通 form 无法实现的功能，比如 form 嵌套，而且自带强大的验证功能。</p>
+<p>Angular 在对表单进行校验的时候会使用 <code>ngModelController</code> 上的属性，如果不设置 <code>ng-model</code>，则 Angular 无法知道 <code>form.$invalid</code> 这个值是否为真。后面在自定义验证有对它的介绍。</p>
+<p>本文在对表单的验证时使用了 <code>ng-messages</code>，在文章最后也有对它的介绍。</p>
+<p>本文涉及到的源码在 <a href="https://github.com/huangtengfei/angular-demo/tree/gh-pages/demos/form">这里</a>，实现效果在 <a href="http://huangtengfei.github.io/angular-demo/#/form">这里</a>。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/25/angularjs-form-validate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/18/angular-directive/" itemprop="url">
                   AngularJS 指令入门
                 </a>
@@ -693,112 +800,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/17/how-to-write-chrome-extension/" itemprop="url">
-                  从零开始写一个 Chrome 扩展
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-17T00:00:00+08:00" content="2016-01-17">
-              2016-01-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/17/how-to-write-chrome-extension/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/17/how-to-write-chrome-extension/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一个 Chrome 扩展其实就是一个配置文件 <code>manifest.json</code> 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。</p>
-<p>这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 <a href="https://github.com/huangtengfei/stock">stock</a> 和 <a href="https://github.com/huangtengfei/weather">weather</a> 。</p>
-<h2 id="Manifest-文件"><a href="#Manifest-文件" class="headerlink" title="Manifest 文件"></a>Manifest 文件</h2><h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><p><code>manifest.json</code> 是 Chrome 扩展的入口文件，定义了 扩展的名称（name）、版本（version）、描述（description）、图标位置（icons）和 Manifest 版本（manifest_version）等信息。</p>
-<p>其中，<code>name</code>、<code>version</code> 和 <code>manifest_version</code> 是必须的，而且 <code>manifest_version</code> 必须为 2 。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/17/how-to-write-chrome-extension/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -844,7 +845,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
