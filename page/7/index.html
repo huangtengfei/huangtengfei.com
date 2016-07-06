@@ -278,8 +278,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/17/module-pattern/" itemprop="url">
-                  模块化模式
+                <a class="post-title-link" href="/2015/09/factory-pattern/" itemprop="url">
+                  工厂模式
                 </a>
               
             
@@ -292,8 +292,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-17T00:00:00+08:00" content="2015-09-17">
-              2015-09-17
+            <time itemprop="dateCreated" datetime="2015-09-18T00:00:00+08:00" content="2015-09-18">
+              2015-09-18
             </time>
           </span>
 
@@ -303,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/17/module-pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/17/module-pattern/" itemprop="commentsCount"></span>
+                <a href="/2015/09/factory-pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/factory-pattern/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,12 +328,10 @@
 
       
         
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>模块化模式最初被定义为一种对传统软件工程中的类提供私有和公共封装的方法。在 <code>JavaScript</code> 中，模块化模式用来进一步模拟 <strong>类</strong> 的概念。</p>
-<p>模块模式使用 <a href="http://huangtengfei.com/2015/09/closure-of-javascript/">闭包</a> 的方式提供了一种将公有和私有方法，变量封装混合在一起的方式，这种方式防止内部信息泄露到全局中，从而避免了和其它开发者接口发生冲图的可能性。在这种模式下只有公有的API 会返回，其它将全部保留在闭包的私有空间中。</p>
-<p>这个模式非常类似于立即调用函数式表达式，但是这种模式返回的是对象，而立即调用函数表达式返回的是一个函数。</p>
-<h2 id="通用模版"><a href="#通用模版" class="headerlink" title="通用模版"></a>通用模版</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNamespace = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> myPrivateVar, myPrivateMethod;</span><br><span class="line">	<span class="comment">// 私有变量-计数器</span></span><br><span class="line">	myPrivateVar = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 私有方法</span></span><br><span class="line">	myPrivateMethod = <span class="function"><span class="keyword">function</span>(<span class="params"> foo </span>) </span>&#123;</span><br><span class="line">	    <span class="built_in">console</span>.log( foo );</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="comment">// 公有变量</span></span><br><span class="line">		myPublicVar: <span class="string">"foo"</span>,</span><br><span class="line">		<span class="comment">// 公有方法</span></span><br><span class="line">		myPublicFunction: <span class="function"><span class="keyword">function</span>(<span class="params"> bar </span>) </span>&#123;</span><br><span class="line">		    myPrivateVar++;</span><br><span class="line">		    myPrivateMethod( bar );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>工厂模式是一种关注对象创建概念的创建模式。它的领域中同其它模式的不同之处在于它并没有明确要求我们使用一个构造器。取而代之，一个工厂能提供一个创建对象的公共接口，可以在其中指定我们希望被创建的工厂对象的类型。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>试想一下，在我们被要求创建一种类型的UI组件时，我们就有一个UI工厂。并不是通过直接使用new操作符或者通过另外一个构造器来创建这个组件，我们取而代之的向一个工厂对象索要一个新的组件。我们告知工厂我们需要什么类型的组件（例如：“按钮”，“面板”），而它会将其初始化，然后返回供我们使用。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/17/module-pattern/#more" rel="contents">
+            <a class="btn" href="/2015/09/factory-pattern/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -384,7 +382,113 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/11/the-usage-of-this-in-javascript/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/module-pattern/" itemprop="url">
+                  模块化模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-17T00:00:00+08:00" content="2015-09-17">
+              2015-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/module-pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/module-pattern/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>模块化模式最初被定义为一种对传统软件工程中的类提供私有和公共封装的方法。在 <code>JavaScript</code> 中，模块化模式用来进一步模拟 <strong>类</strong> 的概念。</p>
+<p>模块模式使用 <a href="http://huangtengfei.com/2015/09/closure-of-javascript/">闭包</a> 的方式提供了一种将公有和私有方法，变量封装混合在一起的方式，这种方式防止内部信息泄露到全局中，从而避免了和其它开发者接口发生冲图的可能性。在这种模式下只有公有的API 会返回，其它将全部保留在闭包的私有空间中。</p>
+<p>这个模式非常类似于立即调用函数式表达式，但是这种模式返回的是对象，而立即调用函数表达式返回的是一个函数。</p>
+<h2 id="通用模版"><a href="#通用模版" class="headerlink" title="通用模版"></a>通用模版</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNamespace = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> myPrivateVar, myPrivateMethod;</span><br><span class="line">	<span class="comment">// 私有变量-计数器</span></span><br><span class="line">	myPrivateVar = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 私有方法</span></span><br><span class="line">	myPrivateMethod = <span class="function"><span class="keyword">function</span>(<span class="params"> foo </span>) </span>&#123;</span><br><span class="line">	    <span class="built_in">console</span>.log( foo );</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="comment">// 公有变量</span></span><br><span class="line">		myPublicVar: <span class="string">"foo"</span>,</span><br><span class="line">		<span class="comment">// 公有方法</span></span><br><span class="line">		myPublicFunction: <span class="function"><span class="keyword">function</span>(<span class="params"> bar </span>) </span>&#123;</span><br><span class="line">		    myPrivateVar++;</span><br><span class="line">		    myPrivateMethod( bar );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/module-pattern/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/the-usage-of-this-in-javascript/" itemprop="url">
                   JavaScript 中 this 的用法
                 </a>
               
@@ -409,8 +513,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/11/the-usage-of-this-in-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/11/the-usage-of-this-in-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/09/the-usage-of-this-in-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-this-in-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -440,7 +544,7 @@
 <h3 id="纯粹的函数调用"><a href="#纯粹的函数调用" class="headerlink" title="纯粹的函数调用"></a>纯粹的函数调用</h3><p>举个栗子</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">    alert(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line">test();     <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/11/the-usage-of-this-in-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/09/the-usage-of-this-in-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -491,7 +595,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/11/the-usage-of-settimeout/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/the-usage-of-settimeout/" itemprop="url">
                   setTimeout 的用法
                 </a>
               
@@ -516,8 +620,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/11/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/11/the-usage-of-settimeout/" itemprop="commentsCount"></span>
+                <a href="/2015/09/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-settimeout/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -545,7 +649,7 @@
 <h2 id="setTimeout-函数名-延迟"><a href="#setTimeout-函数名-延迟" class="headerlink" title="setTimeout(函数名, 延迟)"></a>setTimeout(函数名, 延迟)</h2><pre><code>setTimeout(show(), 1000);
 </code></pre><p><code>show()</code> 是函数运行，这种传递方式真正传进去的是 <code>show</code> 函数的返回值。因此会直接执行，无延迟。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/11/the-usage-of-settimeout/#more" rel="contents">
+            <a class="btn" href="/2015/09/the-usage-of-settimeout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -596,7 +700,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/10/the-oop-of-javascript/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/the-oop-of-javascript/" itemprop="url">
                   理解 JavaScript 面向对象编程
                 </a>
               
@@ -621,8 +725,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/10/the-oop-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/10/the-oop-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/09/the-oop-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-oop-of-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -650,116 +754,7 @@
 <h3 id="原始模式"><a href="#原始模式" class="headerlink" title="原始模式"></a>原始模式</h3><p>一种是原始模式，最简单的就是直接用 <code>{...}</code> </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">    name : <span class="string">'htf'</span>,</span><br><span class="line">　　age : <span class="string">'24'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方式二</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">　　    name: name,</span><br><span class="line">　　    age: age</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">'zs'</span>, <span class="number">25</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = Person(<span class="string">'ls'</span>, <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/10/the-oop-of-javascript/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/08/closure-of-javascript/" itemprop="url">
-                  理解 JavaScript 闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-08T00:00:00+08:00" content="2015-09-08">
-              2015-09-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/08/closure-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/08/closure-of-javascript/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。</p>
-<p>JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(i++);     <span class="comment">// b() 引用 i</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;   <span class="comment">// a() 返回 b</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = a();    <span class="comment">// c 通过执行 a() 指向了 b</span></span><br><span class="line">c();    <span class="comment">// 相当于执行b(), 访问了 i</span></span><br></pre></td></tr></table></figure>
-<p>这段代码的特点是，函数 b 嵌套在函数 a 内部，函数 a 返回 函数 b 。</p>
-<p>这样在执行完 <code>var c = a();</code> 后，变量 c 实际上是指向了函数 b，b 中用到了变量 i ，再执行 <code>c()</code> 后就会弹出一个窗口显示 i 的值(第一次为1)。</p>
-<p>闭包的作用就是在 a 执行完并返回后，闭包使得 JavaScript 的垃圾回收机制 GC 不会收回 a 所占用的资源，因为 a 的内部函数 b 的执行需要依赖 a 中的变量。</p>
-<p>JavaScript 中的 GC 只回收不再被引用的单个对象和两个互相引用但不被第三者引用的对象。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/08/closure-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/09/the-oop-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -793,7 +788,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -834,17 +829,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

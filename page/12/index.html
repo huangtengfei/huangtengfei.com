@@ -278,7 +278,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/05/note-for-20150805/" itemprop="url">
+                <a class="post-title-link" href="/2015/08/note-for-20150805/" itemprop="url">
                   学习笔记 - 2015.8.5
                 </a>
               
@@ -303,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/05/note-for-20150805/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/05/note-for-20150805/" itemprop="commentsCount"></span>
+                <a href="/2015/08/note-for-20150805/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150805/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -343,7 +343,7 @@
 </ol>
 </blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/05/note-for-20150805/#more" rel="contents">
+            <a class="btn" href="/2015/08/note-for-20150805/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -394,7 +394,114 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/04/learn-sass/" itemprop="url">
+                <a class="post-title-link" href="/2015/08/bfc-and-float/" itemprop="url">
+                  BFC 及 浮动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-05T00:00:00+08:00" content="2015-08-05">
+              2015-08-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/bfc-and-float/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/bfc-and-float/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="BFC（块级格式化上下文）"><a href="#BFC（块级格式化上下文）" class="headerlink" title="BFC（块级格式化上下文）"></a>BFC（块级格式化上下文）</h2><p>创建了 BFC的元素就是一个独立的盒子，里面的子元素不会在布局上影响外面的元素，反之亦然，同时BFC任然属于文档中的普通流。</p>
+<h3 id="BFC的应用"><a href="#BFC的应用" class="headerlink" title="BFC的应用"></a>BFC的应用</h3><h4 id="不和浮动元素重叠"><a href="#不和浮动元素重叠" class="headerlink" title="不和浮动元素重叠"></a>不和浮动元素重叠</h4><p>如果一个浮动元素后面跟着一个非浮动的元素，那么就会产生一个覆盖的现象。而根据 CSS Floats 中的描述，创建了 BFC 的元素不能与浮动元素重叠。问题解决。</p>
+<h4 id="清除元素内部浮动"><a href="#清除元素内部浮动" class="headerlink" title="清除元素内部浮动"></a>清除元素内部浮动</h4><p>根据 CSS2.1 规范的高度计算规则，在进行普通流中的块级非替换元素的高度计算时，浮动子元素不参与计算。而在计算生成了 BFC 的元素的高度时，其浮动子元素应该参与计算。</p>
+<p>所以，只要把父元素设为BFC就可以清理子元素的浮动，使浮动元素闭合。</p>
+<h4 id="解决上下相邻两个元素重叠"><a href="#解决上下相邻两个元素重叠" class="headerlink" title="解决上下相邻两个元素重叠"></a>解决上下相邻两个元素重叠</h4><p>根据 CSS 规范，生成 BFC 的元素不会和在流中的子元素发生空白边折叠。所以解决这种问题的办法是要为两个容器添加具有BFC的包裹容器。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/bfc-and-float/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/learn-sass/" itemprop="url">
                   Sass 初探
                 </a>
               
@@ -419,8 +526,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/04/learn-sass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/learn-sass/" itemprop="commentsCount"></span>
+                <a href="/2015/08/learn-sass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-sass/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -456,7 +563,7 @@ sass --watch input.scss:output.css
 sass --watch dir/sass:dir/css
 </code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/04/learn-sass/#more" rel="contents">
+            <a class="btn" href="/2015/08/learn-sass/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -507,7 +614,7 @@ sass --watch dir/sass:dir/css
             
               
                 
-                <a class="post-title-link" href="/2015/08/04/learn-compass/" itemprop="url">
+                <a class="post-title-link" href="/2015/08/learn-compass/" itemprop="url">
                   Compass 初探
                 </a>
               
@@ -532,8 +639,8 @@ sass --watch dir/sass:dir/css
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/04/learn-compass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/learn-compass/" itemprop="commentsCount"></span>
+                <a href="/2015/08/learn-compass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-compass/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -569,7 +676,7 @@ sass --watch dir/sass:dir/css
 <li>config.rb文件，Compass 的配置文件</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/04/learn-compass/#more" rel="contents">
+            <a class="btn" href="/2015/08/learn-compass/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -620,7 +727,7 @@ sass --watch dir/sass:dir/css
             
               
                 
-                <a class="post-title-link" href="/2015/08/04/how-to-write-css/" itemprop="url">
+                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
                   写出优雅的CSS
                 </a>
               
@@ -645,8 +752,8 @@ sass --watch dir/sass:dir/css
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/04/how-to-write-css/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/04/how-to-write-css/" itemprop="commentsCount"></span>
+                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -674,111 +781,7 @@ sass --watch dir/sass:dir/css
 <p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
 <h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/04/how-to-write-css/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/30/jquery/" itemprop="url">
-                  jQuery 学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-30T00:00:00+08:00" content="2015-07-30">
-              2015-07-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/30/jquery/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/30/jquery/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><p>当前 HTML 元素：<code>$(this)</code><br>按ID查找： <code>$(&#39;#abc&#39;)</code><br>按tag查找： <code>$(&#39;p&#39;)</code><br>按class查找： <code>$(&#39;.red&#39;)</code><br>按属性查找： <code>$(&#39;[name=email]&#39;)</code><br>组合查找： <code>$(&#39;tr.red&#39;)</code><br>多项选择器： <code>$(&#39;p.red,p.green&#39;)</code></p>
-<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>层级选择器：<code>$(&#39;ancestor descendant&#39;)</code><br>子选择器：<code>$(&#39;parent&gt;child&#39;)</code><br>过滤器：一般不单独使用，附加在选择器上，<code>:first-child</code>，<code>:last-child</code><br>，<code>nth-child(2)</code>，<code>nth-child(even)</code>，<code>nth-child(odd)</code></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/30/jquery/#more" rel="contents">
+            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -812,7 +815,7 @@ sass --watch dir/sass:dir/css
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -853,17 +856,24 @@ sass --watch dir/sass:dir/css
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

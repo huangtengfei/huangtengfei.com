@@ -1,0 +1,765 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="数组的深拷贝slice()对于 array 对象的 slice 方法，返回一个数组的一段。（仍为数组）
+arrayObj.slice(start, [end])
+concat()concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+arrayObject.concat(arrayX,arrayX,......,arrayX)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记 - 2015.08.17">
+<meta property="og:url" content="http://yoursite.com/2015/08/note-for-20150817/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="数组的深拷贝slice()对于 array 对象的 slice 方法，返回一个数组的一段。（仍为数组）
+arrayObj.slice(start, [end])
+concat()concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+arrayObject.concat(arrayX,arrayX,......,arrayX)">
+<meta property="og:updated_time" content="2016-06-15T10:39:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习笔记 - 2015.08.17">
+<meta name="twitter:description" content="数组的深拷贝slice()对于 array 对象的 slice 方法，返回一个数组的一段。（仍为数组）
+arrayObj.slice(start, [end])
+concat()concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+arrayObject.concat(arrayX,arrayX,......,arrayX)">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/note-for-20150817/"/>
+
+  <title> 学习笔记 - 2015.08.17 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                学习笔记 - 2015.08.17
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
+              2015-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/note-for-20150817/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150817/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h2><h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>对于 array 对象的 <code>slice</code> 方法，返回一个数组的一段。（仍为数组）</p>
+<pre><code>arrayObj.slice(start, [end])
+</code></pre><h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p><code>concat()</code> 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
+<pre><code>arrayObject.concat(arrayX,arrayX,......,arrayX)
+</code></pre><a id="more"></a>
+<h2 id="对象的深拷贝"><a href="#对象的深拷贝" class="headerlink" title="对象的深拷贝"></a>对象的深拷贝</h2><p>把对象的属性遍历一遍，赋给一个新的对象，对属性仍为对象的递归处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> deepCopy= <span class="function"><span class="keyword">function</span>(<span class="params">source</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> result=&#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">        result[key] = <span class="keyword">typeof</span> source[key]===’object’? </span><br><span class="line">            deepCoyp(source[key]) : source[key];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://www.cnblogs.com/yichengbo/archive/2014/07/10/3835882.html" target="_blank" rel="external">js深拷贝和浅拷贝</a></p>
+<h2 id="js基本交互方法"><a href="#js基本交互方法" class="headerlink" title="js基本交互方法"></a>js基本交互方法</h2><h3 id="警告（alert-消息对话框）"><a href="#警告（alert-消息对话框）" class="headerlink" title="警告（alert 消息对话框）"></a>警告（alert 消息对话框）</h3><pre><code>alert(字符串或变量); 
+</code></pre><h3 id="确认（confirm-消息对话框）"><a href="#确认（confirm-消息对话框）" class="headerlink" title="确认（confirm 消息对话框）"></a>确认（confirm 消息对话框）</h3><pre><code>confirm(str);
+</code></pre><p>str：在消息对话框中要显示的文本<br>返回值: Boolean值</p>
+<h3 id="提问（prompt-消息对话框）"><a href="#提问（prompt-消息对话框）" class="headerlink" title="提问（prompt 消息对话框）"></a>提问（prompt 消息对话框）</h3><pre><code>prompt(str1, str2);
+</code></pre><p>str1: 要显示在消息对话框中的文本，不可修改<br>str2：文本框中的内容，可以修改</p>
+<h3 id="打开新窗口（window-open）"><a href="#打开新窗口（window-open）" class="headerlink" title="打开新窗口（window.open）"></a>打开新窗口（window.open）</h3><pre><code>window.open([URL], [窗口名称], [参数字符串])
+</code></pre><p>URL：可选参数，在窗口中要显示网页的网址或路径。如果省略这个参数，或者它的值是空字符串，那么窗口就不显示任何文档。</p>
+<p>窗口名称：可选参数，被打开窗口的名称。<br>    1.该名称由字母、数字和下划线字符组成。<br>    2.”_top”、”_blank”、”_selft”具有特殊意义的名称。<br>       _blank：在新窗口显示目标网页<br>       _self：在当前窗口显示目标网页<br>       _top：框架网页中在上部窗口中显示目标网页<br>    3.相同 name 的窗口只能创建一个，要想创建多个窗口则 name 不能相同。<br>    4.name 不能包含有空格。</p>
+<p>参数字符串：可选参数，设置窗口参数，各参数用逗号隔开。    </p>
+<h3 id="关闭窗口（window-close）"><a href="#关闭窗口（window-close）" class="headerlink" title="关闭窗口（window.close）"></a>关闭窗口（window.close）</h3><pre><code>window.close();   //关闭本窗口
+&lt;窗口对象&gt;.close();   //关闭指定的窗口
+</code></pre><h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><p>以下 <code>Object</code> 是获取的元素对象，如通过 <code>document.getElementById(&quot;ID&quot;)</code> 获取的元素。</p>
+<h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><pre><code>Object.innerHTML
+</code></pre><h3 id="改变-HTML-样式"><a href="#改变-HTML-样式" class="headerlink" title="改变 HTML 样式"></a>改变 HTML 样式</h3><pre><code>Object.style.property=new style;
+</code></pre><h3 id="恢复原样式"><a href="#恢复原样式" class="headerlink" title="恢复原样式"></a>恢复原样式</h3><pre><code>Object.removeAttribute(&apos;style&apos;)
+</code></pre><h3 id="控制类名（className-属性）"><a href="#控制类名（className-属性）" class="headerlink" title="控制类名（className 属性）"></a>控制类名（className 属性）</h3><pre><code>Object.className = classname
+</code></pre><h2 id="减少JavaScript对性能影响的方法"><a href="#减少JavaScript对性能影响的方法" class="headerlink" title="减少JavaScript对性能影响的方法"></a>减少JavaScript对性能影响的方法</h2><p>1、将所有的 <code>&lt;script&gt;</code> 标签放到页面底部，也就是 <code>&lt;/body&gt;</code> 闭合标签之前，这能确保在脚本执行前页面已经完成了渲染。</p>
+<p>2、尽可能地合并脚本。页面中的 <code>&lt;script&gt;</code> 标签越少，加载也就越快，响应也越迅速。无论是外链脚本还是内嵌脚本都是如此。</p>
+<p>3、采用无阻塞下载 JavaScript 脚本的方法： </p>
+<ul>
+<li>使用 <code>&lt;script&gt;</code> 标签的 defer 属性（仅适用于 IE 和 Firefox 3.5 以上版本）； </li>
+<li>使用动态创建的<code>&lt;script&gt;</code> 元素来下载并执行代码；  </li>
+<li>使用 XHR 对象下载 JavaScript 代码并注入页面中。</li>
+</ul>
+<p>参考：<a href="http://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/index.html" target="_blank" rel="external">JavaScript 的性能优化 - 加载和执行</a></p>
+<h2 id="js之事件冒泡和事件捕获"><a href="#js之事件冒泡和事件捕获" class="headerlink" title="js之事件冒泡和事件捕获"></a>js之事件冒泡和事件捕获</h2><h3 id="冒泡型事件"><a href="#冒泡型事件" class="headerlink" title="冒泡型事件"></a>冒泡型事件</h3><p>事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。</p>
+<pre><code>div -&gt; body -&gt; html -&gt; document
+</code></pre><h3 id="捕获型事件-event-capturing"><a href="#捕获型事件-event-capturing" class="headerlink" title="捕获型事件(event capturing)"></a>捕获型事件(event capturing)</h3><p>事件从最不精确的对象 (document对象) 开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。</p>
+<h3 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h3><p>同时支持两种事件模型：捕获型事件和冒泡型事件，但是，捕获型事件先发生。两种事件流会触及DOM中的所有对象，从document对象开始，也在document对象结束。</p>
+<p>DOM事件模型最独特的性质是，文本节点也触发事件(在IE中不会)。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>支持W3C标准的浏览器在添加事件时用 <code>addEventListener(event,fn,useCapture)</code> 方法，基中第3个参数 <code>useCapture</code> 是一个 Boolean 值，用来设置事件是在事件捕获时执行，还是事件冒泡时执行。</p>
+<p>而不兼容W3C的浏览器 (IE) 用 <code>attachEvent(event,fn)</code> 方法，此方法没有相关设置，不过IE的事件模型默认是在事件冒泡时执行的，也就是在 <code>useCapture</code> 等于false的时候执行，所以把在处理事件时把 <code>useCapture</code> 设置为 false 是比较安全，也实现兼容浏览器的效果。</p>
+<h2 id="substr、substring和slice"><a href="#substr、substring和slice" class="headerlink" title="substr、substring和slice"></a>substr、substring和slice</h2><pre><code>str.substr(start[, length])
+str.substring(indexA[, indexB])
+str.slice(indexA[, indexB])
+</code></pre><p>当 <code>start &lt; 0</code> 时，不同浏览器的结果不同。IE 直接将 start 改成 0， Chrome 下标读取方式由原来的从左往右读改成从右往左读。</p>
+<p>substring 和 slice </p>
+<p>(1)indexB &gt; indexA，即参数2大于参数1时 </p>
+<p>substring：自动颠倒位置，数值大的在 indexB 位置上，数值小的在 indexA 位置上<br>slice：返回空字符串 </p>
+<p>(2)对负数的处理 </p>
+<p>substring：将数值为负数的参数转换为0<br>slice：将数值为负数的参数转换为(字符串长度-参数数值)</p>
+<p>参考：<a href="http://www.jb51.net/article/28298.htm" target="_blank" rel="external">js substr、substring和slice使用说明小记</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/data-type-of-javascript/" rel="next" title="JavaScript 中判断值类型的三种方法">
+                <i class="fa fa-chevron-left"></i> JavaScript 中判断值类型的三种方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/note-for-20150824/" rel="prev" title="学习笔记 2015.8.24">
+                学习笔记 2015.8.24 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/08/note-for-20150817/"
+           data-title="学习笔记 - 2015.08.17" data-url="http://yoursite.com/2015/08/note-for-20150817/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的深拷贝"><span class="nav-number">1.</span> <span class="nav-text">数组的深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.1.</span> <span class="nav-text">slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat"><span class="nav-number">1.2.</span> <span class="nav-text">concat()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的深拷贝"><span class="nav-number">2.</span> <span class="nav-text">对象的深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js基本交互方法"><span class="nav-number">3.</span> <span class="nav-text">js基本交互方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#警告（alert-消息对话框）"><span class="nav-number">3.1.</span> <span class="nav-text">警告（alert 消息对话框）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认（confirm-消息对话框）"><span class="nav-number">3.2.</span> <span class="nav-text">确认（confirm 消息对话框）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提问（prompt-消息对话框）"><span class="nav-number">3.3.</span> <span class="nav-text">提问（prompt 消息对话框）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开新窗口（window-open）"><span class="nav-number">3.4.</span> <span class="nav-text">打开新窗口（window.open）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭窗口（window-close）"><span class="nav-number">3.5.</span> <span class="nav-text">关闭窗口（window.close）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM操作"><span class="nav-number">4.</span> <span class="nav-text">DOM操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML-属性"><span class="nav-number">4.1.</span> <span class="nav-text">innerHTML 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变-HTML-样式"><span class="nav-number">4.2.</span> <span class="nav-text">改变 HTML 样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复原样式"><span class="nav-number">4.3.</span> <span class="nav-text">恢复原样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制类名（className-属性）"><span class="nav-number">4.4.</span> <span class="nav-text">控制类名（className 属性）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少JavaScript对性能影响的方法"><span class="nav-number">5.</span> <span class="nav-text">减少JavaScript对性能影响的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js之事件冒泡和事件捕获"><span class="nav-number">6.</span> <span class="nav-text">js之事件冒泡和事件捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡型事件"><span class="nav-number">6.1.</span> <span class="nav-text">冒泡型事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获型事件-event-capturing"><span class="nav-number">6.2.</span> <span class="nav-text">捕获型事件(event capturing)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM事件流"><span class="nav-number">6.3.</span> <span class="nav-text">DOM事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#substr、substring和slice"><span class="nav-number">7.</span> <span class="nav-text">substr、substring和slice</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

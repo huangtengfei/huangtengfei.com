@@ -278,7 +278,116 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/08/the-reason-and-resolve-of-inline-margin/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/closure-of-javascript/" itemprop="url">
+                  理解 JavaScript 闭包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-08T00:00:00+08:00" content="2015-09-08">
+              2015-09-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/closure-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/closure-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。</p>
+<p>JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(i++);     <span class="comment">// b() 引用 i</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;   <span class="comment">// a() 返回 b</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = a();    <span class="comment">// c 通过执行 a() 指向了 b</span></span><br><span class="line">c();    <span class="comment">// 相当于执行b(), 访问了 i</span></span><br></pre></td></tr></table></figure>
+<p>这段代码的特点是，函数 b 嵌套在函数 a 内部，函数 a 返回 函数 b 。</p>
+<p>这样在执行完 <code>var c = a();</code> 后，变量 c 实际上是指向了函数 b，b 中用到了变量 i ，再执行 <code>c()</code> 后就会弹出一个窗口显示 i 的值(第一次为1)。</p>
+<p>闭包的作用就是在 a 执行完并返回后，闭包使得 JavaScript 的垃圾回收机制 GC 不会收回 a 所占用的资源，因为 a 的内部函数 b 的执行需要依赖 a 中的变量。</p>
+<p>JavaScript 中的 GC 只回收不再被引用的单个对象和两个互相引用但不被第三者引用的对象。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/closure-of-javascript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/the-reason-and-resolve-of-inline-margin/" itemprop="url">
                   浏览器对换行符理解造成内联排列产生间距的原因和解决办法
                 </a>
               
@@ -303,8 +412,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/08/the-reason-and-resolve-of-inline-margin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/08/the-reason-and-resolve-of-inline-margin/" itemprop="commentsCount"></span>
+                <a href="/2015/09/the-reason-and-resolve-of-inline-margin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-reason-and-resolve-of-inline-margin/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,7 +444,7 @@
 <p><code>IE6</code> <code>IE7</code> <code>IE8</code> 都会忽略换行符，不会认为是一个文本节点，但是这不会影响IE系列浏览器把标签间的换行符留出间距；</p>
 <p>其他的浏览器不仅把标签间的换行符当成文本节点，并且还在标签之间留出间距。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/08/the-reason-and-resolve-of-inline-margin/#more" rel="contents">
+            <a class="btn" href="/2015/09/the-reason-and-resolve-of-inline-margin/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -386,7 +495,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/07/prototype-of-javascript/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/prototype-of-javascript/" itemprop="url">
                   理解 JavaScript 中的原型
                 </a>
               
@@ -411,8 +520,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/07/prototype-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/07/prototype-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/09/prototype-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/prototype-of-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -442,7 +551,7 @@
 <p>对于这两种类型的判断，前者（原始类型）判断用 <code>typeof</code>，后者（引用类型）用 <code>instanceof</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">typeof</span> a;   <span class="comment">// boolean</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = &#123;&#125;;</span><br><span class="line"><span class="keyword">typeof</span> b;   <span class="comment">// object</span></span><br><span class="line">b <span class="keyword">instanceof</span> <span class="built_in">Object</span>;    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = [];</span><br><span class="line"><span class="keyword">typeof</span> c;   <span class="comment">// object</span></span><br><span class="line">b <span class="keyword">instanceof</span> <span class="built_in">Array</span>;    <span class="comment">// false</span></span><br><span class="line">c <span class="keyword">instanceof</span> <span class="built_in">Array</span>;     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/07/prototype-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/09/prototype-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -493,7 +602,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/06/scope-and-scope-chain-of-js/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/scope-and-scope-chain-of-js/" itemprop="url">
                   JavaScript 作用域与作用域链
                 </a>
               
@@ -518,8 +627,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/06/scope-and-scope-chain-of-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/06/scope-and-scope-chain-of-js/" itemprop="commentsCount"></span>
+                <a href="/2015/09/scope-and-scope-chain-of-js/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/scope-and-scope-chain-of-js/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -549,7 +658,7 @@
 <p>对于函数的定义，有一个要注意的地方：对于函数定义式，会将函数定义提前，而函数表达式，会在执行过程中才计算。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">// undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 函数定义式</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 函数表达式</span></span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/06/scope-and-scope-chain-of-js/#more" rel="contents">
+            <a class="btn" href="/2015/09/scope-and-scope-chain-of-js/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -600,7 +709,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/02/note-for-20150902/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/note-for-20150902/" itemprop="url">
                   学习笔记 2015.9.2
                 </a>
               
@@ -625,8 +734,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/02/note-for-20150902/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/note-for-20150902/" itemprop="commentsCount"></span>
+                <a href="/2015/09/note-for-20150902/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/note-for-20150902/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -654,116 +763,7 @@
 <p>解决办法：判断节点 <code>nodeType</code> 是否为1, 如是为元素节点，跳过。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_nextSibling</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = n.nextSibling;</span><br><span class="line">    <span class="keyword">while</span>(x &amp;&amp; x.nodeType != <span class="number">1</span>) &#123;</span><br><span class="line">        x = x.nextSibling;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = get_nextSibling(x);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/02/note-for-20150902/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/31/note-for-20150831/" itemprop="url">
-                  学习笔记 2015.8.31
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-31T00:00:00+08:00" content="2015-08-31">
-              2015-08-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/31/note-for-20150831/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/31/note-for-20150831/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="键盘上下键选择文字（输入提示）"><a href="#键盘上下键选择文字（输入提示）" class="headerlink" title="键盘上下键选择文字（输入提示）"></a>键盘上下键选择文字（输入提示）</h2><p>步骤：</p>
-<p>1、定义一个全局变量表示当前候选元素 <code>selectedIndex</code> ，在每次触发上下方向键时改变其值，所以初始值为-1；</p>
-<p>2、为输入框绑定 <code>keyup</code> 事件；</p>
-<p>3、愉快地 <code>switch(event.keyCode)</code>，并按顺序执行：取消前一个候选元素的颜色、更改 <code>selectedIndex</code> 、设置当前候选元素的颜色；</p>
-<p>4、在选择上下键时别忘了两件事：如果长度向上或向下超出，更新  <code>selectedIndex</code> 为 <code>0</code> 或者 <code>length-1</code>，并手动清除 <code>index</code> 为 <code>length-1</code> 和 <code>0</code> 的过期元素样式。</p>
-<p><a href="http://huangtengfei.github.io/task0002/task0002_4.html">demo</a> 和 <a href="https://github.com/huangtengfei/task0002/blob/gh-pages/js/task0002_4.js">代码</a></p>
-<p>参考：<a href="http://www.jb51.net/article/65616.htm">js实现键盘上下左右键选择文字并显示在文本框的方法</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/31/note-for-20150831/#more" rel="contents">
+            <a class="btn" href="/2015/09/note-for-20150902/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -797,7 +797,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -838,17 +838,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

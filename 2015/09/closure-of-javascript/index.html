@@ -1,0 +1,753 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="闭包的概念当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。
+JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：
+123456789function a()&amp;#123;    var i = 1;    function b()&amp;#123;        alert(i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解 JavaScript 闭包">
+<meta property="og:url" content="http://yoursite.com/2015/09/closure-of-javascript/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="闭包的概念当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。
+JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：
+123456789function a()&amp;#123;    var i = 1;    function b()&amp;#123;        alert(i">
+<meta property="og:image" content="http://d8.suning.com:8008/thumbnail/pan/1441695076588.jpg.800x600_80.jpg?objectId=1441694851175583&requestId=a3b6a61c-1335-4085-bf60-f95c1fd03986&salAccessKeyId=8684PRuhiDleAcmN">
+<meta property="og:updated_time" content="2016-06-15T07:57:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解 JavaScript 闭包">
+<meta name="twitter:description" content="闭包的概念当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。
+JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：
+123456789function a()&amp;#123;    var i = 1;    function b()&amp;#123;        alert(i">
+<meta name="twitter:image" content="http://d8.suning.com:8008/thumbnail/pan/1441695076588.jpg.800x600_80.jpg?objectId=1441694851175583&requestId=a3b6a61c-1335-4085-bf60-f95c1fd03986&salAccessKeyId=8684PRuhiDleAcmN">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/closure-of-javascript/"/>
+
+  <title> 理解 JavaScript 闭包 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                理解 JavaScript 闭包
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-08T00:00:00+08:00" content="2015-09-08">
+              2015-09-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/closure-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/closure-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>当函数 a 的内部函数 b 被函数 a 外的一个变量引用的时候，就创建了一个所谓的“闭包”。</p>
+<p>JavaScript 中所有的 function 都是一个闭包。不过一般来说，嵌套的 function 所产生的闭包更为强大，先看个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(i++);     <span class="comment">// b() 引用 i</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;   <span class="comment">// a() 返回 b</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = a();    <span class="comment">// c 通过执行 a() 指向了 b</span></span><br><span class="line">c();    <span class="comment">// 相当于执行b(), 访问了 i</span></span><br></pre></td></tr></table></figure>
+<p>这段代码的特点是，函数 b 嵌套在函数 a 内部，函数 a 返回 函数 b 。</p>
+<p>这样在执行完 <code>var c = a();</code> 后，变量 c 实际上是指向了函数 b，b 中用到了变量 i ，再执行 <code>c()</code> 后就会弹出一个窗口显示 i 的值(第一次为1)。</p>
+<p>闭包的作用就是在 a 执行完并返回后，闭包使得 JavaScript 的垃圾回收机制 GC 不会收回 a 所占用的资源，因为 a 的内部函数 b 的执行需要依赖 a 中的变量。</p>
+<p>JavaScript 中的 GC 只回收不再被引用的单个对象和两个互相引用但不被第三者引用的对象。</p>
+<a id="more"></a>
+<h2 id="作用域相关的概念"><a href="#作用域相关的概念" class="headerlink" title="作用域相关的概念"></a>作用域相关的概念</h2><p>为了理解闭包，首先理解一下闭包的微观世界的几个概念：函数的执行环境 <code>excution context</code>、活动对象 <code>call object</code> 、作用域 <code>scope</code>、作用域链 <code>scope chain</code> ，以前面的代码中函数 a 从定义到执行的过程为例讲解：</p>
+<p>当 <em>定义</em> a 的时候，js 解释器会将 函数 a 的 <strong>作用域链</strong> 设置为 定义 a 时 a 所在的环境。此处 a 是一个全局函数，因此 <code>scope chain</code> 中只有 window 。</p>
+<p>当 <em>执行</em> a 的时候，a 进入相应的 <strong>执行环境</strong> 。此过程完成三件事：</p>
+<p>一，为 a 添加 <strong>作用域</strong> ，即 <code>scope</code> 属性， <code>a.scope = a.scope chain</code> ；</p>
+<p>二，创建一个 <strong>活动对象</strong> ，把活动对象添加到作用域链 最顶端，即此时的 <code>scope chain</code> 包括两个对象：a 的活动对象和 window 对象；</p>
+<p>三，在活动对象上添加一个 <code>arguments</code> 属性，保存调用 a 时所传递的参数。然后把所有函数 a 的形参和内部函数 b 的引用也添加到活动对象上。同时，在这一步完成了函数 b 的定义，b 的作用域链被设置为 b 所在的环境，即 a 的作用域（第一步），然后加上 b 的活动对象（第二步）。</p>
+<p>最终，函数 b 执行时的作用域链包含了三个对象：b 的活动对象 + （a 的活动对象 + window 对象），如下图：</p>
+<p><img src="http://d8.suning.com:8008/thumbnail/pan/1441695076588.jpg.800x600_80.jpg?objectId=1441694851175583&amp;requestId=a3b6a61c-1335-4085-bf60-f95c1fd03986&amp;salAccessKeyId=8684PRuhiDleAcmN" alt="b的作用域链"></p>
+<p>当在函数 b 中访问一个变量的时候，搜索顺序是（从作用域链顶部开始）：</p>
+<ol>
+<li><p>先搜索自身的活动对象，如果存在则返回，如果不存在将继续搜索函数 a 的活动对象，依次查找</p>
+</li>
+<li><p>如果函数 b 存在 <code>prototype</code> 原型对象，则在查找完自身的活动对象后先查找自身的原型对象，再继续查找。</p>
+</li>
+</ol>
+<p>这就是 JavaScript 中的变量查找机制。如果整个作用域链上都无法找到，则返回 <code>undefined</code>。</p>
+<p>关于作用域和作用域链的内容还可参考：<a href="http://huangtengfei.com/2015/09/scope-and-scope-chain-of-js/" target="_blank" rel="external">JS作用域与作用域链</a></p>
+<h2 id="闭包的应用场景"><a href="#闭包的应用场景" class="headerlink" title="闭包的应用场景"></a>闭包的应用场景</h2><p>三大场景：</p>
+<p>一， 保护函数内的变量安全</p>
+<p>以开头中的栗子来说，函数 a 中 i 只有函数 b 才能访问，而无法通过其他途径访问到，因此保护了 i 的安全性。</p>
+<p>二，在内存中维持一个变量</p>
+<p>由于闭包，函数 a 中 i 的一直存在于内存中，因此每次执行 <code>c()</code>，都会给 i 自加1。</p>
+<p>三、通过保护变量的安全实现JS私有属性和私有方法（不能被外部访问）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> membername = value;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">membername</span>(<span class="params">...</span>) </span>&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于闭包还可以参考：<a href="http://huangtengfei.com/2015/07/the-understanding-of-this-and-call-and-apply-and-closures/" target="_blank" rel="external">对 js 中 this、apply、call 和闭包的理解</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.jb51.net/article/18303.htm" target="_blank" rel="external">JavaScript 闭包深入理解(closure)</a></li>
+<li><a href="http://www.oschina.net/question/28_41112" target="_blank" rel="external">理解 Javascript 的闭包</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">学习Javascript闭包（Closure）</a></li>
+<li><a href="http://www.cnblogs.com/rubylouvre/archive/2009/07/24/1530074.html" target="_blank" rel="external">javascript的闭包</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/the-reason-and-resolve-of-inline-margin/" rel="next" title="浏览器对换行符理解造成内联排列产生间距的原因和解决办法">
+                <i class="fa fa-chevron-left"></i> 浏览器对换行符理解造成内联排列产生间距的原因和解决办法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/the-oop-of-javascript/" rel="prev" title="理解 JavaScript 面向对象编程">
+                理解 JavaScript 面向对象编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/09/closure-of-javascript/"
+           data-title="理解 JavaScript 闭包" data-url="http://yoursite.com/2015/09/closure-of-javascript/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的概念"><span class="nav-number">1.</span> <span class="nav-text">闭包的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域相关的概念"><span class="nav-number">2.</span> <span class="nav-text">作用域相关的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的应用场景"><span class="nav-number">3.</span> <span class="nav-text">闭包的应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

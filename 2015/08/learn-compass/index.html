@@ -1,0 +1,780 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Sass," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。
+安装在已有Ruby的环境下，在命令行输入命令：
+gem install compass
+使用compass create使用 compass create 命令可创建一个 Compass 项目：
+compass creat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compass 初探">
+<meta property="og:url" content="http://yoursite.com/2015/08/learn-compass/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。
+安装在已有Ruby的环境下，在命令行输入命令：
+gem install compass
+使用compass create使用 compass create 命令可创建一个 Compass 项目：
+compass creat">
+<meta property="og:updated_time" content="2016-06-16T01:55:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compass 初探">
+<meta name="twitter:description" content="Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。
+安装在已有Ruby的环境下，在命令行输入命令：
+gem install compass
+使用compass create使用 compass create 命令可创建一个 Compass 项目：
+compass creat">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/learn-compass/"/>
+
+  <title> Compass 初探 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Compass 初探
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/learn-compass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-compass/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在已有Ruby的环境下，在命令行输入命令：</p>
+<pre><code>gem install compass
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="compass-create"><a href="#compass-create" class="headerlink" title="compass create"></a>compass create</h3><p>使用 <code>compass create</code> 命令可创建一个 Compass 项目：</p>
+<pre><code>compass create myproject
+</code></pre><p>该命令会生成以下目录结构：</p>
+<ul>
+<li>sass目录，存放 sass 源文件</li>
+<li>stylesheets目录，存放编译好的 CSS</li>
+<li>config.rb文件，Compass 的配置文件</li>
+</ul>
+<a id="more"></a>
+<p>在 <code>config.rb</code> 文件中，<code>output_style = :expanded</code> 可以指定编译后的 CSS 格式。也可以通过指定 environment 的值（<code>:production</code>或者 <code>:development</code>），智能判断编译模式。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environment = :development</span><br><span class="line">output_style = (environment == :production) ? :compressed : :expanded</span><br></pre></td></tr></table></figure>
+<h3 id="compass-compile"><a href="#compass-compile" class="headerlink" title="compass compile"></a>compass compile</h3><p>执行 <code>compass compile</code> 命令可以根据 <code>config.rb</code> 中设置的条件，对 Sass 源文件编译。</p>
+<h3 id="compass-watch"><a href="#compass-watch" class="headerlink" title="compass watch"></a>compass watch</h3><p><code>compass watch</code> 命令可以对 <code>config.rb</code> 中指定的目录进行监控，自动编译。</p>
+<h2 id="Compass-模块"><a href="#Compass-模块" class="headerlink" title="Compass 模块"></a>Compass 模块</h2><p>Compass Core内置六个模块，分别为</p>
+<ul>
+<li>Reset</li>
+<li>CSS3</li>
+<li>Helpers</li>
+<li>Layout</li>
+<li>Typography</li>
+<li>Utilities</li>
+</ul>
+<p>这里介绍常用的 Reset 模块、CSS3 模块、Helpers 模块和 Utilities 模块。</p>
+<h3 id="Reset-模块"><a href="#Reset-模块" class="headerlink" title="Reset 模块"></a>Reset 模块</h3><p>通常，编写自己的样式之前，有必要重置浏览器的默认样式。</p>
+<p>使用 <code>@import</code> 命令，加载 reset 模块，编译后，会生成相应的 css reset 代码。</p>
+<pre><code>@import &quot;compass/reset&quot;;
+</code></pre><h3 id="CSS3-模块"><a href="#CSS3-模块" class="headerlink" title="CSS3 模块"></a>CSS3 模块</h3><p>这里主要介绍常用的几种。先引入 CSS3 模块：</p>
+<pre><code>@import &quot;compass/css3&quot;;
+</code></pre><h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.rounded &#123;</span><br><span class="line">    @include border-radius(5px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后的代码为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.radius</span> &#123;</span><br><span class="line">  <span class="attribute">-moz-border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">  <span class="attribute">-webkit-border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果只需要左上角为圆角，写法为:</p>
+<pre><code>@include border-corner-radius(top, left, 5px);
+</code></pre><h4 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#opacity &#123;</span><br><span class="line">    @include opacity(0.5); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的代码为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.opacity</span> &#123;</span><br><span class="line">  <span class="attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="built_in">Alpha</span>(Opacity=50);</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>opacity 的参数为0~1之间的数值，越大表示越不透明。</p>
+<h4 id="shadow"><a href="#shadow" class="headerlink" title="shadow"></a>shadow</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box-shadow &#123;</span><br><span class="line">    @include box-shadow(red 2px 2px 10px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的代码为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-shadow</span> &#123;</span><br><span class="line">  <span class="attribute">-moz-box-shadow</span>: red <span class="number">2px</span> <span class="number">2px</span> <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-shadow</span>: red <span class="number">2px</span> <span class="number">2px</span> <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: red <span class="number">2px</span> <span class="number">2px</span> <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Helpers-模块"><a href="#Helpers-模块" class="headerlink" title="Helpers 模块"></a>Helpers 模块</h3><p>Helpers 模块提供了很多辅助函数，比如 <code>image-width()</code> 和 <code>image-height()</code> 返回图片的宽和高。<code>inline-image()</code> 可以将图片转为data协议的数据。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@import "compass"</span><br><span class="line">// 得到图片的宽度和高度</span><br><span class="line">.icon-size &#123;</span><br><span class="line">    width: image-width('image.png');</span><br><span class="line">    height: image-height('image.png');</span><br><span class="line">&#125;</span><br><span class="line">// 将图片转化为CSS内嵌图片</span><br><span class="line">.icon &#123;</span><br><span class="line">    background-image: inline-image('aaa.png');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的代码为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon-size</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'data:image/png;base64,iBROR...QmCC'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数与 <code>mixin</code> 的主要区别是，不需要使用 <code>@include</code> 命令，可以直接调用。</p>
+<h3 id="Utilities-模块"><a href="#Utilities-模块" class="headerlink" title="Utilities 模块"></a>Utilities 模块</h3><p>Utilities 模块含有胆量实际网站制作中所必须的工具类。</p>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import "compass/utilities/";</span><br><span class="line">.clearfix &#123;</span><br><span class="line">    @include clearfix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的代码为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.clearfix &#123;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    *zoom: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h4><p>将需要制作成 Sprites 图的原始图片放入 <code>config.rb</code> 中 images_dir 下面的某个目录，假定为foo。</p>
+<p>用 <code>@import</code> 指令将 CSS Sprites 所用到的图片导入，然后加载 <code>all-[Sprites名称]-sprites</code> 即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"foo/*.png"</span>;</span><br><span class="line">@<span class="keyword">include</span> all-foo-sprites;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的代码为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo-sprite</span>, <span class="selector-class">.foo-aaa</span>, <span class="selector-class">.foo-bbb</span>, <span class="selector-class">.foo-ccc</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'/images/foo-s15791bbaa2.png'</span>);</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.foo-aaa</span> &#123;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.foo-bbb</span> &#123;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> -<span class="number">38px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.foo-ccc</span> &#123;</span><br><span class="line">  <span class="attribute">background-position</span>: <span class="number">0</span> -<span class="number">76px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>Compass用法指南 . 阮一峰</li>
+<li>构建开发环境 . 石本光司</li>
+<li>Sass的基本语法以及Compass . 石本光司</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag">#Sass</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/how-to-write-css/" rel="next" title="写出优雅的CSS">
+                <i class="fa fa-chevron-left"></i> 写出优雅的CSS
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/learn-sass/" rel="prev" title="Sass 初探">
+                Sass 初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/08/learn-compass/"
+           data-title="Compass 初探" data-url="http://yoursite.com/2015/08/learn-compass/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compass-create"><span class="nav-number">2.1.</span> <span class="nav-text">compass create</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compass-compile"><span class="nav-number">2.2.</span> <span class="nav-text">compass compile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compass-watch"><span class="nav-number">2.3.</span> <span class="nav-text">compass watch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compass-模块"><span class="nav-number">3.</span> <span class="nav-text">Compass 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reset-模块"><span class="nav-number">3.1.</span> <span class="nav-text">Reset 模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3-模块"><span class="nav-number">3.2.</span> <span class="nav-text">CSS3 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#border-radius"><span class="nav-number">3.2.1.</span> <span class="nav-text">border-radius</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#opacity"><span class="nav-number">3.2.2.</span> <span class="nav-text">opacity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shadow"><span class="nav-number">3.2.3.</span> <span class="nav-text">shadow</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Helpers-模块"><span class="nav-number">3.3.</span> <span class="nav-text">Helpers 模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Utilities-模块"><span class="nav-number">3.4.</span> <span class="nav-text">Utilities 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清除浮动"><span class="nav-number">3.4.1.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-Sprites"><span class="nav-number">3.4.2.</span> <span class="nav-text">CSS Sprites</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

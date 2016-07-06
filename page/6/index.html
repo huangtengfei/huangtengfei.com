@@ -278,7 +278,219 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/29/javascript-module/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/data-bind-of-angularjs/" itemprop="url">
+                  关于 AngularJS 的数据绑定
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-30T00:00:00+08:00" content="2015-09-30">
+              2015-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/data-bind-of-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/data-bind-of-angularjs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别"><a href="#单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别" class="headerlink" title="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别"></a>单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别</h2><p><code>ng-bind</code> 单向数据绑定（<code>$scope -&gt; view</code>），用于数据显示，简写形式是 <code>{{}}</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-bind</span>=<span class="string">"val"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>两者的区别在于页面没有加载完毕 <code>{{val}}</code> 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 <code>{{val}}</code> 让用户看到）；而 <code>ng-bind</code> 则是在 Angular 渲染完毕后将数据显示。</p>
+<p><code>ng-model</code> 是双向数据绑定（<code>$scope -&gt; view</code> and <code>view -&gt; $scope</code>），用于绑定值会变化的表单元素等。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"val"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/data-bind-of-angularjs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/web-security/" itemprop="url">
+                  Web安全初探
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-29T00:00:00+08:00" content="2015-09-29">
+              2015-09-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/web-security/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/web-security/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>WEB基本攻击大致可以分为三大类—— “资源枚举”、“参数操纵” 和 “其它攻击”。</p>
+<h2 id="资源枚举"><a href="#资源枚举" class="headerlink" title="资源枚举"></a>资源枚举</h2><p>遍历站点所有可访问的目录，寻找备份文件（<code>.bak</code>, <code>bak.rar</code>）。</p>
+<h2 id="参数操纵"><a href="#参数操纵" class="headerlink" title="参数操纵"></a>参数操纵</h2><p>包括了 <code>SQL</code> 注入、<code>XPath</code> 注入、<code>cgi</code> 命令执行，还有 <code>XXS</code> 和会话劫持等。前三个的攻击主要是在服务端触发的，后二者的攻击则是侧重于客户端。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/web-security/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/javascript-module/" itemprop="url">
                   JavaScript 模块化
                 </a>
               
@@ -303,8 +515,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/29/javascript-module/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/29/javascript-module/" itemprop="commentsCount"></span>
+                <a href="/2015/09/javascript-module/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/javascript-module/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,7 +547,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = &#123;</span><br><span class="line">    count: <span class="number">0</span>,</span><br><span class="line">    m1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>避免了直接用函数封装模块的缺点，但带来的问题是暴露了模块内私有成员。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/29/javascript-module/#more" rel="contents">
+            <a class="btn" href="/2015/09/javascript-module/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -386,112 +598,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/29/web-security/" itemprop="url">
-                  Web安全初探
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-29T00:00:00+08:00" content="2015-09-29">
-              2015-09-29
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/29/web-security/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/29/web-security/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>WEB基本攻击大致可以分为三大类—— “资源枚举”、“参数操纵” 和 “其它攻击”。</p>
-<h2 id="资源枚举"><a href="#资源枚举" class="headerlink" title="资源枚举"></a>资源枚举</h2><p>遍历站点所有可访问的目录，寻找备份文件（<code>.bak</code>, <code>bak.rar</code>）。</p>
-<h2 id="参数操纵"><a href="#参数操纵" class="headerlink" title="参数操纵"></a>参数操纵</h2><p>包括了 <code>SQL</code> 注入、<code>XPath</code> 注入、<code>cgi</code> 命令执行，还有 <code>XXS</code> 和会话劫持等。前三个的攻击主要是在服务端触发的，后二者的攻击则是侧重于客户端。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/29/web-security/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/28/scope-in-angularjs/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/scope-in-angularjs/" itemprop="url">
                   AngularJS中的作用域
                 </a>
               
@@ -516,8 +623,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/28/scope-in-angularjs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/28/scope-in-angularjs/" itemprop="commentsCount"></span>
+                <a href="/2015/09/scope-in-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/scope-in-angularjs/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -544,7 +651,7 @@
           <h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p>使用 Angular 进行过一段时间的开发后，基本上都会遇到一个这样的坑：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"TestCtrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-if</span>=<span class="string">"show"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TestCtrl</span>(<span class="params">$scope</span>)</span>&#123;</span><br><span class="line">    $scope.show = <span class="literal">true</span>;</span><br><span class="line">    $scope.name = <span class="string">'htf'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/28/scope-in-angularjs/#more" rel="contents">
+            <a class="btn" href="/2015/09/scope-in-angularjs/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -595,7 +702,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/25/communication-in-controller/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/communication-in-controller/" itemprop="url">
                   AngularJS 中 Controller 之间的通信
                 </a>
               
@@ -620,8 +727,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/25/communication-in-controller/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/communication-in-controller/" itemprop="commentsCount"></span>
+                <a href="/2015/09/communication-in-controller/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/communication-in-controller/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -653,111 +760,7 @@
 <p>其中，作用域继承仅限于上下级之间的通信，注入服务和基于事件的机制可以实现任意级别的 Controller 通信。</p>
 <p>在 <a href="http://huangtengfei.github.io/angular-demo/#/communication-between-controllers">这里</a> 可以查看下面栗子的演示。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/25/communication-in-controller/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/18/factory-pattern/" itemprop="url">
-                  工厂模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-18T00:00:00+08:00" content="2015-09-18">
-              2015-09-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/18/factory-pattern/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/18/factory-pattern/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>工厂模式是一种关注对象创建概念的创建模式。它的领域中同其它模式的不同之处在于它并没有明确要求我们使用一个构造器。取而代之，一个工厂能提供一个创建对象的公共接口，可以在其中指定我们希望被创建的工厂对象的类型。</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>试想一下，在我们被要求创建一种类型的UI组件时，我们就有一个UI工厂。并不是通过直接使用new操作符或者通过另外一个构造器来创建这个组件，我们取而代之的向一个工厂对象索要一个新的组件。我们告知工厂我们需要什么类型的组件（例如：“按钮”，“面板”），而它会将其初始化，然后返回供我们使用。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/18/factory-pattern/#more" rel="contents">
+            <a class="btn" href="/2015/09/communication-in-controller/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -791,7 +794,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -832,17 +835,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

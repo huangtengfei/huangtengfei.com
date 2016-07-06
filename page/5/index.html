@@ -278,8 +278,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/23/the-recommended-style-of-angular/" itemprop="url">
-                  AngularJS 常用模块书写建议
+                <a class="post-title-link" href="/2015/11/quick-start-of-start/" itemprop="url">
+                  Start 快速开始
                 </a>
               
             
@@ -292,8 +292,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-23T00:00:00+08:00" content="2015-10-23">
-              2015-10-23
+            <time itemprop="dateCreated" datetime="2015-11-26T00:00:00+08:00" content="2015-11-26">
+              2015-11-26
             </time>
           </span>
 
@@ -303,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/23/the-recommended-style-of-angular/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/the-recommended-style-of-angular/" itemprop="commentsCount"></span>
+                <a href="/2015/11/quick-start-of-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/quick-start-of-start/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,11 +328,14 @@
 
       
         
-          <p>本文是依据 <a href="https://github.com/johnpapa/angular-styleguide">Angular Style Guide</a> 对 Angular 常用模块书写建议的翻译和总结，仅供参考。</p>
-<h2 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h2><p>使用 立即执行函数表达式（Immediately Invoked Function Expression）将 Angular 组件包裹起来，防止污染全局作用域 <a href="https://github.com/johnpapa/angular-styleguide#style-y010091">Style Y010</a> 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="comment">// storage.js</span></span><br><span class="line">angular</span><br><span class="line">    .module(<span class="string">'app'</span>)</span><br><span class="line">    .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line"></span><br><span class="line"><span class="comment">// storage function is added as a global variable</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* recommended</span><br><span class="line">*</span><br><span class="line">* no globals are left behind</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">// storage.js </span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    angular</span><br><span class="line">        .module(<span class="string">'app'</span>)</span><br><span class="line">        .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+          <p>项目地址：<a href="https://github.com/huangtengfei/Start">Start</a></p>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>有两种方式在你的项目中使用 Start 。</p>
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./lib/start/run.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>加入这行代码，进行初始化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// param: appKey</span></span><br><span class="line">Start.init(<span class="string">'564a9acf7717444025ce5c95'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后就可以在你项目的所有代码中使用 Start 了。（这种情况会产生一个 Start 全局变量）</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/the-recommended-style-of-angular/#more" rel="contents">
+            <a class="btn" href="/2015/11/quick-start-of-start/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -383,7 +386,112 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/09/start-es6/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/the-recommended-style-of-angular/" itemprop="url">
+                  AngularJS 常用模块书写建议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-23T00:00:00+08:00" content="2015-10-23">
+              2015-10-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/the-recommended-style-of-angular/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/the-recommended-style-of-angular/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文是依据 <a href="https://github.com/johnpapa/angular-styleguide">Angular Style Guide</a> 对 Angular 常用模块书写建议的翻译和总结，仅供参考。</p>
+<h2 id="IIFE"><a href="#IIFE" class="headerlink" title="IIFE"></a>IIFE</h2><p>使用 立即执行函数表达式（Immediately Invoked Function Expression）将 Angular 组件包裹起来，防止污染全局作用域 <a href="https://github.com/johnpapa/angular-styleguide#style-y010091">Style Y010</a> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="comment">// storage.js</span></span><br><span class="line">angular</span><br><span class="line">    .module(<span class="string">'app'</span>)</span><br><span class="line">    .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line"></span><br><span class="line"><span class="comment">// storage function is added as a global variable</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* recommended</span><br><span class="line">*</span><br><span class="line">* no globals are left behind</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">// storage.js </span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    angular</span><br><span class="line">        .module(<span class="string">'app'</span>)</span><br><span class="line">        .factory(<span class="string">'storage'</span>, storage);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">storage</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/the-recommended-style-of-angular/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/start-es6/" itemprop="url">
                   从现在开始用 ES6
                 </a>
               
@@ -408,8 +516,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/09/start-es6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/09/start-es6/" itemprop="commentsCount"></span>
+                <a href="/2015/10/start-es6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/start-es6/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -438,7 +546,7 @@
 <p>仅在块级作用域内有效，不允许在相同作用域内重复声明。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">let</span> x = <span class="number">3</span>;</span><br><span class="line">	<span class="comment">//let x = 5;	// error: Duplicate declaration "x"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//console.log(x);		// error: x is not defined</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/09/start-es6/#more" rel="contents">
+            <a class="btn" href="/2015/10/start-es6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -489,7 +597,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/08/the-useage-of-ng-route-and-ui-router/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/the-useage-of-ng-route-and-ui-router/" itemprop="url">
                   ngRoute 和 ui.router 的使用方法和区别
                 </a>
               
@@ -514,8 +622,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/08/the-useage-of-ng-route-and-ui-router/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/08/the-useage-of-ng-route-and-ui-router/" itemprop="commentsCount"></span>
+                <a href="/2015/10/the-useage-of-ng-route-and-ui-router/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/the-useage-of-ng-route-and-ui-router/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -544,7 +652,7 @@
 <p>无论是 <code>ngRoute</code> 还是 <code>ui.router</code> ，作为框架额外的附加功能，都必须以 <code>模块依赖</code> 的形式被引入。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lib/angular-route.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/08/the-useage-of-ng-route-and-ui-router/#more" rel="contents">
+            <a class="btn" href="/2015/10/the-useage-of-ng-route-and-ui-router/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -595,7 +703,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/04/the-use-of-providers-in-angularjs/" itemprop="url">
+                <a class="post-title-link" href="/2015/10/the-use-of-providers-in-angularjs/" itemprop="url">
                   AngularJS 中 Provider 的用法及区别
                 </a>
               
@@ -620,8 +728,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/04/the-use-of-providers-in-angularjs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/04/the-use-of-providers-in-angularjs/" itemprop="commentsCount"></span>
+                <a href="/2015/10/the-use-of-providers-in-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/the-use-of-providers-in-angularjs/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -657,114 +765,7 @@
 </ul>
 <p>另外，内建的服务 <code>$controller</code>  和 <code>$filter</code> 也可以被注入，同时也可以使用这些服务来获得新的过滤器和控制器。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/04/the-use-of-providers-in-angularjs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/30/data-bind-of-angularjs/" itemprop="url">
-                  关于 AngularJS 的数据绑定
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-30T00:00:00+08:00" content="2015-09-30">
-              2015-09-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/30/data-bind-of-angularjs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/data-bind-of-angularjs/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别"><a href="#单向绑定（ng-bind）-和-双向绑定（ng-model）-的区别" class="headerlink" title="单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别"></a>单向绑定（ng-bind） 和 双向绑定（ng-model） 的区别</h2><p><code>ng-bind</code> 单向数据绑定（<code>$scope -&gt; view</code>），用于数据显示，简写形式是 <code>{{}}</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-bind</span>=<span class="string">"val"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>两者的区别在于页面没有加载完毕 <code>{{val}}</code> 会直接显示到页面，直到 Angular 渲染该绑定数据（这种行为有可能将 <code>{{val}}</code> 让用户看到）；而 <code>ng-bind</code> 则是在 Angular 渲染完毕后将数据显示。</p>
-<p><code>ng-model</code> 是双向数据绑定（<code>$scope -&gt; view</code> and <code>view -&gt; $scope</code>），用于绑定值会变化的表单元素等。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"val"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/30/data-bind-of-angularjs/#more" rel="contents">
+            <a class="btn" href="/2015/10/the-use-of-providers-in-angularjs/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -798,7 +799,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -839,17 +840,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

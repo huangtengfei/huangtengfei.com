@@ -1,0 +1,862 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="解决方案," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp;amp; 全栈指引平台）。
+项目相关资源说明：
+介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目交接规范">
+<meta property="og:url" content="http://yoursite.com/2016/06/project-handover-guide/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp;amp; 全栈指引平台）。
+项目相关资源说明：
+介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。">
+<meta property="og:updated_time" content="2016-06-29T08:13:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目交接规范">
+<meta name="twitter:description" content="如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp;amp; 全栈指引平台）。
+项目相关资源说明：
+介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/project-handover-guide/"/>
+
+  <title> 项目交接规范 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                项目交接规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T00:00:00+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/project-handover-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/project-handover-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp; <a href="http://fullstack.alipay.net/guide/1-summary/1-introduction.html#%E7%AE%80%E4%BB%8B-0" target="_blank" rel="external">全栈指引平台</a>）。</p>
+<h2 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>说明：</p>
+<p>介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。</p>
+<a id="more"></a>
+<p>示例：</p>
+<blockquote>
+<p>代码路径：</p>
+<p>文档路径：</p>
+<p>系统登录地址：</p>
+<p>账号 &amp; 密码：</p>
+<p>对接人员：</p>
+<ul>
+<li>交互：</li>
+<li>前端：</li>
+<li>后台：</li>
+<li>PD：</li>
+</ul>
+</blockquote>
+<h3 id="安装调试"><a href="#安装调试" class="headerlink" title="安装调试"></a>安装调试</h3><p>说明：</p>
+<p>介绍环境依赖及安装方法，并且：</p>
+<ul>
+<li>用 Just 构建的，参考 <a href="http://just.alif2e.com/document/latest/getting-started.md" target="_blank" rel="external">Just 快速上手</a> 给出简要 init 过程</li>
+<li>需要配置 host，给出 <a href="http://www.atatech.org/articles/34114" target="_blank" rel="external">iHost 工具及使用说明</a></li>
+<li>和后台对接的，参考 <a href="http://huangtengfei.com/2016/06/08/separation-of-frontend-and-backend/" target="_blank" rel="external">关于前后端分离的一些思考</a> 一文，给出具体方案</li>
+<li>使用反向代理的，给出配置文件</li>
+</ul>
+<p>示例：</p>
+<blockquote>
+<ol>
+<li>下载和安装 Node（version &gt;= 4.0） </li>
+<li>安装 tnpm <code>npm install -g tnpm --registry=http://registry.npm.alibaba-inc.com</code>（如果报错，请先运行 <code>sudo chown -R $USER /usr/local</code>）</li>
+<li>从代码库更新代码 <code>git clone xxx</code></li>
+<li>安装依赖 <code>cd xxx &amp;&amp; tnpm install</code></li>
+<li>运行 <code>tnpm run dev</code>，访问 <code>http://127.0.0.1:xxxx</code></li>
+</ol>
+</blockquote>
+<h2 id="代码相关"><a href="#代码相关" class="headerlink" title="代码相关"></a>代码相关</h2><h3 id="代码结构说明"><a href="#代码结构说明" class="headerlink" title="代码结构说明"></a>代码结构说明</h3><p>说明：</p>
+<p>介绍每个有可能被二次改动的目录及文件的作用</p>
+<p>示例：</p>
+<blockquote>
+<pre><code>--project
+  |--src（源代码目录）
+    |--common（通用组件库，包括通用网络请求、工具函数等）
+      |--lib.js
+      |--util.js
+    |--component（业务组件库，可通过文件结构划分业务逻辑模块）
+      |--index.jsx
+      |--index.less
+    |--entry（入口文件，可以有多个）
+      |--index.jsx
+  |--.eslintrc（提交前的语法配置检查）     
+  |--.gitignore（git 提交的文件过滤配置）
+  |--package.json（项目信息文件，包括依赖包和构建命令）
+  |--index.html（调试的入口页面）
+</code></pre></blockquote>
+<h3 id="技术栈及快速入门"><a href="#技术栈及快速入门" class="headerlink" title="技术栈及快速入门"></a>技术栈及快速入门</h3><p>说明：</p>
+<p>介绍开发涉及的环境、工具、语言，并对需要项目交接人员深入了解的部分给出快速上手文档，因为你不能保证新加入项目的成员对这些技术都了解，根据你的经验给出入门文档可以帮助他们节省很多时间。</p>
+<p>示例：</p>
+<blockquote>
+<p>环境：</p>
+<ul>
+<li>node <a href="http://node.alibaba-inc.com/" target="_blank" rel="external">环境搭建</a></li>
+<li>tnpm <a href="http://web.npm.alibaba-inc.com/" target="_blank" rel="external">官网</a></li>
+</ul>
+<p>构建工具：</p>
+<ul>
+<li>Just <a href="http://just.alif2e.com/document/latest/getting-started.md" target="_blank" rel="external">Just 快速上手</a></li>
+<li>Webpack <a href="https://zhuanlan.zhihu.com/p/20367175" target="_blank" rel="external">Webpack 傻瓜式指南</a></li>
+<li>Gulp <a href="https://markpop.github.io/2014/09/17/Gulp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external">Gulp 入门教程</a></li>
+</ul>
+<p>代码管理工具：</p>
+<ul>
+<li>gitlab <a href="https://site.alipay.net/alipay-site/gitlab-is-better/" target="_blank" rel="external">使用 git &amp; gitlab</a></li>
+</ul>
+<p>开发语言：</p>
+<ul>
+<li>React <a href="http://reactjs.cn/react/docs/getting-started.html" target="_blank" rel="external">快速入门</a></li>
+<li>React-Router <a href="https://github.com/reactjs/react-router-tutorial" target="_blank" rel="external">react-router-tutorial</a></li>
+<li>Redux <a href="http://cn.redux.js.org/" target="_blank" rel="external">Redux 中文文档</a></li>
+<li>ES6 <a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6入门</a> 和 <a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external">React的ES5 ES6的语法对照参考</a></li>
+</ul>
+<p>单元测试：</p>
+<ul>
+<li>测试框架 <a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html" target="_blank" rel="external">Mocha 实例教程</a></li>
+<li>should 语法 <a href="https://github.com/tj/should.js/" target="_blank" rel="external">官网</a></li>
+</ul>
+</blockquote>
+<h2 id="开发相关"><a href="#开发相关" class="headerlink" title="开发相关"></a>开发相关</h2><h3 id="需要改动的代码位置"><a href="#需要改动的代码位置" class="headerlink" title="需要改动的代码位置"></a>需要改动的代码位置</h3><p>说明：</p>
+<p>介绍需要添加或修改的代码所在目录位置和文件位置</p>
+<p>示例：</p>
+<blockquote>
+<p>vm 模板：</p>
+<ul>
+<li>修改 a/b/c/auth.vm</li>
+<li>修改 a/b/c/authMobile.vm</li>
+</ul>
+<p>js：</p>
+<ul>
+<li>在 public/js/ 下新建 auth.js 文件</li>
+</ul>
+<p>css：</p>
+<ul>
+<li>修改 public/css/auth.css</li>
+<li>修改 public/css/authMobile.css</li>
+</ul>
+</blockquote>
+<h3 id="部署上线"><a href="#部署上线" class="headerlink" title="部署上线"></a>部署上线</h3><p>说明：</p>
+<p>介绍项目部署和上线的流程</p>
+<p>示例：</p>
+<blockquote>
+<p>本项目为纯前端资源，部署上线可参考：</p>
+<p><a href="http://just.alif2e.com/document/latest/dev-process/create-sc-app.md" target="_blank" rel="external">前端应用申请</a></p>
+<p><a href="http://just.alif2e.com/document/latest/dev-process/publish-sc-app.md" target="_blank" rel="external">前端应用发布</a></p>
+</blockquote>
+<h3 id="一个典型操作的完整流程"><a href="#一个典型操作的完整流程" class="headerlink" title="一个典型操作的完整流程"></a>一个典型操作的完整流程</h3><p>说明：</p>
+<p>如果是一个规模庞大，持续时间长，参与人员多的项目，提供一个典型操作的完整流程是很有必要的。比如对于 DPL 项目，可以提供一个简单组件的开发过程。</p>
+<p>示例：</p>
+<blockquote>
+<p>（以开发一个企业应用前端服务化组件为例）</p>
+<p>搭建环境：</p>
+<ol>
+<li>安装 node 和 tnpm</li>
+<li>全局安装 seek-bin 脚手架：<code>tnpm install @ali/seek-bin -g</code></li>
+</ol>
+<p>开发组件：</p>
+<p>a. 为组件创建目录，运行脚手架</p>
+<pre><code>mkdir 组件名称 （如果是系统组件，推荐 系统名-组件名，组件名第一个字母大写） 
+cd 组件名称
+seek-bin init
+</code></pre><p>b. 脚手架目录说明</p>
+<ul>
+<li>doc 使用文档</li>
+<li>lib 组件依赖库</li>
+<li>src 组件源码</li>
+</ul>
+<p>c. 组件调试</p>
+<p>运行 <code>seek-bin server</code> 会自动打开浏览器页面调试</p>
+<p>d. 组件发布</p>
+<pre><code>tnpm publish
+</code></pre></blockquote>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><p>说明：</p>
+<p>对项目开发时的常见问题做一个总结，并给出解答。</p>
+<p>示例：</p>
+<blockquote>
+<p>a. 安装 tnpm 时报错</p>
+<p>如果出现了类似 <code>Error: EACCES: permission denied</code> 的错误， 执行 <code>sudo chown -R $USER /usr/local</code> 然后重新执行安装命令</p>
+<p>b. 运行 <code>tnpm run dev</code> 报错</p>
+<p>1）如果遇到提示 <code>can not find module xxx</code> 或类似未找到 module 的报错，说明在运行 tnpm install 安装时候可能没有成功，可以尝试单独安装模块解决这个问题，即 <code>tnpm install xxx</code></p>
+<p>2）遇到 <code>Error: listen EADDRINUSE :::8000</code>（或者其他数字） 说明已经启动了一个 server，相应 8000 的端口被占用了，你可以找到之前开的 server，<code>control + c</code> 然后重新 run dev; 如果找不到之前开的 server，请先使用 <code>lsof -i tcp:8000</code> 找到进程号 PID，比如 12642，再执行 <code>kill 12642</code> 来结束该进程。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/解决方案/" rel="tag">#解决方案</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/asynchronous-of-javascript/" rel="next" title="JavaScript 异步编程">
+                <i class="fa fa-chevron-left"></i> JavaScript 异步编程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/collection-of-june/" rel="prev" title="6 月技术文章精选">
+                6 月技术文章精选 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/project-handover-guide/"
+           data-title="项目交接规范" data-url="http://yoursite.com/2016/06/project-handover-guide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目相关"><span class="nav-number">1.</span> <span class="nav-text">项目相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#资源"><span class="nav-number">1.1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装调试"><span class="nav-number">1.2.</span> <span class="nav-text">安装调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码相关"><span class="nav-number">2.</span> <span class="nav-text">代码相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码结构说明"><span class="nav-number">2.1.</span> <span class="nav-text">代码结构说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术栈及快速入门"><span class="nav-number">2.2.</span> <span class="nav-text">技术栈及快速入门</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发相关"><span class="nav-number">3.</span> <span class="nav-text">开发相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要改动的代码位置"><span class="nav-number">3.1.</span> <span class="nav-text">需要改动的代码位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署上线"><span class="nav-number">3.2.</span> <span class="nav-text">部署上线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个典型操作的完整流程"><span class="nav-number">3.3.</span> <span class="nav-text">一个典型操作的完整流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">3.4.</span> <span class="nav-text">常见问题</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

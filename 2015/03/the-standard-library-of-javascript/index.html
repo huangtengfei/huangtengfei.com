@@ -1,0 +1,782 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Object对象的方法Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。123function isObject(value) &amp;#123;    return value === Object(value);&amp;#125;
+要在Object对象上面部署一个方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习系列二：Object 对象">
+<meta property="og:url" content="http://yoursite.com/2015/03/the-standard-library-of-javascript/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="Object对象的方法Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。123function isObject(value) &amp;#123;    return value === Object(value);&amp;#125;
+要在Object对象上面部署一个方法">
+<meta property="og:updated_time" content="2016-07-06T06:34:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习系列二：Object 对象">
+<meta name="twitter:description" content="Object对象的方法Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。123function isObject(value) &amp;#123;    return value === Object(value);&amp;#125;
+要在Object对象上面部署一个方法">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/03/the-standard-library-of-javascript/"/>
+
+  <title> JavaScript 学习系列二：Object 对象 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 学习系列二：Object 对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-12T11:45:30+08:00" content="2015-03-12">
+              2015-03-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/the-standard-library-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/the-standard-library-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Object对象的方法"><a href="#Object对象的方法" class="headerlink" title="Object对象的方法"></a>Object对象的方法</h2><p>Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value === <span class="built_in">Object</span>(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>要在Object对象上面部署一个方法，有两种做法。</p>
+<ul>
+<li>部署在Object对象本身</li>
+<li>部署在Object.prototype对象</li>
+</ul>
+<a id="more"></a>
+<p>Object.keys方法和Object.getOwnPropertyNames方法很相似，一般用来遍历对象的属性。它们的参数都是一个对象，都返回一个数组，该数组的成员都是对象自身的（而不是继承的）所有属性名。两者区别在于，前者只返回可枚举的属性，后者还返回不可枚举的属性名。由于数组存在不可枚举属性length，因此一般使用Object.keys遍历数组。</p>
+<p>JavaScript没有提供计算对象属性个数的方法，可通过 <code>Object.keys(o).length</code> 和 <code>Object.getOwnPropertyNames(o).length</code> 获取。</p>
+<p>Object.observe方法用于观察对象属性的变化。</p>
+<p>原型链相关方法：</p>
+<ul>
+<li>Object.create()：生成一个新对象，并该对象的原型。</li>
+<li>Object.getPrototypeOf()：获取对象的Prototype对象。</li>
+</ul>
+<h2 id="Object实例对象的方法"><a href="#Object实例对象的方法" class="headerlink" title="Object实例对象的方法"></a>Object实例对象的方法</h2><p>Object.prototype.valueOf()：valueOf方法的作用是返回一个对象的值，默认情况下返回对象本身。该方法的主要用途是，JavaScript自动类型转换时会默认调用这个方法。</p>
+<p>Object.prototype.toString()：toString方法的作用是返回一个对象的字符串形式。当对象用于字符串加法时，会自动调用toString方法。</p>
+<p>使用call方法，可以在任意值上调用Object.prototype.toString方法，从而判断这个值的类型。不同数据类型的toString方法返回值如下：</p>
+<ul>
+<li>数值：返回[object Number]</li>
+<li>字符串：返回[object String]</li>
+<li>布尔值：返回[object Boolean]</li>
+<li>undefined：返回[object Undefined]</li>
+<li>null：返回[object Null]</li>
+<li>对象：返回”[object “ + 构造函数的名称 + “]”</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">2</span>) <span class="comment">// "[object Number]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">''</span>) <span class="comment">// "[object String]"</span></span><br></pre></td></tr></table></figure>
+<p>利用这个特性，可写出一个比typeof运算符更准确的类型判断函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> type = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">Object</span>.prototype.toString.call(o);</span><br><span class="line">    <span class="keyword">return</span> s.match(<span class="regexp">/\[object (.*?)\]/</span>)[<span class="number">1</span>].toLowerCase();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">type(&#123;&#125;); <span class="comment">// "object"</span></span><br><span class="line">type([]); <span class="comment">// "array"</span></span><br><span class="line">type(<span class="number">5</span>); <span class="comment">// "number"</span></span><br></pre></td></tr></table></figure></p>
+<p>在上面这个type函数的基础上，还可以加上专门判断某种类型数据的方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'Null'</span>, <span class="string">'Undefined'</span>, <span class="string">'Object'</span>, <span class="string">'Array'</span>, <span class="string">'String'</span>, <span class="string">'Number'</span>,</span><br><span class="line"><span class="string">'Boolean'</span>, <span class="string">'Function'</span>, <span class="string">'RegExp'</span>, <span class="string">'Element'</span>, <span class="string">'NaN'</span>, <span class="string">'Infinite'</span></span><br><span class="line">].forEach(<span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</span><br><span class="line">    type[<span class="string">'is'</span> + t] = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> type(o) === t.toLowerCase();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">type.isObject(&#123;&#125;); <span class="comment">// true</span></span><br><span class="line">type.isNumber(<span class="literal">NaN</span>); <span class="comment">// false</span></span><br><span class="line">type.isElement(<span class="built_in">document</span>.createElement(<span class="string">'div'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="对象的属性模型"><a href="#对象的属性模型" class="headerlink" title="对象的属性模型"></a>对象的属性模型</h2><p>在JavaScript内部，每个属性都有一个对应的attributes对象，保存该属性的一些元信息。使用Object.getOwnPropertyDescriptor方法，可读取o对象的p属性的attributes对象。attributes对象包含如下元信息：</p>
+<ul>
+<li>value：表示该属性的值，默认为undefined（只要writable和configurable有一个为true，就可以改动）。</li>
+<li>writable：表示该属性的值（value）是否可以改变，默认为true。</li>
+<li>enumerable： 表示该属性是否可枚举，默认为true，也就是该属性会出现在for…in和Object.keys()等操作中。一般来说，系统原生的属性（即非用户自定义的属性）都是不可枚举的。</li>
+<li>表示“可配置性”，默认为true。如果设为false，表示无法删除该属性，也不得改变attributes对象（value属性除外，如果writable为true，仍可改变value），也就是configurable属性控制了attributes对象的可写性。</li>
+<li>表示该属性的取值函数（getter），默认为undefined。</li>
+<li>表示该属性的存值函数（setter），默认为undefined。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; p: <span class="string">'a'</span> &#125;;</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o, <span class="string">'p'</span>);</span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//     value: "a",</span></span><br><span class="line"><span class="comment">//     writable: true,</span></span><br><span class="line"><span class="comment">//     enumerable: true,</span></span><br><span class="line"><span class="comment">//     configurable: true</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Object.defineProperty方法允许通过定义attributes对象，来定义或修改一个属性，然后返回修改后的对象。格式如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(object, propertyName, attributesObject)</span><br></pre></td></tr></table></figure></p>
+<p>Object.defineProperty方法接受三个参数，第一个是属性所在的对象，第二个是属性名（它应该是一个字符串），第三个是属性的描述对象。通过此方法定义属性，属性对象的writable、configurable、enumerable三个属性的默认值都为false。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"p"</span>, &#123;</span><br><span class="line">    value: <span class="string">"bar"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o, <span class="string">'p'</span>);</span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//     value: "bar",</span></span><br><span class="line"><span class="comment">//     writable: false,</span></span><br><span class="line"><span class="comment">//     enumerable: false,</span></span><br><span class="line"><span class="comment">//     configurable: false</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果一次性定义或修改多个属性，可以使用Object.defineProperties方法。需要注意的是，一旦定义了取值函数get（或存值函数set），就不能将writable设为true，或者同时定义value属性，否则会报错。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.defineProperties(&#123;&#125;, &#123;</span><br><span class="line">    p1: &#123;value: <span class="number">123</span>, enumerable: <span class="literal">true</span>&#125;,</span><br><span class="line">    p2: &#123;value: <span class="string">"abc"</span>, enumerable: <span class="literal">true</span>&#125;,</span><br><span class="line">    p3: &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.p1 + <span class="keyword">this</span>.p2</span><br><span class="line">        &#125;,</span><br><span class="line">        enumerable: <span class="literal">true</span>,</span><br><span class="line">        configurable: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>enumerable可以用来设置“秘密”属性，如果一个属性的enumerable为false，则 <code>for..in</code> 循环、<code>Object.keys</code> 方法和 <code>JSON.stringify</code> 方法都不会取到该属性，但可以通过 <code>o.xx</code> 直接获取它的值。</p>
+<p>for…in循环和Object.keys方法的区别在于，前者包括对象继承自原型对象的属性，而后者只包括对象本身的属性。如果需要获取对象自身的所有属性，不管enumerable的值，可以使用Object.getOwnPropertyNames方法。</p>
+<p>可配置性决定了一个变量是否可以被删除（delete）。当使用var命令声明变量时，变量的configurable为false，而不使用var命令声明变量时（或者使用属性赋值的方式声明变量），变量的可配置性为true。这说明，delete只能删除对象的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = <span class="number">1</span>;  <span class="comment">// configurable: false</span></span><br><span class="line">a2 = <span class="number">1</span>;  <span class="comment">// configurable: true（等价于this.a2 = 1）</span></span><br></pre></td></tr></table></figure>
+<p>除了直接定义以外，属性还可以用存取函数（accessor）定义。其中，存值函数称为setter，使用set命令；取值函数称为getter，使用get命令。利用存取函数，可以实现数据对象与DOM对象的双向绑定。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(user, <span class="string">'name'</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">"foo"</span>).value</span><br><span class="line">    &#125;,</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">"foo"</span>).value = newValue;</span><br><span class="line">    &#125;,</span><br><span class="line">    configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="控制对象状态"><a href="#控制对象状态" class="headerlink" title="控制对象状态"></a>控制对象状态</h2><p>JavaScript提供了三种方法，精确控制一个对象的读写状态，防止对象被改变。最弱一层的保护是preventExtensions，其次是seal，最强的freeze。</p>
+<p>Object.preventExtensions方法可以使得一个对象无法再添加新的属性，但可以用delete命令删除它的现有属性。Object.isExtensible方法可以用来检查是否可以为一个对象添加属性。</p>
+<p>Object.seal方法使得一个对象既无法添加新属性，也无法删除旧属性。Object.seal还把现有属性的attributes对象的configurable属性设为false，使得attributes对象不再能改变。Object.isSealed方法用于检查一个对象是否使用了Object.seal方法。</p>
+<p>Object.freeze方法可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量。Object.isFrozen方法用于检查一个对象是否使用了Object.freeze()方法。</p>
+<p>使用上面这些方法锁定对象的可写性，但是依然可以通过改变该对象的原型对象，来为它增加属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(o);</span><br><span class="line"><span class="keyword">var</span> proto = <span class="built_in">Object</span>.getPrototypeOf(o);</span><br><span class="line">proto.t = <span class="string">"hello"</span>;</span><br><span class="line">o.t</span><br><span class="line"><span class="comment">// hello</span></span><br></pre></td></tr></table></figure></p>
+<p>一种解决方案是，把原型也冻结住。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="built_in">Object</span>.seal(</span><br><span class="line">    <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.freeze(&#123;x:<span class="number">1</span>&#125;),</span><br><span class="line">            &#123;y: &#123;value: <span class="number">2</span>, writable: <span class="literal">true</span>&#125;&#125;)</span><br><span class="line">);</span><br><span class="line"><span class="built_in">Object</span>.getPrototypeOf(o).t = <span class="string">"hello"</span>;</span><br><span class="line">o.t <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h2><p><a href="http://javascript.ruanyifeng.com/stdlib/object.html" target="_blank" rel="external">JavaScript 标准参考教程：标准库</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/the-basic-grammer-of-javascript/" rel="next" title="JavaScript 学习系列一：基本语法">
+                <i class="fa fa-chevron-left"></i> JavaScript 学习系列一：基本语法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/best-practices-of-css/" rel="prev" title="CSS最佳实践">
+                CSS最佳实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/03/the-standard-library-of-javascript/"
+           data-title="JavaScript 学习系列二：Object 对象" data-url="http://yoursite.com/2015/03/the-standard-library-of-javascript/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object对象的方法"><span class="nav-number">1.</span> <span class="nav-text">Object对象的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object实例对象的方法"><span class="nav-number">2.</span> <span class="nav-text">Object实例对象的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的属性模型"><span class="nav-number">3.</span> <span class="nav-text">对象的属性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制对象状态"><span class="nav-number">4.</span> <span class="nav-text">控制对象状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考教程"><span class="nav-number">5.</span> <span class="nav-text">参考教程</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

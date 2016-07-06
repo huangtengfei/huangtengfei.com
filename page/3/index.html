@@ -278,7 +278,115 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/25/angularjs-form-validate/" itemprop="url">
+                <a class="post-title-link" href="/2016/04/single-threaded-of-javascript/" itemprop="url">
+                  JavaScript的单线程机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-08T00:00:00+08:00" content="2016-04-08">
+              2016-04-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/single-threaded-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/single-threaded-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="一道面试题"><a href="#一道面试题" class="headerlink" title="一道面试题"></a>一道面试题</h2><p>之前有次面试的时候，被问到一个有关单线程的问题，后来整理了一下，增加了一些复杂度。</p>
+<blockquote>
+<p>执行下面这段代码，执行后，在 5s 内点击两下，过一段时间（&gt;5s）后，再点击两下，整个过程的输出结果是什么？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100000000</span>; i++)&#123;&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'timer a'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'timer b'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">waitFiveSeconds</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> now = (<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime();</span><br><span class="line">	<span class="keyword">while</span>(((<span class="keyword">new</span> <span class="built_in">Date</span>()).getTime() - now) &lt; <span class="number">5000</span>)&#123;&#125;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'finished waiting'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'click'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'click begin'</span>);</span><br><span class="line">waitFiveSeconds();</span><br></pre></td></tr></table></figure>
+<p>如果你能很清晰的判断输出结果，并且没有疑惑，那说明你对 JavaScript 的单线程理解的不错，这篇文章没有看的必要了，如果不清楚，请继续看下去。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/single-threaded-of-javascript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/angularjs-form-validate/" itemprop="url">
                   AngularJS 表单验证
                 </a>
               
@@ -303,8 +411,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/25/angularjs-form-validate/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/angularjs-form-validate/" itemprop="commentsCount"></span>
+                <a href="/2016/03/angularjs-form-validate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/angularjs-form-validate/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,7 +442,7 @@
 <p>本文在对表单的验证时使用了 <code>ng-messages</code>，在文章最后也有对它的介绍。</p>
 <p>本文涉及到的源码在 <a href="https://github.com/huangtengfei/angular-demo/tree/gh-pages/demos/form">这里</a>，实现效果在 <a href="http://huangtengfei.github.io/angular-demo/#/form">这里</a>。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/25/angularjs-form-validate/#more" rel="contents">
+            <a class="btn" href="/2016/03/angularjs-form-validate/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -385,7 +493,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/18/angular-directive/" itemprop="url">
+                <a class="post-title-link" href="/2016/03/angular-directive/" itemprop="url">
                   AngularJS 指令入门
                 </a>
               
@@ -410,8 +518,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/18/angular-directive/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/angular-directive/" itemprop="commentsCount"></span>
+                <a href="/2016/03/angular-directive/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/angular-directive/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -439,7 +547,7 @@
 <p>一个简版的 directive 的形式是这样的</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.directive(<span class="string">'myDirective'</span>, myDirective);</span><br><span class="line"></span><br><span class="line">myDirective.$inject = [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myDirective</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">"AE"</span>,</span><br><span class="line">        template: <span class="string">''</span></span><br><span class="line">        scope: &#123;&#125;,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/18/angular-directive/#more" rel="contents">
+            <a class="btn" href="/2016/03/angular-directive/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -490,7 +598,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/11/basic-of-fe/" itemprop="url">
+                <a class="post-title-link" href="/2016/03/basic-of-fe/" itemprop="url">
                   前端基础
                 </a>
               
@@ -515,8 +623,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/11/basic-of-fe/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/basic-of-fe/" itemprop="commentsCount"></span>
+                <a href="/2016/03/basic-of-fe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/basic-of-fe/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -547,7 +655,7 @@
 <p>任何执行上下文时刻的作用域，都是由作用域链来实现。</p>
 <p>代码在一个环境中执行时，会创建变量对象的一个作用域链。作用域链保证对执行环境有权访问的所有变量和函数的有序访问。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/11/basic-of-fe/#more" rel="contents">
+            <a class="btn" href="/2016/03/basic-of-fe/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -598,7 +706,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/03/questions-and-answers-of-angularjs/" itemprop="url">
+                <a class="post-title-link" href="/2016/03/questions-and-answers-of-angularjs/" itemprop="url">
                   关于 AngularJS 的一些问题
                 </a>
               
@@ -623,8 +731,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/03/questions-and-answers-of-angularjs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/03/questions-and-answers-of-angularjs/" itemprop="commentsCount"></span>
+                <a href="/2016/03/questions-and-answers-of-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/questions-and-answers-of-angularjs/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -653,124 +761,7 @@
 <p>这样会导致，在 <code>ng-if</code> 中用基本变量绑定 <code>ng-model</code>，并在外层 div 中把此 model 绑定给另一个显示区域，内层改变时，外层不会同步改变，因为此时已经是两个变量了。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-if</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/03/questions-and-answers-of-angularjs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/26/start-ionic/" itemprop="url">
-                  使用 Ionic 进行 Android 开发
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-26T00:00:00+08:00" content="2016-01-26">
-              2016-01-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/26/start-ionic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/start-ionic/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>以下环境（<code>JDK</code>、<code>Apache Ant</code>、<code>Android SDK</code>、<code>Node.JS</code>）已安装的跳过即可。IDE 可用 Visual Studio 2015 或者 Android Studio，也可用 WebStorm 。</p>
-<h3 id="JDK-环境"><a href="#JDK-环境" class="headerlink" title="JDK 环境"></a>JDK 环境</h3><ol>
-<li><p>下载并安装 jdk（我的版本是 <code>1.8.0</code>）</p>
-</li>
-<li><p><code>Win + Pause</code> 组合键打开 高级系统设置&gt;高级，修改环境变量</p>
-</li>
-<li><p>新建 <code>JAVA_HOME</code>，值为 <code>C:\Program Files\Java\jdk1.8.0_20\</code>（JDK安装路径）</p>
-</li>
-<li><p>新建 <code>CLASS_PATH</code>，值为 <code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar</code></p>
-</li>
-<li><p>在 <code>path</code> 后添加 <code>;%JAVA_HOME%\bin;</code> </p>
-</li>
-<li><p><code>Win + R</code> 打开 cmd，输入 java，检测 jdk 是否安装成功</p>
-</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/26/start-ionic/#more" rel="contents">
+            <a class="btn" href="/2016/03/questions-and-answers-of-angularjs/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -804,7 +795,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -845,17 +836,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

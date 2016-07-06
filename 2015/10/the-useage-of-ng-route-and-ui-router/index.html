@@ -1,0 +1,794 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在单页面应用中要把各个分散的视图给组织起来是通过路由机制来实现的。本文主要对 AngularJS 原生的 ngRoute 路由模块和第三方路由模块 ui.router 的用法进行简单介绍，并做一个对比。
+ngRoute使用方法1) 引入 angular-route lib
+无论是 ngRoute 还是 ui.router ，作为框架额外的附加功能，都必须以 模块依赖 的形式被引入。
+1&amp;lt;sc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ngRoute 和 ui.router 的使用方法和区别">
+<meta property="og:url" content="http://yoursite.com/2015/10/the-useage-of-ng-route-and-ui-router/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="在单页面应用中要把各个分散的视图给组织起来是通过路由机制来实现的。本文主要对 AngularJS 原生的 ngRoute 路由模块和第三方路由模块 ui.router 的用法进行简单介绍，并做一个对比。
+ngRoute使用方法1) 引入 angular-route lib
+无论是 ngRoute 还是 ui.router ，作为框架额外的附加功能，都必须以 模块依赖 的形式被引入。
+1&amp;lt;sc">
+<meta property="og:updated_time" content="2016-06-15T07:28:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ngRoute 和 ui.router 的使用方法和区别">
+<meta name="twitter:description" content="在单页面应用中要把各个分散的视图给组织起来是通过路由机制来实现的。本文主要对 AngularJS 原生的 ngRoute 路由模块和第三方路由模块 ui.router 的用法进行简单介绍，并做一个对比。
+ngRoute使用方法1) 引入 angular-route lib
+无论是 ngRoute 还是 ui.router ，作为框架额外的附加功能，都必须以 模块依赖 的形式被引入。
+1&amp;lt;sc">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/the-useage-of-ng-route-and-ui-router/"/>
+
+  <title> ngRoute 和 ui.router 的使用方法和区别 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ngRoute 和 ui.router 的使用方法和区别
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-08T00:00:00+08:00" content="2015-10-08">
+              2015-10-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/the-useage-of-ng-route-and-ui-router/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/the-useage-of-ng-route-and-ui-router/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在单页面应用中要把各个分散的视图给组织起来是通过路由机制来实现的。本文主要对 AngularJS 原生的 <code>ngRoute</code> 路由模块和第三方路由模块 <code>ui.router</code> 的用法进行简单介绍，并做一个对比。</p>
+<h2 id="ngRoute"><a href="#ngRoute" class="headerlink" title="ngRoute"></a>ngRoute</h2><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>1) 引入 <code>angular-route</code> lib</p>
+<p>无论是 <code>ngRoute</code> 还是 <code>ui.router</code> ，作为框架额外的附加功能，都必须以 <code>模块依赖</code> 的形式被引入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lib/angular-route.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>2) 配置路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'ngRouteApp'</span>, [<span class="string">'ngRoute'</span>]);</span><br><span class="line"></span><br><span class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$routeProvider</span>)</span>&#123;</span><br><span class="line">    $routeProvider</span><br><span class="line">        .when(<span class="string">'/Main'</span>, &#123;</span><br><span class="line">            templateUrl: <span class="string">"main.html"</span>,</span><br><span class="line">            controller: <span class="string">'MainCtrl'</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .otherwise(&#123; redirectTo: <span class="string">'/tabs'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="服务与指令"><a href="#服务与指令" class="headerlink" title="服务与指令"></a>服务与指令</h3><p><code>ngRoute</code> 路由模块名</p>
+<p><code>$routeProvider</code> 服务提供者，用来定义一个路由表，即地址栏与视图模板的映射，对应于 <code>ui.router</code> 中的 <code>urlRouterProvider</code> 和 <code>stateProvider</code> </p>
+<p><code>$route</code> 服务，完成路由匹配，并且提供路由相关的属性访问及事件，如访问当前路由对应的 Controller，对应于下面的 <code>$urlRouter</code> 和 <code>$state</code><br><code>$routeParams</code> 服务，保存了地址栏中的参数，对应于下面的 <code>$stateParams</code></p>
+<p><code>ng-view</code> 指令，用来在主视图中指定加载子视图的区域，对应于下面的 <code>ui-view</code></p>
+<h2 id="ui-router"><a href="#ui-router" class="headerlink" title="ui.router"></a>ui.router</h2><h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><p>1) 引入 <code>angular-ui-router</code> lib</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lib/angular-ui-router.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>2) 配置路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">"uiRouteApp"</span>, [<span class="string">"ui.router"</span>]);</span><br><span class="line"></span><br><span class="line">app.config(<span class="function"><span class="keyword">function</span>(<span class="params">$urlRouterProvider, $stateProvider</span>) </span>&#123;</span><br><span class="line">	$urlRouterProvider.otherwise(<span class="string">"/index"</span>);</span><br><span class="line">	$stateProvider</span><br><span class="line">		.state(<span class="string">"Main"</span>, &#123;</span><br><span class="line">			url: <span class="string">"/main"</span>,</span><br><span class="line">			templateUrl: <span class="string">"main.html"</span>,</span><br><span class="line">            controller: <span class="string">'MainCtrl'</span></span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="服务与指令-1"><a href="#服务与指令-1" class="headerlink" title="服务与指令"></a>服务与指令</h3><p><code>ui.router</code> 路由模块名</p>
+<p><code>$urlRouterProvider</code> 服务提供者，用来配置路由重定向<br><code>$stateProvider</code> 服务提供者，用来配置路由</p>
+<p><code>$urlRouter</code> 服务<br><code>$state</code> 服务，用来显示当前路由状态信息，以及一些路由方法（如：跳转）<br><code>$stateParams</code> 服务，用来存储路由匹配时的参数</p>
+<p><code>ui-view</code> 指令，路由模板渲染，对应的 dom 相关联<br><code>ui-sref</code> 指令，链接到特定状态</p>
+<h3 id="路由的创建"><a href="#路由的创建" class="headerlink" title="路由的创建"></a>路由的创建</h3><h4 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h4><p>调用 <code>$stateProvider.state(...)</code> 方法，并可配置以下参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$stateProvider</span><br><span class="line">    .state(<span class="string">"Main"</span>, &#123;</span><br><span class="line">        url: <span class="string">"/main"</span>,</span><br><span class="line">        templateUrl: <span class="string">'main.html'</span>,</span><br><span class="line">        controller: <span class="string">'MainCtrl'</span>,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="parent"><a href="#parent" class="headerlink" title="parent"></a>parent</h4><p>有两种方式可以指定父子状态关系。</p>
+<p>一种是，使用点标记法，像本文最后嵌套视图部分举得栗子那样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.state(<span class="string">"tabs.tab1"</span>, &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>另一种是，使用 <code>parent</code> 属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.state(<span class="string">"tab1"</span>, &#123;</span><br><span class="line">    parent: <span class="string">'tabs'</span>  <span class="comment">// 也可是一个状态对象， parent: tabs</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h4><p>使用 <code>abstract</code> 可以为所有的子状态提供一个基 <code>URL</code>，这样做的好处就是可以在抽象出来的这个状态所对应的 <code>html</code> 页面中来定义静态资源。抽象模板不能被激活。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$stateProvider</span><br><span class="line">    .state(<span class="string">'contacts'</span>, &#123;</span><br><span class="line">        abstract: <span class="literal">true</span>,</span><br><span class="line">        url: <span class="string">'/contacts'</span>,</span><br><span class="line">        templateUrl: <span class="string">'contacts.html'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    .state(<span class="string">'contacts.list'</span>, &#123;</span><br><span class="line">        url: <span class="string">'/list'</span>,</span><br><span class="line">        templateUrl: <span class="string">'contacts.list.html'</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h4><p><code>resolve</code> 在 <code>state</code> 配置参数中，是一个对象(<code>key-value</code>)，每一个 <code>value</code> 都是一个可以依赖注入的函数，并且返回的是一个 <code>promise</code> (当然也可以是值)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">    <span class="string">'myResolve'</span>: [<span class="string">'contacts'</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">contacts</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> contacts.all();</span><br><span class="line">     &#125;]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>这样做的目的：</p>
+<ul>
+<li>简化了 <code>controller</code> 的操作，将数据的获取放在 <code>resolve</code> 中进行，这在多个视图多个 <code>controller</code> 需要相同数据时，有一定的作用。</li>
+<li>只有当 <code>reslove</code> 中的 <code>promise</code> 全部 <code>resolved</code>(即数据获取成功)后，才会触发 <code>$stateChangeSuccess</code> 切换路由，进而实例化 <code>controller</code>，然后更新模板。</li>
+</ul>
+<p>更多参数可参考 <a href="http://yijiebuyi.com/blog/3aab7ad8bccb22b4a881849c0593d5e2.html" target="_blank" rel="external">angular 系列八 ui-router详细介绍及ngRoute工具区别</a> 中 state 参数的讲解。</p>
+<h3 id="路由控制"><a href="#路由控制" class="headerlink" title="路由控制"></a>路由控制</h3><p><code>url</code> 动态部分被称为参数，有以下几种方式设置</p>
+<p>1） 使用花括号的方式可以设置一个正则表达式规则的参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//只会匹配 pageId 为1到8位的数字</span></span><br><span class="line">url: <span class="string">"/pages/&#123;pageId:[0-9]&#123;1,8&#125;&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>可以通过 <code>?</code> 来指定参数作为查询参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比如匹配 href="/page?type='new'"</span></span><br><span class="line">url: <span class="string">"/page?type"</span></span><br></pre></td></tr></table></figure>
+<p>如果需要不止一个查询参数，用 <code>&amp;</code> 分隔：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比如匹配 ui-sref="page(&#123;type:'all', title:'test ui-router'&#125;)"</span></span><br><span class="line">url: <span class="string">"/page?type&amp;title"</span></span><br></pre></td></tr></table></figure>
+<h3 id="路由的查找匹配"><a href="#路由的查找匹配" class="headerlink" title="路由的查找匹配"></a>路由的查找匹配</h3><ul>
+<li><code>angular</code> 在刚开始的 <code>$digest</code> 时，<code>$rootScope</code> 会触发 <code>$locationChangeSuccess</code> 事件（<code>angular</code> 在每次浏览器 <code>hash</code> change 的时候也会触发 <code>$locationChangeSuccess</code> 事件）</li>
+<li><code>ui.router</code> 监听了 <code>$locationChangeSuccess</code> 事件，于是开始通过遍历一系列 <code>rules</code>，进行路由查找匹配列表项</li>
+<li>当匹配到路由后，就通过 <code>$state.transitionTo(state,...)</code>，跳转激活对应的 <code>state</code></li>
+<li>最后，完成数据请求和模板的渲染</li>
+</ul>
+<p>在视图中，建议使用 <code>ui-sref=&quot;xxxState&quot;</code> 而不是 <code>href=&quot;#/abc&quot;</code>，这样做能减少一遍 <code>rules</code> 循环的遍历，提升性能。</p>
+<h2 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h2><p><code>ngRoute模块</code> 是 Angular 自带的路由模块，而 <code>ui.router模块</code> 是基于 <code>ngRoute模块</code> 开发的第三方模块。</p>
+<p><code>ui.router</code> 是基于 <code>state</code>(状态)的， <code>ngRoute</code> 是基于 <code>url</code> 的，<code>ui.router模块</code> 具有更强大的功能，主要体现在视图的嵌套方面。</p>
+<h3 id="嵌套视图"><a href="#嵌套视图" class="headerlink" title="嵌套视图"></a>嵌套视图</h3><p>页面某个动态变化区块中，嵌套着另一个可以动态变化的区块。</p>
+<p>前面的栗子就是一个很好的业务场景。</p>
+<p>在首页中包含一个动态区块：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"ngRouteApp"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>AngularJS UI-Router Tabs<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 在标签页中又包含动态区块：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/tab1"</span>&gt;</span>Page-1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/tab2"</span>&gt;</span>Page-2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#/tab3"</span>&gt;</span>Page-3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>一运行，报了一个这样的错误：</p>
+<pre><code>RangeError: Maximum call stack size exceeded
+</code></pre><p>发现浏览器崩溃了，因为 <code>ng-view</code> 会陷入死循环，无限递归下去。</p>
+<p>使用 <code>ui.router</code> 能很容易解决这个问题，因为它定义的路由有明确的父子关系，并通过 <code>ui-view</code> 指令将子路由模版插入到父路由模板的 <code>&lt;div ui-view&gt;&lt;/div&gt;</code> 中去，从而实现视图嵌套。看代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$stateProvider</span><br><span class="line">	.state(<span class="string">"tabs"</span>, &#123;</span><br><span class="line">		url: <span class="string">"/tabs"</span>,</span><br><span class="line">		templateUrl: <span class="string">"pageTab.html"</span></span><br><span class="line">	&#125;)</span><br><span class="line">	.state(<span class="string">"tabs.tab1"</span>, &#123;</span><br><span class="line">		url: <span class="string">"/tab1"</span>,</span><br><span class="line">		templateUrl: <span class="string">"tab1.html"</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="其他区别"><a href="#其他区别" class="headerlink" title="其他区别"></a>其他区别</h4><p>ui-router（左） ： ngRoute（右）</p>
+<ul>
+<li>应用程序内的一个区域 ： 应用程序中的 url</li>
+<li>可以嵌套的层次结构 ： 只是平面层次结构</li>
+<li>名称可以自定义 ： 名称只能是 url</li>
+<li>通过名称或 url 导航 ： 只能通过 url 导航</li>
+<li>可以存在多个视图（ui-view） ： 只能单一视图（ng-view）</li>
+<li>可以填充任何视图 ： 只能填充一个视图</li>
+<li>通过状态填充某一部件 ： 通过指令将填充某一部件</li>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
+<li><a href="http://www.html-js.com/article/Front-end-source-code-analysis-original-uirouter-source-code-analysis" target="_blank" rel="external">ui.router源码解析</a></li>
+<li><a href="http://www.open-open.com/lib/view/open1416878937309.html" target="_blank" rel="external">AngularJS ui-router (嵌套路由)</a></li>
+<li><a href="http://www.w3cscript.com/Angular/2014-12-01/29.html" target="_blank" rel="external">ngRoute VS ui-router</a></li>
+<li><a href="http://www.cnblogs.com/liulangmao/p/4155015.html" target="_blank" rel="external">angular的uiRouter服务学习</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/the-use-of-providers-in-angularjs/" rel="next" title="AngularJS 中 Provider 的用法及区别">
+                <i class="fa fa-chevron-left"></i> AngularJS 中 Provider 的用法及区别
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/start-es6/" rel="prev" title="从现在开始用 ES6">
+                从现在开始用 ES6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/10/the-useage-of-ng-route-and-ui-router/"
+           data-title="ngRoute 和 ui.router 的使用方法和区别" data-url="http://yoursite.com/2015/10/the-useage-of-ng-route-and-ui-router/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ngRoute"><span class="nav-number">1.</span> <span class="nav-text">ngRoute</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">1.1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务与指令"><span class="nav-number">1.2.</span> <span class="nav-text">服务与指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui-router"><span class="nav-number">2.</span> <span class="nav-text">ui.router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法-1"><span class="nav-number">2.1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务与指令-1"><span class="nav-number">2.2.</span> <span class="nav-text">服务与指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由的创建"><span class="nav-number">2.3.</span> <span class="nav-text">路由的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本配置"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parent"><span class="nav-number">2.3.2.</span> <span class="nav-text">parent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#abstract"><span class="nav-number">2.3.3.</span> <span class="nav-text">abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resolve"><span class="nav-number">2.3.4.</span> <span class="nav-text">resolve</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由控制"><span class="nav-number">2.4.</span> <span class="nav-text">路由控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由的查找匹配"><span class="nav-number">2.5.</span> <span class="nav-text">路由的查找匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两者区别"><span class="nav-number">3.</span> <span class="nav-text">两者区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套视图"><span class="nav-number">3.1.</span> <span class="nav-text">嵌套视图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他区别"><span class="nav-number">3.1.1.</span> <span class="nav-text">其他区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

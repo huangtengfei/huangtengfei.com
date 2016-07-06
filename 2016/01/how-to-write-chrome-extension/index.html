@@ -1,0 +1,746 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="面试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一个 Chrome 扩展其实就是一个配置文件 manifest.json 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。
+这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 stock 和 weather 。
+Manife">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始写一个 Chrome 扩展">
+<meta property="og:url" content="http://yoursite.com/2016/01/how-to-write-chrome-extension/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="一个 Chrome 扩展其实就是一个配置文件 manifest.json 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。
+这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 stock 和 weather 。
+Manife">
+<meta property="og:image" content="http://d170.suning.com:8170/thumbnail/pan/1453025586421.png.800x600_80.png?objectId=1453025508934789&requestId=59b5aac0-2f1c-4374-9a05-793f12c4b916&salAccessKeyId=8684PRuhiDleAcmN">
+<meta property="og:image" content="http://d170.suning.com:8170/thumbnail/pan/1453025629839.png.800x600_80.png?objectId=1453025506722356&requestId=1e5d9de0-9ac7-42b2-b4b0-6b1573335324&salAccessKeyId=8684PRuhiDleAcmN">
+<meta property="og:image" content="http://d169.suning.com:8169/thumbnail/pan/1453025656169.png.800x600_80.png?objectId=1453025507455538&requestId=9c2d563c-1d30-4046-8ff3-7a49c9691feb&salAccessKeyId=8684PRuhiDleAcmN">
+<meta property="og:updated_time" content="2016-06-15T06:58:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始写一个 Chrome 扩展">
+<meta name="twitter:description" content="一个 Chrome 扩展其实就是一个配置文件 manifest.json 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。
+这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 stock 和 weather 。
+Manife">
+<meta name="twitter:image" content="http://d170.suning.com:8170/thumbnail/pan/1453025586421.png.800x600_80.png?objectId=1453025508934789&requestId=59b5aac0-2f1c-4374-9a05-793f12c4b916&salAccessKeyId=8684PRuhiDleAcmN">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/how-to-write-chrome-extension/"/>
+
+  <title> 从零开始写一个 Chrome 扩展 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从零开始写一个 Chrome 扩展
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-17T00:00:00+08:00" content="2016-01-17">
+              2016-01-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/how-to-write-chrome-extension/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/how-to-write-chrome-extension/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一个 Chrome 扩展其实就是一个配置文件 <code>manifest.json</code> 和一系列 HTML、CSS、JS、图片文件的集合，所以只要有前端基础，写一个简单的 Chrome 扩展是分分钟的事情。</p>
+<p>这里主要讲 Manifest 文件的编写和扩展的调试，至于HTML、CSS、JS 及文件组织，跟普通的 Web 开发一样。下面的设计到的两个栗子，源码分别在 <a href="https://github.com/huangtengfei/stock" target="_blank" rel="external">stock</a> 和 <a href="https://github.com/huangtengfei/weather" target="_blank" rel="external">weather</a> 。</p>
+<h2 id="Manifest-文件"><a href="#Manifest-文件" class="headerlink" title="Manifest 文件"></a>Manifest 文件</h2><h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><p><code>manifest.json</code> 是 Chrome 扩展的入口文件，定义了 扩展的名称（name）、版本（version）、描述（description）、图标位置（icons）和 Manifest 版本（manifest_version）等信息。</p>
+<p>其中，<code>name</code>、<code>version</code> 和 <code>manifest_version</code> 是必须的，而且 <code>manifest_version</code> 必须为 2 。</p>
+<a id="more"></a>
+<h3 id="browser-action"><a href="#browser-action" class="headerlink" title="browser_action"></a>browser_action</h3><p><code>browser_action</code> 指定扩展的图标放在 Chrome 工具栏中，它定义了扩展图标文件位置（default_icon）、悬浮提示（default_title）和点击扩展图标所显示的页面位置（default_popup）。</p>
+<p>栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"browser_action"</span>: &#123;</span><br><span class="line">		<span class="string">"default_icon"</span>: &#123;</span><br><span class="line">            <span class="string">"19"</span>: <span class="string">"images/icon19.png"</span>,</span><br><span class="line">            <span class="string">"38"</span>: <span class="string">"images/icon38.png"</span></span><br><span class="line">        &#125;,</span><br><span class="line">		<span class="string">"default_title"</span>: <span class="string">"stock helper"</span>,</span><br><span class="line">		<span class="string">"default_popup"</span>: <span class="string">"popup.html"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比如一个查看股票信息的扩展，点开图标后是这样的效果</p>
+<p><img src="http://d170.suning.com:8170/thumbnail/pan/1453025586421.png.800x600_80.png?objectId=1453025508934789&amp;requestId=59b5aac0-2f1c-4374-9a05-793f12c4b916&amp;salAccessKeyId=8684PRuhiDleAcmN" alt="stock helper"></p>
+<h3 id="options-page"><a href="#options-page" class="headerlink" title="options_page"></a>options_page</h3><p><code>options_page</code> 属性定义了扩展的设置页面，配置后在扩展图标点击右键可以看到 <strong>选项</strong> ，点击即打开指定页面。对于没有图标（没有设置 <code>browser_action</code>）的扩展，可以在 chrome://extensions/ 页面找到选项按钮。</p>
+<p>栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"options_page"</span>: <span class="string">"options.html"</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="permissions"><a href="#permissions" class="headerlink" title="permissions"></a>permissions</h3><p><code>permissions</code> 属性是一个数组，它定义了扩展需要向 Chrome 申请的权限，比如通过 XMLHttpRequest 跨域请求数据、访问浏览器选项卡（tabs）、获取当前活动选项卡（activeTab）、浏览器通知（notifications）、存储（storage）等，可以根据需要添加。</p>
+<p>栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"permissions"</span>: [</span><br><span class="line">        <span class="string">"http://hq.sinajs.cn/list=*"</span></span><br><span class="line">        <span class="string">"tabs"</span>,</span><br><span class="line">        <span class="string">"activeTab"</span>,</span><br><span class="line">        <span class="string">"notifications"</span>,</span><br><span class="line">        <span class="string">"storage"</span></span><br><span class="line">    ],</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="background"><a href="#background" class="headerlink" title="background"></a>background</h3><p><code>background</code> 可以使扩展常驻后台，比较常用的是指定子属性 <code>scripts</code>，表示在扩展启动时自动创建一个包含所有指定脚本的页面。</p>
+<p>栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"background"</span>: &#123;</span><br><span class="line">        <span class="string">"scripts"</span>: [<span class="string">"js/background.js"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="chrome-url-overrides"><a href="#chrome-url-overrides" class="headerlink" title="chrome_url_overrides"></a>chrome_url_overrides</h3><p><code>chrome_url_overrides</code> 属性可以自定义的页面替换 Chrome 相应默认的页面，比如新标签页（newtab）、书签页面（bookmarks）和历史记录（history）。</p>
+<p>栗子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"chrome_url_overrides"</span>: &#123;</span><br><span class="line">        <span class="string">"newtab"</span>: <span class="string">"tab.html"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结合前面的 background 属性，可以做一个打开新标签页，就能看到天气和当前时间的扩展，如下图</p>
+<p><img src="http://d170.suning.com:8170/thumbnail/pan/1453025629839.png.800x600_80.png?objectId=1453025506722356&amp;requestId=1e5d9de0-9ac7-42b2-b4b0-6b1573335324&amp;salAccessKeyId=8684PRuhiDleAcmN" alt="weather"></p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>在编写的过程中，可以通过打开 Chrome 设置-扩展程序（chrome://extensions/） 页面，勾选 <strong>开发者模式</strong>，点击 <strong>加载正在开发的扩展程序</strong> 按钮，选择扩展所在的文件夹，就可以在浏览器工具栏中看到自己写的扩展了。</p>
+<p><img src="http://d169.suning.com:8169/thumbnail/pan/1453025656169.png.800x600_80.png?objectId=1453025507455538&amp;requestId=9c2d563c-1d30-4046-8ff3-7a49c9691feb&amp;salAccessKeyId=8684PRuhiDleAcmN" alt="debug"></p>
+<p>如果是带图标的扩展，右键点击图标，点击审查弹出内容，在相应位置加断点，然后在控制台（console）上，输入以下命令：</p>
+<pre><code>location.reload()
+</code></pre><p>重新加载这个页面，就可以调试了。</p>
+<p>如果是覆盖新标签页的应用，直接右键审查元素，加断点，刷新即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/summary-of-2015/" rel="next" title="2015 小结">
+                <i class="fa fa-chevron-left"></i> 2015 小结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/start-ionic/" rel="prev" title="使用 Ionic 进行 Android 开发">
+                使用 Ionic 进行 Android 开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/how-to-write-chrome-extension/"
+           data-title="从零开始写一个 Chrome 扩展" data-url="http://yoursite.com/2016/01/how-to-write-chrome-extension/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Manifest-文件"><span class="nav-number">1.</span> <span class="nav-text">Manifest 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本属性"><span class="nav-number">1.1.</span> <span class="nav-text">基本属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#browser-action"><span class="nav-number">1.2.</span> <span class="nav-text">browser_action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#options-page"><span class="nav-number">1.3.</span> <span class="nav-text">options_page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#permissions"><span class="nav-number">1.4.</span> <span class="nav-text">permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background"><span class="nav-number">1.5.</span> <span class="nav-text">background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome-url-overrides"><span class="nav-number">1.6.</span> <span class="nav-text">chrome_url_overrides</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">2.</span> <span class="nav-text">调试</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

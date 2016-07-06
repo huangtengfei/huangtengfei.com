@@ -278,8 +278,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/29/project-handover-guide/" itemprop="url">
-                  项目交接规范
+                <a class="post-title-link" href="/2016/07/collection-of-june/" itemprop="url">
+                  6 月技术文章精选
                 </a>
               
             
@@ -292,8 +292,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-29T00:00:00+08:00" content="2016-06-29">
-              2016-06-29
+            <time itemprop="dateCreated" datetime="2016-07-06T00:00:00+08:00" content="2016-07-06">
+              2016-07-06
             </time>
           </span>
 
@@ -303,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/29/project-handover-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/project-handover-guide/" itemprop="commentsCount"></span>
+                <a href="/2016/07/collection-of-june/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/collection-of-june/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,11 +328,20 @@
 
       
         
-          <p>如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp; <a href="http://fullstack.alipay.net/guide/1-summary/1-introduction.html#%E7%AE%80%E4%BB%8B-0">全栈指引平台</a>）。</p>
-<h2 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>说明：</p>
-<p>介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。</p>
+          <p><a href="http://tech.meituan.com/mq-design.html">消息队列设计精要</a></p>
+<blockquote>
+<p>设计消息队列的整体思路是先 build 一个整体的数据流,例如 producer 发送给 broker, broker 发送给 consumer, consumer 回复消费确认，broker 删除/备份消息等</p>
+</blockquote>
+<p><a href="https://isux.tencent.com/svg-animate.html">带你轻松打开SVG动画的大门</a></p>
+<blockquote>
+<p>如今SVG已经在前端各个领域都有所作为，无论是项目里的应用还是demo都到处可见，这篇文章用一个实例的写法带大家轻松的打开SVG动画的大门，简单易懂</p>
+</blockquote>
+<p><a href="https://keelii.github.io/2016/06/11/javascript-throttle/">JavaScript 节流函数 Throttle 详解</a></p>
+<blockquote>
+<p>在浏览器 DOM 事件里面，有一些事件会随着用户的操作不间断触发，也就是说用户在触发这些浏览器操作的时候，如果脚本里面绑定了对应的事件处理方法，这个方法就不停的触发。这并不是我们想要的，往往我们需要添加延迟执行逻辑，这是一个界面开发中常用的技巧</p>
+</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/29/project-handover-guide/#more" rel="contents">
+            <a class="btn" href="/2016/07/collection-of-june/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -383,7 +392,112 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/13/asynchronous-of-javascript/" itemprop="url">
+                <a class="post-title-link" href="/2016/06/project-handover-guide/" itemprop="url">
+                  项目交接规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T00:00:00+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/project-handover-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/project-handover-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>如果你新加入一个项目的开发，在交接文档不齐全的情况下，相信少不了无从下手的烦恼，为了解决这个问题，本文对项目交接文档做一个简单的约定（Inspired By 项目交接中所踩的坑 &amp; <a href="http://fullstack.alipay.net/guide/1-summary/1-introduction.html#%E7%AE%80%E4%BB%8B-0">全栈指引平台</a>）。</p>
+<h2 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>说明：</p>
+<p>介绍项目开发所涉及的资源，包括代码和文档地址（从地址可以看出代码管理工具是 git 还是 svn）、系统登录地址及账号（如果已上线的话）、对接人员等。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/project-handover-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/asynchronous-of-javascript/" itemprop="url">
                   JavaScript 异步编程
                 </a>
               
@@ -408,8 +522,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/13/asynchronous-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/asynchronous-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2016/06/asynchronous-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/asynchronous-of-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -438,7 +552,7 @@
 <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>JavaScript 异步编程的默认实现是使用回调函数，也就是将第二步的操作写在一个函数里，在第一步执行完之后，这个函数开始执行。看一个 Node 官方 API 的栗子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'/etc/passwd'</span>, <span class="string">'utf8'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/13/asynchronous-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2016/06/asynchronous-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -489,7 +603,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/08/separation-of-frontend-and-backend/" itemprop="url">
+                <a class="post-title-link" href="/2016/06/separation-of-frontend-and-backend/" itemprop="url">
                   关于前后端分离的一些思考
                 </a>
               
@@ -514,8 +628,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/08/separation-of-frontend-and-backend/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/08/separation-of-frontend-and-backend/" itemprop="commentsCount"></span>
+                <a href="/2016/06/separation-of-frontend-and-backend/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/separation-of-frontend-and-backend/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -546,7 +660,7 @@
 <p>a. 前端完成静态页面，后台改成动态模板（后台渲染并提供数据）</p>
 <p>b. 前端使用动态模板或 MVVM（AngularJS，Vue） 框架，后台只提供数据（前端渲染，后台提供数据）</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/08/separation-of-frontend-and-backend/#more" rel="contents">
+            <a class="btn" href="/2016/06/separation-of-frontend-and-backend/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -597,7 +711,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/24/learn-advanced-redux/" itemprop="url">
+                <a class="post-title-link" href="/2016/05/learn-advanced-redux/" itemprop="url">
                   Redux 进阶
                 </a>
               
@@ -622,8 +736,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/24/learn-advanced-redux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/learn-advanced-redux/" itemprop="commentsCount"></span>
+                <a href="/2016/05/learn-advanced-redux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/learn-advanced-redux/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -653,119 +767,7 @@
 <p>打开 <a href="http://localhost:8080">http://localhost:8080</a> 即可看到效果。</p>
 <p>Redux 的基础知识已经在 Redux Demo 中有讲过了，所以这里只讲一下两者不同的地方，即异步 action 的实现，并介绍整个 Demo 的实现过程。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/24/learn-advanced-redux/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/19/learn-redux/" itemprop="url">
-                  Redux 入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-19T16:45:00+08:00" content="2016-05-19">
-              2016-05-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/19/learn-redux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/learn-redux/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Redux-基础"><a href="#Redux-基础" class="headerlink" title="Redux 基础"></a>Redux 基础</h2><p>与 Flux 相比，Redux 将 Dispatcher 和 Action、Store 解耦，使 Action 变成了一个纯粹的简单对象，使 Store 变成了一个 pure function（no side-effects，对一个相同的输入无论何时总返回相同结果）。</p>
-<p>Redux 有三个基本原则：</p>
-<ul>
-<li>整个应用只有一个数据源，即 Store</li>
-<li>State 只能通过触发 action 来更改</li>
-<li>State 的更改必须写成 pure function（称作 reducer），每次更改总返回一个新的 State</li>
-</ul>
-<p>Redux 单向数据流的过程：</p>
-<pre><code>store.dispatch(action) -&gt; reducer(state, action) -&gt; store.getState()
-</code></pre><p>下面分别对 Action、Reducer 和 Store 进行简单介绍。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/19/learn-redux/#more" rel="contents">
+            <a class="btn" href="/2016/05/learn-advanced-redux/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -799,7 +801,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -840,17 +842,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

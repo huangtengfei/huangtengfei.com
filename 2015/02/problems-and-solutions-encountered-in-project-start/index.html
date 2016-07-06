@@ -1,0 +1,866 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS,NodeJS,MongoDB," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="AngularJS相关问题ng-repeat中的ng-model问题描述：
+实现一个通用表单，表单中的元素类型固定，但数量和名称不固定。由于数量和名称不固定，所以不能逐一写出表单元素，只能采用ng-repeat产生元素。代码如下。
+1$scope.fields = [&apos;author&apos;, &apos;content&apos;, &apos;time&apos;];
+1234&amp;lt;div ng-repeat=&quot;field in fiel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Start开发中遇到的问题及解决办法">
+<meta property="og:url" content="http://yoursite.com/2015/02/problems-and-solutions-encountered-in-project-start/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="AngularJS相关问题ng-repeat中的ng-model问题描述：
+实现一个通用表单，表单中的元素类型固定，但数量和名称不固定。由于数量和名称不固定，所以不能逐一写出表单元素，只能采用ng-repeat产生元素。代码如下。
+1$scope.fields = [&apos;author&apos;, &apos;content&apos;, &apos;time&apos;];
+1234&amp;lt;div ng-repeat=&quot;field in fiel">
+<meta property="og:updated_time" content="2016-07-06T06:33:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Start开发中遇到的问题及解决办法">
+<meta name="twitter:description" content="AngularJS相关问题ng-repeat中的ng-model问题描述：
+实现一个通用表单，表单中的元素类型固定，但数量和名称不固定。由于数量和名称不固定，所以不能逐一写出表单元素，只能采用ng-repeat产生元素。代码如下。
+1$scope.fields = [&apos;author&apos;, &apos;content&apos;, &apos;time&apos;];
+1234&amp;lt;div ng-repeat=&quot;field in fiel">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/02/problems-and-solutions-encountered-in-project-start/"/>
+
+  <title> Start开发中遇到的问题及解决办法 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'vRj2uCB9ghxGinNZp7MN','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Start开发中遇到的问题及解决办法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-02-06T20:45:00+08:00" content="2015-02-06">
+              2015-02-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/02/problems-and-solutions-encountered-in-project-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/problems-and-solutions-encountered-in-project-start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="AngularJS相关问题"><a href="#AngularJS相关问题" class="headerlink" title="AngularJS相关问题"></a>AngularJS相关问题</h2><h3 id="ng-repeat中的ng-model"><a href="#ng-repeat中的ng-model" class="headerlink" title="ng-repeat中的ng-model"></a>ng-repeat中的ng-model</h3><p><strong>问题描述</strong>：</p>
+<p>实现一个通用表单，表单中的元素类型固定，但数量和名称不固定。由于数量和名称不固定，所以不能逐一写出表单元素，只能采用ng-repeat产生元素。代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scope.fields = [<span class="string">'author'</span>, <span class="string">'content'</span>, <span class="string">'time'</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">"field in fields"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>&#123;&#123;field&#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"field"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>很显然，这样会出现一个绑定问题，具体参见 <a href="https://github.com/angular/angular.js/issues/1267" target="_blank" rel="external">don’t bind to primitives</a></p>
+<a id="more"></a>
+<p><strong>解决方案</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$scope.fields = [</span><br><span class="line">    &#123;name: <span class="string">'author'</span>, model: <span class="string">''</span>&#125;, </span><br><span class="line">    &#123;name: <span class="string">'content'</span>, model: <span class="string">''</span>&#125;, </span><br><span class="line">    &#123;name: <span class="string">'time'</span>, model: <span class="string">''</span>&#125;, </span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">"field in fields"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>&#123;&#123;field.name&#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"field.model"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postData = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; fields.length; i++)&#123;</span><br><span class="line">    postData[fields[i].name] = fields[i].model;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>postData</code> 即是构造好的可以提交的表单对象。</p>
+<p>参考：<a href="http://stackoverflow.com/a/13715352" target="_blank" rel="external">http://stackoverflow.com/questions/13714884/difficulty-with-ng-model-ng-repeat-and-inputs</a></p>
+<h3 id="AngularJS-get-resource-from-different-port"><a href="#AngularJS-get-resource-from-different-port" class="headerlink" title="AngularJS get resource from different port"></a>AngularJS get resource from different port</h3><p><strong>问题描述</strong>：</p>
+<p>一个只有前端的 Web 应用，在 Service 层访问运行在另一个端口的 Server 提供 RESTful API 。代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">factory(<span class="string">'AppDataService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> urlPrefix = <span class="string">'http://localhost:3333/'</span>;</span><br><span class="line">    <span class="keyword">return</span> $resource(urlPrefix + <span class="string">'api/:path'</span>, &#123;&#125;, &#123;</span><br><span class="line">        list: &#123;</span><br><span class="line">            method: <span class="string">'GET'</span>,</span><br><span class="line">            params: &#123;</span><br><span class="line">                path: <span class="string">'list'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            isArray: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>然而，这样会导致端口号被截掉，因为 Angular 会将冒号后的内容作为一个参数，具体参见 <a href="https://github.com/angular/angular.js/issues/1243" target="_blank" rel="external">$resource strips port from url</a></p>
+<p><strong>解决方案</strong>：</p>
+<p>可以在端口号的冒号前使用双反斜线来解决这个问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> urlPrefix = <span class="string">'http://localhost\\:3333/'</span>;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://stackoverflow.com/a/19909809" target="_blank" rel="external">http://stackoverflow.com/questions/19909611/why-the-port-number-is-cut-when-angular-app-call-rest-service</a></p>
+<h3 id="跨域请求资源（HTTP-访问控制）"><a href="#跨域请求资源（HTTP-访问控制）" class="headerlink" title="跨域请求资源（HTTP 访问控制）"></a>跨域请求资源（HTTP 访问控制）</h3><p><strong>问题描述</strong>：</p>
+<p>同上一个问题，一个只有前端的 Web 应用，在 Service 层访问运行在另一个端口的 Server 提供 API 。由于 <a href="http://www.cnblogs.com/rainman/archive/2011/02/20/1959325.html" target="_blank" rel="external">跨域</a>（不同端口），出于安全考虑，浏览器会对脚本中发起的请求进行限制。</p>
+<p><strong>解决方案</strong>：</p>
+<p>可以使用跨域资源共享（Cross-Origin Resource Sharing (CORS)）来解决这个问题，详细可见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">HTTP访问控制</a> 。</p>
+<p>提供 API 的 Server 是使用 NodeJS 和 Express 搭建，通过如下代码可以实现其他域对该服务器资源的请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.all(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">	res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">	res.header(<span class="string">'Access-Control-Allow-Methods'</span>, </span><br><span class="line">		<span class="string">'OPTIONS,GET,POST,PUT,DELETE'</span>);</span><br><span class="line">	res.header(<span class="string">"Access-Control-Allow-Headers"</span>, </span><br><span class="line">		<span class="string">"Content-Type, Authorization, X-Requested-With"</span>);</span><br><span class="line">	<span class="keyword">if</span> (<span class="string">'OPTIONS'</span> == req.method)&#123;</span><br><span class="line">		<span class="keyword">return</span> res.send(<span class="number">200</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://stackoverflow.com/q/20754489" target="_blank" rel="external">http://stackoverflow.com/questions/20754489/access-control-allow-origin-and-angular-js-http</a></p>
+<h3 id="使用-angular-module-controller-创建-Controller"><a href="#使用-angular-module-controller-创建-Controller" class="headerlink" title="使用 angular.module().controller() 创建 Controller"></a>使用 angular.module().controller() 创建 Controller</h3><p><strong>问题描述</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'App.controllers'</span>, [])</span><br><span class="line">    .controller(<span class="string">'LoginCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $scope.property = <span class="literal">true</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">angular.module(<span class="string">'App'</span>, [<span class="string">'App.controllers'</span>])</span><br><span class="line">    .config([<span class="string">'$routeProvider'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>&#123;</span><br><span class="line">        $routeProvider.when(<span class="string">'/'</span>, &#123;</span><br><span class="line">            templateUrl: <span class="string">'partials/login.html'</span>,</span><br><span class="line">            controller: LoginCtrl</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;]);</span><br></pre></td></tr></table></figure>
+<p>这样做会产生如下错误<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">ReferenceError</span>: LoginCtrl is not defined <span class="keyword">from</span> App</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决方案</strong>：</p>
+<p>直接使用 <code>LoginCtrl</code>，会被当成变量，而这个变量并不存在，因此报错。加引号改为 <code>String</code> 即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$routeProvider.when(<span class="string">'/'</span>, &#123;</span><br><span class="line">    templateUrl: <span class="string">'partials/login.html'</span>,</span><br><span class="line">    controller: <span class="string">'LoginCtrl'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-resource-与-RESTful-数据源交互"><a href="#使用-resource-与-RESTful-数据源交互" class="headerlink" title="使用 $resource 与 RESTful 数据源交互"></a>使用 $resource 与 RESTful 数据源交互</h3><p><strong>问题描述</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'App.services'</span>, []).</span><br><span class="line">    factory(<span class="string">'myservice'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$resource</span>) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这样做会产生如下错误<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Error</span>: Unknown provider: $resourceProvider &lt;- $resource &lt;- myservice</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决方案</strong>：</p>
+<p>由于 <code>$resource</code> 并不是 AngularJS Core 的一部分，因此需要引入 <code>angular-resource.js</code> 文件，并载入 <code>ngResource</code> 模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'App.services'</span>, [<span class="string">'ngResource'</span>])</span><br></pre></td></tr></table></figure>
+<p>在使用 <code>ngCookie</code> 等其他非 AngularJS Core 的模块时，如果报以上错误，也可使用同样方法解决。</p>
+<h3 id="在Controller-中引用-Angular-Module-Constants"><a href="#在Controller-中引用-Angular-Module-Constants" class="headerlink" title="在Controller 中引用 Angular Module Constants"></a>在Controller 中引用 Angular Module Constants</h3><p><strong>问题描述</strong>：</p>
+<p>使用一个 <code>myApp.config</code> 模块定义 app 的配置信息，代码放在 <code>config.js</code> 中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp.config'</span>, [])</span><br><span class="line">    .constant(<span class="string">'APP_ID'</span>,<span class="string">'54d32639da5b64d891fe283a'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>app.js</code> 中引入 <code>myApp.config</code> 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp'</span>, [<span class="string">'myApp.controllers'</span>,<span class="string">'myApp.config'</span>])</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>index.html</code> 中引入 <code>config.js</code> 文件 ，然后在 Controller 中使用 constant</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp.controllers'</span>, [])</span><br><span class="line">    .controller(<span class="string">'ListCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'myApp.config'</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">$scope, config</span>) </span>&#123;</span><br><span class="line">            $scope.APP_ID = config;</span><br><span class="line">        &#125;])</span><br></pre></td></tr></table></figure>
+<p>这样做会产生如下错误</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unknown provider: myApp.configProvider &lt;- myApp.config</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong>：</p>
+<p>直接注入常量名字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp.controllers'</span>, [])</span><br><span class="line">    .controller(<span class="string">'ListCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'APP_ID'</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">$scope, APP_ID</span>) </span>&#123;</span><br><span class="line">            $scope.APP_ID = APP_ID;</span><br><span class="line">        &#125;])</span><br></pre></td></tr></table></figure>
+<h3 id="cookieStore-的使用"><a href="#cookieStore-的使用" class="headerlink" title="$cookieStore 的使用"></a>$cookieStore 的使用</h3><p><strong>问题描述</strong>：</p>
+<p>使用 $cookieStore 维护浏览器端用户登录信息，并进行相应跳转</p>
+<p><strong>解决方案</strong>：</p>
+<p>在 <code>index.html</code> 中引入 <code>angular-cookies.js</code> 文件，并载入 <code>ngCookies</code> 模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp'</span>, [<span class="string">'ngCookies'</span>, <span class="string">'myApp.controllers'</span>])</span><br></pre></td></tr></table></figure>
+<p>将 <code>$cookieStore</code> 注入到 Controller 中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.controller(<span class="string">'LoginCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$location'</span>, <span class="string">'$cookieStore'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $location, $cookieStore</span>) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>使用 <code>$cookieStore</code> ，在登录成功后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cookieStore.put(<span class="string">'username'</span>, $scope.user.username);</span><br><span class="line">$location.path(<span class="string">'/list'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>在退出登录后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cookieStore.remove(<span class="string">'username'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>在其他页面<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!$cookieStore.get(<span class="string">'username'</span>)) &#123;</span><br><span class="line">    $location.path(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用GET方法请求资源时附带参数（req-query和req-params区别）"><a href="#使用GET方法请求资源时附带参数（req-query和req-params区别）" class="headerlink" title="使用GET方法请求资源时附带参数（req.query和req.params区别）"></a>使用GET方法请求资源时附带参数（req.query和req.params区别）</h3><p><strong>问题描述</strong>：</p>
+<p>获取某一用户（author 为 jason）发布的所有状态。</p>
+<p><strong>解决方案</strong>：</p>
+<p>在 Server 端定义拦截<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/api/:schemaName/list'</span>, httpAPI.list);</span><br></pre></td></tr></table></figure></p>
+<p>在 Service 定义方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">factory(<span class="string">'AppDataService'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$resource</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> urlPrefix = <span class="string">'http://localhost:3333/'</span>;</span><br><span class="line">    <span class="keyword">return</span> $resource(urlPrefix + <span class="string">'api/:path1/:path2'</span>, &#123;&#125;, &#123;</span><br><span class="line">        list: &#123;</span><br><span class="line">            method: <span class="string">'GET'</span>,</span><br><span class="line">            params: &#123;</span><br><span class="line">                path1: <span class="string">''</span>,</span><br><span class="line">                path2: <span class="string">'list'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            isArray: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>在 Controller 中调用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AppDataService.list(&#123;path1: <span class="string">'wbs'</span>, author: <span class="string">'jason'</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">wbs</span>) </span>&#123;</span><br><span class="line">    $scope.wbs = wbs;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>调用时对象中的键 <code>list({path1: &#39;wbs&#39;, author: &#39;jason&#39;})</code> 会与参数名 <code>params: {path1: &#39;&#39;, path2: &#39;list&#39;}</code> 进行匹配，如果传入了一个没有在 URL 中设置过的参数 <code>{author: &#39;jason&#39;}</code> ，那它会以普通的查询字符串的形式被发送，因此，将会产生一个这样的请求 url<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Name: /list?author=jason</span><br><span class="line">Path: /api/wbs/list</span><br></pre></td></tr></table></figure></p>
+<p>在 Server 端获取参数，<code>req.query</code> 经过解析后返回 <code>{author: &quot;jason&quot;}</code> 对象，<code>req.params</code> 返回与 route 拦截匹配的参数，即 <code>req.params.schemaName</code> 可得到 <code>&#39;wbs&#39;</code> 。</p>
+<p>参考：<a href="http://stackoverflow.com/a/18524191" target="_blank" rel="external">Request.query and Request.param in ExpressJS</a></p>
+<h3 id="Controller-中参数的压缩"><a href="#Controller-中参数的压缩" class="headerlink" title="Controller 中参数的压缩"></a>Controller 中参数的压缩</h3><p><strong>问题描述</strong>：</p>
+<p>由于AngularJS是通过控制器构造函数的参数名字来推断依赖服务名称的。所以如果要压缩Controller的代码，它所有的参数也同时会被压缩，这时候依赖注入系统就不能正确的识别出服务了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.controller(<span class="string">'LoginCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $location, $cookieStore</span>) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong>：</p>
+<p>第一种方法，把要注入的服务放到一个字符串数组（代表依赖的名字）里，数组最后一个元素是控制器的方法函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.controller(<span class="string">'LoginCtrl'</span>, [<span class="string">'$scope'</span>, <span class="string">'$location'</span>, <span class="string">'$cookieStore'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $location, $cookieStore</span>) </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure></p>
+<p>第二种方法，在控制器函数里面给$inject属性赋值一个依赖服务标识符的数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoginCtrl.$inject = [<span class="string">'$scope'</span>, <span class="string">'$location'</span>, <span class="string">'$cookieStore'</span>];</span><br></pre></td></tr></table></figure></p>
+<p>参考：<a href="http://angularjs.cn/A008" target="_blank" rel="external">XHR和依赖注入 </a></p>
+<h2 id="Mongoose相关问题"><a href="#Mongoose相关问题" class="headerlink" title="Mongoose相关问题"></a>Mongoose相关问题</h2><h3 id="Mongoose在创建Model时对Collection的命名"><a href="#Mongoose在创建Model时对Collection的命名" class="headerlink" title="Mongoose在创建Model时对Collection的命名"></a>Mongoose在创建Model时对Collection的命名</h3><p><strong>问题描述</strong>：</p>
+<p>通过Mongoose操作MongoDB，创建一个user模型，在数据库生成的集合名为users</p>
+<p><strong>解决方案</strong>：</p>
+<p>使用Mongoose从创建连接到向数据库写入一条数据经历了以下步骤</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数据库（相当于在使用Hibernate的时候配置数据库）</span></span><br><span class="line">mongoose.connect(<span class="string">"mongodb://localhost/test"</span>);</span><br><span class="line"><span class="comment">// 定义UserSchema（相当于数据库建表）</span></span><br><span class="line"><span class="keyword">var</span> UserSchema = mongoose.Schema(&#123;</span><br><span class="line">    username: <span class="built_in">String</span>,</span><br><span class="line">    password: <span class="built_in">String</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建User模型（相当于构建对象和数据库表映射）</span></span><br><span class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">"user"</span>, UserSchema);</span><br><span class="line"><span class="comment">// 通过User模型，创建对象</span></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    username: <span class="string">'admin'</span>,</span><br><span class="line">    password: <span class="string">'admin'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 通过save方法持久化对象</span></span><br><span class="line">user.save(<span class="function"><span class="keyword">function</span> (<span class="params">err, doc</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err || !doc) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>向 MongoDB 中一个不存在的 collection 插入文档，数据库会自动创建一个 Collection ，然而为什么创建 user 模型会生成 users 集合？通过分析 Mongoose 源码可以发现，Mongoose 在模型名到数据库集合名的转换上，做了特殊处理，即使用名词复数形式。</p>
+<p>可以通过两种办法解决此问题（即保持模型名和集合名的一致）：</p>
+<ul>
+<li>准确使用名词复数对模型命名</li>
+<li>注释掉 Mongoose 中名词变复数部分代码</li>
+</ul>
+<p>参考：<a href="http://aiilive.blog.51cto.com/1925756/1405203" target="_blank" rel="external">Mongoose在创建Model时对Collection的命名策略</a></p>
+<h3 id="Mongoose-v-属性"><a href="#Mongoose-v-属性" class="headerlink" title="Mongoose __v 属性"></a>Mongoose __v 属性</h3><p><strong>问题描述</strong>：</p>
+<p>使用 Mongoose，在 <code>save()</code> 持久化对象时，会出现一个 <code>__v</code> 字段</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    username: <span class="string">"admin"</span>,</span><br><span class="line">    password: <span class="string">'admin'</span></span><br><span class="line">&#125;);</span><br><span class="line">user.save() <span class="comment">// &#123; __v: 0, username: 'admin', password: 'admin' &#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong>：</p>
+<p><code>__v</code> 是默认的 <code>versionKey</code> ，在通过 Mongoose 第一次创建一个 document 时产生。可以通过设置 <code>versionKey</code> 为 <code>false</code> 使其不可用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> mongoose.Schema(&#123;..&#125;, &#123; versionKey: <span class="literal">false</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    username: <span class="string">"admin"</span>,</span><br><span class="line">    password: <span class="string">'admin'</span></span><br><span class="line">&#125;);</span><br><span class="line">user.save() <span class="comment">// &#123;username: 'admin', password: 'admin' &#125;</span></span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://stackoverflow.com/questions/13699784/mongoose-v-property-hide" target="_blank" rel="external">Mongoose __v property - hide</a></p>
+<h3 id="使用-Mongoose-做高级查询"><a href="#使用-Mongoose-做高级查询" class="headerlink" title="使用 Mongoose 做高级查询"></a>使用 Mongoose 做高级查询</h3><p><strong>问题描述</strong>：</p>
+<p>从一个消息 Collection 中查询两个好友（aa和bb）之间的聊天记录</p>
+<p><strong>解决方案</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    $or: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"from"</span>: <span class="string">"aa"</span>,</span><br><span class="line">            <span class="string">"to"</span>: <span class="string">"bb"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"from"</span>: <span class="string">"bb"</span>,</span><br><span class="line">            <span class="string">"to"</span>: <span class="string">"aa"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">db.find(options);</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://stackoverflow.com/questions/8017989/how-do-you-do-more-advance-queries-with-mongoose-specifically-a-query-using-or" target="_blank" rel="external">How do you do more advance queries with Mongoose?</a><br><a href="http://docs.mongodb.org/manual/reference/operator/query/or/" target="_blank" rel="external">http://docs.mongodb.org/manual/reference/operator/query/or/</a></p>
+<h2 id="NodeJS-相关问题"><a href="#NodeJS-相关问题" class="headerlink" title="NodeJS 相关问题"></a>NodeJS 相关问题</h2><h3 id="全局地使用-EventEmitter"><a href="#全局地使用-EventEmitter" class="headerlink" title="全局地使用 EventEmitter"></a>全局地使用 EventEmitter</h3><p><strong>问题描述</strong>：</p>
+<p>在多个地方（不同文件）使用同一个 EventEmitter 对象</p>
+<p><strong>解决方案</strong>：</p>
+<p>在单个文件中，EventEmitter 的使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> events = <span class="built_in">require</span>(<span class="string">"events"</span>);</span><br><span class="line"><span class="keyword">var</span> emitter = <span class="keyword">new</span> events.EventEmitter();</span><br><span class="line">emitter.on(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Ready? Go!'</span>);</span><br><span class="line">&#125;)</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'ready'</span>);</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure></p>
+<p>在多个地方使用同一个 EventEmitter，可以使用 <code>module.exports</code><br>在 <code>pubsub.js</code> 文件中定义模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> EventEmitter();</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>a.js</code> 文件中使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pubsub = <span class="built_in">require</span>(<span class="string">'./pubsub'</span>);</span><br><span class="line">pubsub.on(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Ready? Go!'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在 <code>b.js</code> 文件中使用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pubsub = <span class="built_in">require</span>(<span class="string">'./pubsub'</span>);</span><br><span class="line">pubsub.emit(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'ready'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>参考：<a href="http://nodejs.org/api/modules.html#modules_module_exports" target="_blank" rel="external">http://nodejs.org/api/modules.html#modules_module_exports</a><br><a href="http://stackoverflow.com/questions/17177735/nodejs-use-eventemitter-object-globally" target="_blank" rel="external">http://stackoverflow.com/questions/17177735/nodejs-use-eventemitter-object-globally</a><br><a href="http://sunspot.blog.51cto.com/372554/1266428" target="_blank" rel="external">http://sunspot.blog.51cto.com/372554/1266428</a></p>
+<h3 id="在Node中用Q实现Promise"><a href="#在Node中用Q实现Promise" class="headerlink" title="在Node中用Q实现Promise"></a>在Node中用Q实现Promise</h3><p><strong>问题描述</strong>：</p>
+<p>在调用增删改查接口前，需要先获取该 Collection 的 Model，获取 Model 之前，需要从 schemas 集合获取该 Model 的 Schema，而前面这两个操作都是异步的。</p>
+<p><strong>解决方案</strong>：</p>
+<p>可以使用 promise 。</p>
+<blockquote>
+<p>promise是对异步编程的一种抽象。它是一个代理对象，代表一个必须进行异步处理的函数返回的值或抛出的异常。 – Kris Kowal on JSJ</p>
+</blockquote>
+<p>promise 对象的核心部件是它的 then 方法，它是对 promise 解包以得到异步操作结果（或异常）的函数，用这个方法从异步操作中得到返回值（履约值），或抛出的异常（拒绝的理由）。then 方法有两个可选的参数，都是 callback 函数。</p>
+<p>Node中可以使用 Q （<code>npm install q</code>） 来将 callback 变成 promise</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Q = <span class="built_in">require</span>(<span class="string">'q'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSchema</span>(<span class="params">dbName, schemaName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> deferred = Q.defer();</span><br><span class="line">    Db.find(&#123;<span class="string">'name'</span>: schemaName&#125;, <span class="string">'value'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, schema</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(error)&#123;</span><br><span class="line">            <span class="comment">// rejects the promise with `error` as the reason</span></span><br><span class="line">            deferred.reject(error)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// fulfills the promise with `data` as the value</span></span><br><span class="line">            deferred.resolve(schema);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> deferred.promise;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getModel</span>(<span class="params">dbName, shemaName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> deferred = Q.defer();</span><br><span class="line">    <span class="comment">// the first callback is onFulfilled, the seconde is onRejected</span></span><br><span class="line">    getSchema(dbName, schemaName).then(<span class="function"><span class="keyword">function</span>(<span class="params">schemaObj</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!!schemaObj)&#123;</span><br><span class="line">            DbSchema = <span class="keyword">new</span> mongoose.Schema(schemaObj);</span><br><span class="line">            <span class="keyword">var</span> indb = mongo.model(schemaName, DbSchema);</span><br><span class="line">            deferred.resolve(indb);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            deferred.resolve(<span class="literal">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">        deferred.reject(err);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> deferred.promise;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="http://www.ituring.com.cn/article/54547" target="_blank" rel="external">在Node.js 中用 Q 实现Promise – Callbacks之外的另一种选择</a></p>
+<h3 id="使用-Forever-运行-Node-应用"><a href="#使用-Forever-运行-Node-应用" class="headerlink" title="使用 Forever 运行 Node 应用"></a>使用 Forever 运行 Node 应用</h3><p><strong>问题描述</strong>：</p>
+<p>在 node 进程因为内部错误挂掉时需要重启 node server ，在服务器端文件变更时，需要重启 node server</p>
+<p><strong>解决方案</strong>：</p>
+<p>可以安装 forever 模块，使用 forever 运行 node 应用。</p>
+<p>forever 是一个 nodejs 守护进程，能够启动，停止，重启 app 应用。forever 完全基于命令行操作，在 forever 进程之下，创建 node 的子进程，通过 monitor 监控 node 子进程的运行情况，一旦文件更新，或者进程挂掉，forever 会自动重启 node 服务器，确保应用正常运行。</p>
+<p>安装<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// forever要求安装到全局环境</span></span><br><span class="line">npm install forever -g</span><br></pre></td></tr></table></figure></p>
+<p>启动<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -p指定根目录，-l指定输出日志，-e指定错误日志，-a表示日志使用追加模式</span></span><br><span class="line">forever -p . -l access.log -e error.log -a start app.js</span><br></pre></td></tr></table></figure></p>
+<p>停止<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 停止所有运行的node App</span></span><br><span class="line">forever stopall</span><br><span class="line"><span class="comment">// 停止其中一个node App</span></span><br><span class="line">forever stop app.js</span><br></pre></td></tr></table></figure></p>
+<p>此外，也可以 <a href="http://blog.csdn.net/godha/article/details/17300293" target="_blank" rel="external">使用nodemon让node自动重启 </a></p>
+<p>参考：<a href="http://blog.fens.me/nodejs-server-forever/" target="_blank" rel="external">Nodejs服务器管理模块forever</a><br><a href="http://yansong.me/2013/02/27/use-forever-run-a-node-app-created-by-express.html" target="_blank" rel="external">使用forever运行nodejs应用</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+            <a href="/tags/NodeJS/" rel="tag">#NodeJS</a>
+          
+            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/how-to-build-a-web-app-based-on-start/" rel="next" title="基于Start快速构建一个Web应用">
+                <i class="fa fa-chevron-left"></i> 基于Start快速构建一个Web应用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/learn-node/" rel="prev" title="《Node入门》读书笔记">
+                《Node入门》读书笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/02/problems-and-solutions-encountered-in-project-start/"
+           data-title="Start开发中遇到的问题及解决办法" data-url="http://yoursite.com/2015/02/problems-and-solutions-encountered-in-project-start/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS相关问题"><span class="nav-number">1.</span> <span class="nav-text">AngularJS相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-repeat中的ng-model"><span class="nav-number">1.1.</span> <span class="nav-text">ng-repeat中的ng-model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS-get-resource-from-different-port"><span class="nav-number">1.2.</span> <span class="nav-text">AngularJS get resource from different port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域请求资源（HTTP-访问控制）"><span class="nav-number">1.3.</span> <span class="nav-text">跨域请求资源（HTTP 访问控制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-angular-module-controller-创建-Controller"><span class="nav-number">1.4.</span> <span class="nav-text">使用 angular.module().controller() 创建 Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-resource-与-RESTful-数据源交互"><span class="nav-number">1.5.</span> <span class="nav-text">使用 $resource 与 RESTful 数据源交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Controller-中引用-Angular-Module-Constants"><span class="nav-number">1.6.</span> <span class="nav-text">在Controller 中引用 Angular Module Constants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookieStore-的使用"><span class="nav-number">1.7.</span> <span class="nav-text">$cookieStore 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用GET方法请求资源时附带参数（req-query和req-params区别）"><span class="nav-number">1.8.</span> <span class="nav-text">使用GET方法请求资源时附带参数（req.query和req.params区别）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller-中参数的压缩"><span class="nav-number">1.9.</span> <span class="nav-text">Controller 中参数的压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mongoose相关问题"><span class="nav-number">2.</span> <span class="nav-text">Mongoose相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongoose在创建Model时对Collection的命名"><span class="nav-number">2.1.</span> <span class="nav-text">Mongoose在创建Model时对Collection的命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongoose-v-属性"><span class="nav-number">2.2.</span> <span class="nav-text">Mongoose __v 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Mongoose-做高级查询"><span class="nav-number">2.3.</span> <span class="nav-text">使用 Mongoose 做高级查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS-相关问题"><span class="nav-number">3.</span> <span class="nav-text">NodeJS 相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局地使用-EventEmitter"><span class="nav-number">3.1.</span> <span class="nav-text">全局地使用 EventEmitter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Node中用Q实现Promise"><span class="nav-number">3.2.</span> <span class="nav-text">在Node中用Q实现Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Forever-运行-Node-应用"><span class="nav-number">3.3.</span> <span class="nav-text">使用 Forever 运行 Node 应用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
