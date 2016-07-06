@@ -501,8 +501,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/learn-sass/" itemprop="url">
-                  Sass 初探
+                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
+                  写出优雅的CSS
                 </a>
               
             
@@ -526,8 +526,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/learn-sass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-sass/" itemprop="commentsCount"></span>
+                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -551,19 +551,11 @@
 
       
         
-          <h2 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Sass 需要 Ruby 运行环境，在 Windows 上使用需要先安装 Ruby。</p>
-<p>然后，在命令行下输入命令：</p>
-<pre><code>gem install sass
-</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Sass 命令的格式如下：</p>
-<pre><code>sass [选项] [输入文件] [输出文件]
-</code></pre><p>也可以让 Sass 监听某个文件或目录，一旦源文件有变动，就自动生成编译后的版本：</p>
-<pre><code>// 监控文件
-sass --watch input.scss:output.css
-// 监控目录
-sass --watch dir/sass:dir/css
-</code></pre>
+          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
+<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
+<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/learn-sass/#more" rel="contents">
+            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -727,8 +719,8 @@ sass --watch dir/sass:dir/css
             
               
                 
-                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
-                  写出优雅的CSS
+                <a class="post-title-link" href="/2015/08/learn-sass/" itemprop="url">
+                  Sass 初探
                 </a>
               
             
@@ -752,8 +744,8 @@ sass --watch dir/sass:dir/css
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
+                <a href="/2015/08/learn-sass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-sass/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -777,11 +769,19 @@ sass --watch dir/sass:dir/css
 
       
         
-          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
-<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
-<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
+          <h2 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Sass 需要 Ruby 运行环境，在 Windows 上使用需要先安装 Ruby。</p>
+<p>然后，在命令行下输入命令：</p>
+<pre><code>gem install sass
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Sass 命令的格式如下：</p>
+<pre><code>sass [选项] [输入文件] [输出文件]
+</code></pre><p>也可以让 Sass 监听某个文件或目录，一旦源文件有变动，就自动生成编译后的版本：</p>
+<pre><code>// 监控文件
+sass --watch input.scss:output.css
+// 监控目录
+sass --watch dir/sass:dir/css
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
+            <a class="btn" href="/2015/08/learn-sass/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -861,13 +861,6 @@ sass --watch dir/sass:dir/css
             </a>
           </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
           
 
           

@@ -488,6 +488,111 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/the-usage-of-settimeout/" itemprop="url">
+                  setTimeout 的用法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
+              2015-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-settimeout/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>只有第二种和第三种是正确的用法。</p>
+<h2 id="setTimeout-函数名-延迟"><a href="#setTimeout-函数名-延迟" class="headerlink" title="setTimeout(函数名, 延迟)"></a>setTimeout(函数名, 延迟)</h2><pre><code>setTimeout(show(), 1000);
+</code></pre><p><code>show()</code> 是函数运行，这种传递方式真正传进去的是 <code>show</code> 函数的返回值。因此会直接执行，无延迟。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/the-usage-of-settimeout/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/the-usage-of-this-in-javascript/" itemprop="url">
                   JavaScript 中 this 的用法
                 </a>
@@ -545,111 +650,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">    alert(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line">test();     <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/09/the-usage-of-this-in-javascript/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/the-usage-of-settimeout/" itemprop="url">
-                  setTimeout 的用法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
-              2015-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-settimeout/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>只有第二种和第三种是正确的用法。</p>
-<h2 id="setTimeout-函数名-延迟"><a href="#setTimeout-函数名-延迟" class="headerlink" title="setTimeout(函数名, 延迟)"></a>setTimeout(函数名, 延迟)</h2><pre><code>setTimeout(show(), 1000);
-</code></pre><p><code>show()</code> 是函数运行，这种传递方式真正传进去的是 <code>show</code> 函数的返回值。因此会直接执行，无延迟。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/the-usage-of-settimeout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -834,13 +834,6 @@
             </a>
           </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
           
 
           
