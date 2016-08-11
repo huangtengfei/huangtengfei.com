@@ -248,6 +248,115 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/communication-in-controller/" itemprop="url">
+                  AngularJS 中 Controller 之间的通信
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-25T00:00:00+08:00" content="2015-09-25">
+              2015-09-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/communication-in-controller/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/communication-in-controller/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>用 Angular 进行开发，基本上都会遇到 Controller 之间通信的问题，本文对此进行一个总结。</p>
+<p>在 Angular 中，Controller 之间通信的方式主要有三种：</p>
+<p>1）作用域继承。利用子 Controller 控制父 Controller 上的数据。（父 Controller 中的数据要为引用类型，不能是基本类型，原因参见 <a href="http://huangtengfei.com/2015/09/scope-in-angularjs/">AngularJS中的作用域</a> 一文）</p>
+<p>2）注入服务。把需要共享的数据注册为一个 <code>service</code>，在需要的 Controller 中注入。</p>
+<p>3）基于事件。利用 Angular 的事件机制，使用 <code>$on</code>、<code>$emit</code> 和 <code>$boardcast</code></p>
+<p>其中，作用域继承仅限于上下级之间的通信，注入服务和基于事件的机制可以实现任意级别的 Controller 通信。</p>
+<p>在 <a href="http://huangtengfei.github.io/angular-demo/#/communication-between-controllers">这里</a> 可以查看下面栗子的演示。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/communication-in-controller/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/factory-pattern/" itemprop="url">
                   工厂模式
                 </a>
@@ -458,111 +567,6 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/the-usage-of-settimeout/" itemprop="url">
-                  setTimeout 的用法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
-              2015-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-settimeout/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>只有第二种和第三种是正确的用法。</p>
-<h2 id="setTimeout-函数名-延迟"><a href="#setTimeout-函数名-延迟" class="headerlink" title="setTimeout(函数名, 延迟)"></a>setTimeout(函数名, 延迟)</h2><pre><code>setTimeout(show(), 1000);
-</code></pre><p><code>show()</code> 是函数运行，这种传递方式真正传进去的是 <code>show</code> 函数的返回值。因此会直接执行，无延迟。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/the-usage-of-settimeout/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/09/the-usage-of-this-in-javascript/" itemprop="url">
                   JavaScript 中 this 的用法
                 </a>
@@ -670,8 +674,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/the-oop-of-javascript/" itemprop="url">
-                  理解 JavaScript 面向对象编程
+                <a class="post-title-link" href="/2015/09/the-usage-of-settimeout/" itemprop="url">
+                  setTimeout 的用法
                 </a>
               
             
@@ -684,8 +688,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-10T00:00:00+08:00" content="2015-09-10">
-              2015-09-10
+            <time itemprop="dateCreated" datetime="2015-09-11T00:00:00+08:00" content="2015-09-11">
+              2015-09-11
             </time>
           </span>
 
@@ -695,8 +699,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/the-oop-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-oop-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/09/the-usage-of-settimeout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/the-usage-of-settimeout/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -720,11 +724,11 @@
 
       
         
-          <h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>创建对象有两种方法。</p>
-<h3 id="原始模式"><a href="#原始模式" class="headerlink" title="原始模式"></a>原始模式</h3><p>一种是原始模式，最简单的就是直接用 <code>{...}</code> </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">    name : <span class="string">'htf'</span>,</span><br><span class="line">　　age : <span class="string">'24'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方式二</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">　　    name: name,</span><br><span class="line">　　    age: age</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">'zs'</span>, <span class="number">25</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = Person(<span class="string">'ls'</span>, <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+          <p>只有第二种和第三种是正确的用法。</p>
+<h2 id="setTimeout-函数名-延迟"><a href="#setTimeout-函数名-延迟" class="headerlink" title="setTimeout(函数名, 延迟)"></a>setTimeout(函数名, 延迟)</h2><pre><code>setTimeout(show(), 1000);
+</code></pre><p><code>show()</code> 是函数运行，这种传递方式真正传进去的是 <code>show</code> 函数的返回值。因此会直接执行，无延迟。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/the-oop-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/09/the-usage-of-settimeout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -799,7 +803,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

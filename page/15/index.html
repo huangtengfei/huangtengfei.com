@@ -248,6 +248,114 @@
             
               
                 
+                <a class="post-title-link" href="/2015/03/the-standard-library-of-javascript/" itemprop="url">
+                  JavaScript 学习系列二：Object 对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-12T11:45:30+08:00" content="2015-03-12">
+              2015-03-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/the-standard-library-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/the-standard-library-of-javascript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Object对象的方法"><a href="#Object对象的方法" class="headerlink" title="Object对象的方法"></a>Object对象的方法</h2><p>Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value === <span class="built_in">Object</span>(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>要在Object对象上面部署一个方法，有两种做法。</p>
+<ul>
+<li>部署在Object对象本身</li>
+<li>部署在Object.prototype对象</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/03/the-standard-library-of-javascript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/03/the-basic-grammer-of-javascript/" itemprop="url">
                   JavaScript 学习系列一：基本语法
                 </a>
@@ -668,113 +776,6 @@ $ git config --global user.email &quot;email@example.com&quot;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/02/learn-node/" itemprop="url">
-                  《Node入门》读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-02-09T17:52:12+08:00" content="2015-02-09">
-              2015-02-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/02/learn-node/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/learn-node/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>原文链接：<a href="http://www.nodebeginner.org/index-zh-cn.html">Node入门</a></p>
-<h3 id="基于事件驱动的回调"><a href="#基于事件驱动的回调" class="headerlink" title="基于事件驱动的回调"></a>基于事件驱动的回调</h3><p>不论是在等待用户的按键行为，还是在等待远程服务器的批量数据，所需要做的都只是定义一个回调。</p>
-<p>给某个方法传递了一个函数，这个方法在有相应事件发生时调用这个函数来进行回调。 </p>
-<h3 id="构建应用的模块"><a href="#构建应用的模块" class="headerlink" title="构建应用的模块"></a>构建应用的模块</h3><p>只要把不同功能的代码放入不同的模块中，保持代码分离还是相当简单的。 </p>
-<p>这种方法允许你拥有一个干净的主文件（main file），你可以用Node.js执行它；同时你可以拥有干净的模块，它们可以被主文件和其他的模块调用。 </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/02/learn-node/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -820,7 +821,7 @@ $ git config --global user.email &quot;email@example.com&quot;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -248,6 +248,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/questions-and-answers-of-angularjs/" itemprop="url">
+                  关于 AngularJS 的一些问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-03T00:00:00+08:00" content="2016-03-03">
+              2016-03-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/questions-and-answers-of-angularjs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/questions-and-answers-of-angularjs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="ng-if-跟-ng-show-hide-的区别有哪些？"><a href="#ng-if-跟-ng-show-hide-的区别有哪些？" class="headerlink" title="ng-if 跟 ng-show/hide 的区别有哪些？"></a>ng-if 跟 ng-show/hide 的区别有哪些？</h2><p>第一点区别是，<code>ng-if</code> 在后面表达式为 true 的时候才创建这个 dom 节点，<code>ng-show</code> 是初始时就创建了，用 <code>display:block</code> 和 <code>display:none</code> 来控制显示和不显示。</p>
+<p>第二点区别是，<code>ng-if</code> 会（隐式地）产生新作用域，<code>ng-switch</code> 、 <code>ng-include</code> 等会动态创建一块界面的也是如此。</p>
+<p>这样会导致，在 <code>ng-if</code> 中用基本变量绑定 <code>ng-model</code>，并在外层 div 中把此 model 绑定给另一个显示区域，内层改变时，外层不会同步改变，因为此时已经是两个变量了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-if</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/questions-and-answers-of-angularjs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/start-ionic/" itemprop="url">
                   使用 Ionic 进行 Android 开发
                 </a>
@@ -661,115 +767,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/the-note-of-20151210/" itemprop="url">
-                  组件化、Virtual DOM、MVVM
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-10T00:00:00+08:00" content="2015-12-10">
-              2015-12-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/the-note-of-20151210/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/the-note-of-20151210/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文所有内容均是对原作者文章内容的摘抄，仅作个人笔记使用，欲深入了解请查看原文。</p>
-<h3 id="组件化入门"><a href="#组件化入门" class="headerlink" title="组件化入门"></a>组件化入门</h3><h4 id="前端架构："><a href="#前端架构：" class="headerlink" title="前端架构："></a>前端架构：</h4><ol>
-<li>components：前端UI组件，封装html，js和css，组件之间通过 EventBus 通信</li>
-<li>services：前端数据缓存和操作层</li>
-<li>dataBus：封装Ajax请求，和后端进行数据交互</li>
-<li>common/utils：共用部件，可复用的函数和数据</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/the-note-of-20151210/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -815,7 +812,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

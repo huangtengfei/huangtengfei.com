@@ -354,6 +354,110 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/javascript-style-guide/" itemprop="url">
+                  JavaScript 编码规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
+              2015-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/javascript-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/javascript-style-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>每行不得超过 <code>120</code> 个字符。运算符处换行时，运算符必须在新行的行首。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (user.isAuthenticated()</span><br><span class="line">    &amp;&amp; user.isInRole(<span class="string">'admin'</span>)</span><br><span class="line">    &amp;&amp; user.hasAuthority(<span class="string">'add-admin'</span>)</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="comment">// 建议最终将右括号 ) 与左大括号 &#123; 放在独立一行，保证与 if 内语句块能容易视觉辨识。</span></span><br><span class="line">    <span class="comment">// Code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不同行为或逻辑的语句集，使用空行隔开，更易阅读。</span></span><br><span class="line"><span class="keyword">var</span> result = number1 + number2 + number3</span><br><span class="line">    + number4 + number5;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 特别的，对于HTML片段的拼接，通过缩进，保持和HTML相同的结构。</span></span><br><span class="line"><span class="keyword">var</span> html = <span class="string">''</span> <span class="comment">// 此处用一个空字符串，以便整个HTML片段都在新行严格对齐</span></span><br><span class="line">    + <span class="string">'&lt;article&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;h1&gt;Title here&lt;/h1&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;p&gt;This is a paragraph&lt;/p&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;footer&gt;Complete&lt;/footer&gt;'</span></span><br><span class="line">    + <span class="string">'&lt;/article&gt;'</span>;    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 三元运算符由3部分组成，因此其换行应当根据每个部分的长度不同，形成不同的情况。</span></span><br><span class="line"><span class="keyword">var</span> result = thisIsAVeryVeryLongCondition</span><br><span class="line">    ? resultA : resultB;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当参数过多时，将每个参数独立写在一行上，并将结束的右括号 ) 独立一行。</span></span><br><span class="line"><span class="comment">// 所有参数必须增加一个缩进。</span></span><br><span class="line">foo(</span><br><span class="line">    aVeryVeryLongArgument,</span><br><span class="line">    anotherVeryLongArgument,</span><br><span class="line">    callback</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和对象初始化的混用，严格按照每个对象的 &#123; 和结束 &#125; 在独立一行的风格书写。</span></span><br><span class="line"><span class="keyword">var</span> array = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/javascript-style-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/html-style-guide/" itemprop="url">
                   HTML 编码规范
                 </a>
@@ -648,109 +752,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/css-layout/" itemprop="url">
-                  两栏布局和三栏布局的实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-06T00:00:00+08:00" content="2015-08-06">
-              2015-08-06
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/css-layout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/css-layout/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h2><h3 id="用-position"><a href="#用-position" class="headerlink" title="用 position"></a>用 position</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/css-layout/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -796,7 +797,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

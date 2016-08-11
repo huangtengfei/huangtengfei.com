@@ -248,6 +248,111 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
+                  写出优雅的CSS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
+<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
+<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/07/jquery/" itemprop="url">
                   jQuery 学习笔记
                 </a>
@@ -648,113 +753,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/the-design-patterns-of-javascript/" itemprop="url">
-                  JavaScript 设计模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-07T00:00:00+08:00" content="2015-07-07">
-              2015-07-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/the-design-patterns-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/the-design-patterns-of-javascript/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>确保只有一个实例，并提供一个全局访问点。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>线程池、全局缓存、浏览器中的Window对象等。</p>
-<h3 id="通用的惰性单例"><a href="#通用的惰性单例" class="headerlink" title="通用的惰性单例"></a>通用的惰性单例</h3><p>依据单一职责原则，创建对象和管理单例的逻辑应该分开放置。</p>
-<p>管理单例的逻辑是，用一个变量标记是否创建过对象，如果是，则下次直接返回这个已经创建好的对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">if</span>(!obj)&#123;</span><br><span class="line">    obj = xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/the-design-patterns-of-javascript/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -800,7 +798,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

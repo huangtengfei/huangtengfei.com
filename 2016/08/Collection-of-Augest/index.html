@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="学习笔记," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,40 @@
 
 
 
-<meta name="description" content="访问兄弟节点由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 nextSibling 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。
-解决办法：判断节点 nodeType 是否为1, 如是为元素节点，跳过。
-123456789function get_nextSibling(n)&amp;#123;    var x = n.nextSibling;">
+<meta name="description" content="7 月技术文章精选我们是如何做好前端工程化和静态资源管理
+
+文章介绍了提升开发体验和性能的几个方法，并对他们团队的工程化方案 Athena 的设计思路和功能做了介绍，有一定的参考价值。
+
+如何打造公司级公共前端团队
+
+作为公司级的公共前端团队，应该如何对团队进行定位，在实践过程中应注意哪些问题，如何打造这样的团队？本文对滴滴公共前端团队的实践进行了总结，希望能带给读者一些启发。
+
+教你从零开始搭建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记 2015.9.2">
-<meta property="og:url" content="http://yoursite.com/2015/09/note-for-20150902/index.html">
+<meta property="og:title" content="黄腾飞的个人网站">
+<meta property="og:url" content="http://yoursite.com/2016/08/Collection-of-Augest/index.html">
 <meta property="og:site_name" content="黄腾飞的个人网站">
-<meta property="og:description" content="访问兄弟节点由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 nextSibling 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。
-解决办法：判断节点 nodeType 是否为1, 如是为元素节点，跳过。
-123456789function get_nextSibling(n)&amp;#123;    var x = n.nextSibling;">
-<meta property="og:updated_time" content="2016-06-15T10:26:35.000Z">
+<meta property="og:description" content="7 月技术文章精选我们是如何做好前端工程化和静态资源管理
+
+文章介绍了提升开发体验和性能的几个方法，并对他们团队的工程化方案 Athena 的设计思路和功能做了介绍，有一定的参考价值。
+
+如何打造公司级公共前端团队
+
+作为公司级的公共前端团队，应该如何对团队进行定位，在实践过程中应注意哪些问题，如何打造这样的团队？本文对滴滴公共前端团队的实践进行了总结，希望能带给读者一些启发。
+
+教你从零开始搭建">
+<meta property="og:updated_time" content="2016-08-11T03:09:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记 2015.9.2">
-<meta name="twitter:description" content="访问兄弟节点由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 nextSibling 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。
-解决办法：判断节点 nodeType 是否为1, 如是为元素节点，跳过。
-123456789function get_nextSibling(n)&amp;#123;    var x = n.nextSibling;">
+<meta name="twitter:title" content="黄腾飞的个人网站">
+<meta name="twitter:description" content="7 月技术文章精选我们是如何做好前端工程化和静态资源管理
+
+文章介绍了提升开发体验和性能的几个方法，并对他们团队的工程化方案 Athena 的设计思路和功能做了介绍，有一定的参考价值。
+
+如何打造公司级公共前端团队
+
+作为公司级的公共前端团队，应该如何对团队进行定位，在实践过程中应注意哪些问题，如何打造这样的团队？本文对滴滴公共前端团队的实践进行了总结，希望能带给读者一些启发。
+
+教你从零开始搭建">
 
 
 
@@ -120,9 +138,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/09/note-for-20150902/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/Collection-of-Augest/"/>
 
-  <title> 学习笔记 2015.9.2 | 黄腾飞的个人网站 </title>
+  <title>  | 黄腾飞的个人网站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +270,7 @@
             
             
               
-                学习笔记 2015.9.2
+                
               
             
           </h1>
@@ -264,8 +282,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-02T00:00:00+08:00" content="2015-09-02">
-              2015-09-02
+            <time itemprop="dateCreated" datetime="2016-08-11T11:09:36+08:00" content="2016-08-11">
+              2016-08-11
             </time>
           </span>
 
@@ -275,8 +293,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/note-for-20150902/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/note-for-20150902/" itemprop="commentsCount"></span>
+                <a href="/2016/08/Collection-of-Augest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/Collection-of-Augest/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,54 +317,54 @@
       
 
       
-        <h2 id="访问兄弟节点"><a href="#访问兄弟节点" class="headerlink" title="访问兄弟节点"></a>访问兄弟节点</h2><p>由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 <code>nextSibling</code> 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。</p>
-<p>解决办法：判断节点 <code>nodeType</code> 是否为1, 如是为元素节点，跳过。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_nextSibling</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = n.nextSibling;</span><br><span class="line">    <span class="keyword">while</span>(x &amp;&amp; x.nodeType != <span class="number">1</span>) &#123;</span><br><span class="line">        x = x.nextSibling;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = get_nextSibling(x);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="几个位置概念"><a href="#几个位置概念" class="headerlink" title="几个位置概念"></a>几个位置概念</h2><h3 id="scrollLeft-与-scrollTop"><a href="#scrollLeft-与-scrollTop" class="headerlink" title="scrollLeft 与 scrollTop"></a>scrollLeft 与 scrollTop</h3><p><code>document.body.scrollLeft</code>：网页被卷去的左，即对象最顶端与窗口中可见内容的最顶端之间的距离。</p>
-<p><code>document.body.scrollTop</code>：网页被卷去的高，即给定对象左边界与窗口中目前可见内容的最左端之间的距离。</p>
-<h3 id="clientX-与-clientY"><a href="#clientX-与-clientY" class="headerlink" title="clientX 与 clientY"></a>clientX 与 clientY</h3><p>鼠标事件对象 <code>MouseEvent</code> 下的属性。</p>
-<p>以可视区域左上角为参考点，表示当前触发点离可视区域左上角的水平和垂直距离。以当前浏览器为参照物，不受滚动条影响。</p>
-<h3 id="offsetLeft-与-offsetTop"><a href="#offsetLeft-与-offsetTop" class="headerlink" title="offsetLeft 与 offsetTop"></a>offsetLeft 与 offsetTop</h3><p>元素位置的属性（固定，不受鼠标事件的触发点影响）。</p>
-<p>元素 border 外边框的左上角离 <code>offsetParent</code>（布局中设置postion属性(<code>Relative</code>、<code>Absolute</code>、<code>fixed</code>)的父容器）的 padding 外边框的左上角的垂直、水平距离。</p>
-<p>更多可参考 <a href="http://www.cnblogs.com/fsjohnhuang/p/3999186.html/fsjohnhuang/p/3999186.html" target="_blank" rel="external">JS魔法堂：关于元素位置和鼠标位置的属性</a></p>
-<p>关于滚动翻页用到的几个位置请参考 <a href="http://huangtengfei.com/2015/08/note-for-20150824/#more" target="_blank" rel="external">学习笔记 2015.08.24</a></p>
-<h2 id="浏览器对象"><a href="#浏览器对象" class="headerlink" title="浏览器对象"></a>浏览器对象</h2><h3 id="window对象概述"><a href="#window对象概述" class="headerlink" title="window对象概述"></a>window对象概述</h3><pre><code>alert()
-prompt()
-confirm()
-
-open()
-close()
-
-focus()
-blur()
-
-moveBy()
-moveTo()  //将窗口左上角移动到一个指定坐标
-resizeBy()
-resizeTo()  //将窗口调整到指定宽高
-scrollBy()
-scrollTo()  //将内容滚动到指定坐标
-
-setInterval()
-setTimeout()
-clearInterval()
-clearTimeout()
-</code></pre><h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><p>间隔性触发计时器：setInterval()</p>
-<p>一次性计时器：setTimeout()</p>
-<pre><code>setInterval(clock, 1000) 或者 setInterval(&apos;clock()&apos;, 1000)
-</code></pre><h3 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h3><p>history对象记录了用户曾经浏览过的页面(URL)，并可以实现浏览器前进与后退相似导航的功能。</p>
-<pre><code>window.history.[属性|方法]
-</code></pre><p>window.history.back()：前一个url，相当于go(-1)</p>
-<p>window.history.forward()：下一个url，相当于go(1)</p>
-<p>window.history.go()：跳到某个具体的url</p>
-<h3 id="location-对象"><a href="#location-对象" class="headerlink" title="location 对象"></a>location 对象</h3><p>location用于获取或设置窗体的URL，并且可以用于解析URL。</p>
-<pre><code>location.[属性|方法]
-</code></pre><p>location.href：返回完整url</p>
-<p>location.pathname：路径名</p>
-<p>location.hash：返回#开始的url锚</p>
-<h3 id="navigator-对象"><a href="#navigator-对象" class="headerlink" title="navigator 对象"></a>navigator 对象</h3><p>navigator.appName：浏览器名称</p>
-<p>navigator.appVersion：浏览器版本</p>
+        <h1 id="7-月技术文章精选"><a href="#7-月技术文章精选" class="headerlink" title="7 月技术文章精选"></a>7 月技术文章精选</h1><p><a href="https://aotu.io/notes/2016/07/19/A-little-exploration-of-front-end-engineering/" target="_blank" rel="external">我们是如何做好前端工程化和静态资源管理</a></p>
+<blockquote>
+<p>文章介绍了提升开发体验和性能的几个方法，并对他们团队的工程化方案 Athena 的设计思路和功能做了介绍，有一定的参考价值。</p>
+</blockquote>
+<p><a href="http://www.infoq.com/cn/articles/how-to-build-company-class-public-front-end-team" target="_blank" rel="external">如何打造公司级公共前端团队</a></p>
+<blockquote>
+<p>作为公司级的公共前端团队，应该如何对团队进行定位，在实践过程中应注意哪些问题，如何打造这样的团队？本文对滴滴公共前端团队的实践进行了总结，希望能带给读者一些启发。</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000006190814" target="_blank" rel="external">教你从零开始搭建一款前端脚手架工具</a></p>
+<blockquote>
+<p>在实际的开发过程中，从零开始建立项目的结构是一件让人头疼的事情，本文以一个实际的例子教你如何搭建一个前端脚手架。</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000006199237" target="_blank" rel="external">聊一聊HTTPS那些事儿</a></p>
+<blockquote>
+<p>相信很多前端同学们，都听说过https，现在很多大的站点（如天猫、百度等），均使用了https协议进行传输。但是https如何使用，做什么用的，往往并不十分了解。今天我们就来一起聊一聊HTTPS那些事儿，且不说底层实现(毕竟想深入学习的同学可以自行Google)，只来聊一聊我们如何使用这种方式来武装我们的网站~~也谈一谈实际应用时的一些问题。</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000005964730" target="_blank" rel="external">聊一聊移动调试那些事儿</a></p>
+<blockquote>
+<p>随着移动端的不断推进，移动调试也成为了前端同学们面临的一个新的课题，在PC时代，我们直接打开chrome的检查元素面板。就可以解决大部分事情了。但是到了移动端，明明在电脑上模拟好的元素，在手机上就会乱掉。今天我们就来一起聊一聊移动前端调试的那些事儿。一起扩展我们的移动端调试手段~</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000005927232" target="_blank" rel="external">聊一聊前端存储那些事儿</a></p>
+<blockquote>
+<p>了解一下 cookie、sessionStorage、localStorage、websql 和 indexeddb 这些前端存储各自的特点和使用场景</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000006004245" target="_blank" rel="external">React 下的表格狂想曲</a></p>
+<blockquote>
+<p>在企业系统中，表格是最常见但功能需求最丰富的组件之一，同时也是基于 React 数据驱动的思想受益最多的组件之一，十分具有代表性。</p>
+</blockquote>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;mid=2651221739&amp;idx=1&amp;sn=4e6bbc7533a78bf811cc224d23443ba9&amp;scene=23&amp;srcid=0717zl7Io3vxiZTgLf51BcbJ#rd" target="_blank" rel="external">Fit - 来自百度前端团队的React组件库</a></p>
+<blockquote>
+<p>听百度的前端工程师谈一谈组件库的假设理念与开发思路。</p>
+</blockquote>
+<p><a href="https://github.com/berwin/Blog/issues/8" target="_blank" rel="external">深入浅出 Koa</a></p>
+<blockquote>
+<p>了解一下 Koa 的原理。</p>
+</blockquote>
+<p><a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="external">YAML 语言教程</a></p>
+<blockquote>
+<p>编程免不了要写配置文件，怎么写配置也是一门学问。 YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JSON 格式方便。 本文主要介绍了 YAML 的语法</p>
+</blockquote>
+<p><a href="http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">How Browsers Work: Behind the scenes of modern web browsers</a></p>
+<blockquote>
+<p>了解一下浏览器的工作原理</p>
+</blockquote>
+<p><a href="http://www.cnblogs.com/xueweihan/p/5220513.html" target="_blank" rel="external">什么是真正的程序员</a></p>
+<blockquote>
+<p>很有意思的一篇文章，作者仿照《小王子》中的情节，通过小printf遇见的不同类型的程序员，最后悟出什么才是真正的程序员，发人深省。</p>
+</blockquote>
 
       
     </div>
@@ -387,28 +405,18 @@ clearTimeout()
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/note-for-20150831/" rel="next" title="学习笔记 2015.8.31">
-                <i class="fa fa-chevron-left"></i> 学习笔记 2015.8.31
+              <a href="/2016/07/Collection-of-June/" rel="next" title="6 月技术文章精选">
+                <i class="fa fa-chevron-left"></i> 6 月技术文章精选
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/09/scope-and-scope-chain-of-js/" rel="prev" title="JavaScript 作用域与作用域链">
-                JavaScript 作用域与作用域链 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +465,8 @@ clearTimeout()
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/09/note-for-20150902/"
-           data-title="学习笔记 2015.9.2" data-url="http://yoursite.com/2015/09/note-for-20150902/">
+      <div class="ds-thread" data-thread-key="2016/08/Collection-of-Augest/"
+           data-title="" data-url="http://yoursite.com/2016/08/Collection-of-Augest/">
       </div>
     
   </div>
@@ -571,7 +579,7 @@ clearTimeout()
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问兄弟节点"><span class="nav-number">1.</span> <span class="nav-text">访问兄弟节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个位置概念"><span class="nav-number">2.</span> <span class="nav-text">几个位置概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollLeft-与-scrollTop"><span class="nav-number">2.1.</span> <span class="nav-text">scrollLeft 与 scrollTop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clientX-与-clientY"><span class="nav-number">2.2.</span> <span class="nav-text">clientX 与 clientY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetLeft-与-offsetTop"><span class="nav-number">2.3.</span> <span class="nav-text">offsetLeft 与 offsetTop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对象"><span class="nav-number">3.</span> <span class="nav-text">浏览器对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window对象概述"><span class="nav-number">3.1.</span> <span class="nav-text">window对象概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计时器"><span class="nav-number">3.2.</span> <span class="nav-text">计时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#history对象"><span class="nav-number">3.3.</span> <span class="nav-text">history对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location-对象"><span class="nav-number">3.4.</span> <span class="nav-text">location 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#navigator-对象"><span class="nav-number">3.5.</span> <span class="nav-text">navigator 对象</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7-月技术文章精选"><span class="nav-number">1.</span> <span class="nav-text">7 月技术文章精选</span></a></li></ol></div>
             
           </div>
         </section>

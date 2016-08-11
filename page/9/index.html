@@ -248,6 +248,111 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/note-for-20150902/" itemprop="url">
+                  学习笔记 2015.9.2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-02T00:00:00+08:00" content="2015-09-02">
+              2015-09-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/note-for-20150902/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/note-for-20150902/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="访问兄弟节点"><a href="#访问兄弟节点" class="headerlink" title="访问兄弟节点"></a>访问兄弟节点</h2><p>由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 <code>nextSibling</code> 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。</p>
+<p>解决办法：判断节点 <code>nodeType</code> 是否为1, 如是为元素节点，跳过。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_nextSibling</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = n.nextSibling;</span><br><span class="line">    <span class="keyword">while</span>(x &amp;&amp; x.nodeType != <span class="number">1</span>) &#123;</span><br><span class="line">        x = x.nextSibling;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = get_nextSibling(x);</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/note-for-20150902/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/08/note-for-20150831/" itemprop="url">
                   学习笔记 2015.8.31
                 </a>
@@ -464,113 +569,6 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150817/" itemprop="url">
-                  学习笔记 - 2015.08.17
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
-              2015-08-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150817/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150817/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h2><h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>对于 array 对象的 <code>slice</code> 方法，返回一个数组的一段。（仍为数组）</p>
-<pre><code>arrayObj.slice(start, [end])
-</code></pre><h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p><code>concat()</code> 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
-<pre><code>arrayObject.concat(arrayX,arrayX,......,arrayX)
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150817/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/08/data-type-of-javascript/" itemprop="url">
                   JavaScript 中判断值类型的三种方法
                 </a>
@@ -682,8 +680,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150813/" itemprop="url">
-                  学习笔记 - 2015.08.13
+                <a class="post-title-link" href="/2015/08/note-for-20150817/" itemprop="url">
+                  学习笔记 - 2015.08.17
                 </a>
               
             
@@ -696,8 +694,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-13T00:00:00+08:00" content="2015-08-13">
-              2015-08-13
+            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
+              2015-08-17
             </time>
           </span>
 
@@ -707,8 +705,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150813/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150813/" itemprop="commentsCount"></span>
+                <a href="/2015/08/note-for-20150817/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150817/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -732,13 +730,13 @@
 
       
         
-          <h2 id="纯-CSS-制作-Tab-选项卡"><a href="#纯-CSS-制作-Tab-选项卡" class="headerlink" title="纯 CSS 制作 Tab 选项卡"></a>纯 CSS 制作 Tab 选项卡</h2><p>有两种使用纯 CSS 制作 Tab 选项卡的方式。</p>
-<p>第一种：使用使用表单的单选按钮（radio）来实现当前 Tab 显示和隐藏，首页 Tab 里的内容默认隐藏，如果单选按钮为选中状态（<code>:checked</code>）就显示内容。</p>
-<p>参考 <a href="http://www.shejidaren.com/css3-tabs.html">纯CSS3制作的Tab选项卡</a> 可以快速实现一个demo。</p>
-<p>第二种：通过点击 <code>:target</code> 时令对应的z-index变大，重复覆盖在上一层。可参考 <a href="https://css-tricks.com/css3-tabs/">CSS3-Only Tabbed Area</a> 。不过并不推荐。</p>
-<p>参考：<a href="http://caibaojian.com/css3-tabs.html">纯CSS3制作TAB选项卡的两种方式</a> 和 一个很漂亮的使用第一种方式实现的 <a href="http://www.html5tricks.com/demo/css3-responsive-tab-menu/index.html">demo</a> </p>
+          <h2 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h2><h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>对于 array 对象的 <code>slice</code> 方法，返回一个数组的一段。（仍为数组）</p>
+<pre><code>arrayObj.slice(start, [end])
+</code></pre><h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p><code>concat()</code> 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
+<pre><code>arrayObject.concat(arrayX,arrayX,......,arrayX)
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150813/#more" rel="contents">
+            <a class="btn" href="/2015/08/note-for-20150817/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -813,7 +811,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

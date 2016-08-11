@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150805/" itemprop="url">
-                  学习笔记 - 2015.8.5
+                <a class="post-title-link" href="/2015/08/css-layout/" itemprop="url">
+                  两栏布局和三栏布局的实现
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-05T00:00:00+08:00" content="2015-08-05">
-              2015-08-05
+            <time itemprop="dateCreated" datetime="2015-08-06T00:00:00+08:00" content="2015-08-06">
+              2015-08-06
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150805/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150805/" itemprop="commentsCount"></span>
+                <a href="/2015/08/css-layout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/css-layout/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,22 +298,9 @@
 
       
         
-          <h2 id="一个普通网站的访问过程"><a href="#一个普通网站的访问过程" class="headerlink" title="一个普通网站的访问过程"></a>一个普通网站的访问过程</h2><p>参见知乎上Web基本概念介绍中张秋怡同学的 <a href="http://zhihu.com/question/22689579/answer/22318058">回答</a> 。</p>
-<blockquote>
-<ol>
-<li>用户操作浏览器访问，浏览器向服务器发出一个 HTTP 请求；</li>
-<li>服务器接收到 HTTP 请求，Web Server 进行相应的初步处理，使用服务器脚本生成页面；</li>
-<li>服务器脚本（利用Web Framework）调用本地和客户端传来的数据，生成页面；</li>
-<li>Web Server 将生成的页面作为 HTTP 响应的 body，根据不同的处理结果生成 HTTP header，发回给客户端；</li>
-<li>客户端（浏览器）接收到 HTTP 响应，通常第一个请求得到的 HTTP 响应的 body 里是 HTML 代码，于是对 HTML 代码开始解析；</li>
-<li>解析过程中遇到引用的服务器上的资源（额外的 CSS、JS代码，图片、音视频，附件等），再向 Web Server 发送请求，Web Server 找到对应的文件，发送回来；</li>
-<li>浏览器解析 HTML 包含的内容，用得到的 CSS 代码进行外观上的进一步渲染，JS 代码也可能会对外观进行一定的处理；</li>
-<li>用户与页面交互（点击，悬停等等）时，JS 代码对此作出一定的反应，添加特效与动画；</li>
-<li>交互的过程中可能需要向服务器索取或提交额外的数据（局部的刷新，类似微博的新消息通知），一般不是跳转就是通过 JS 代码（响应某个动作或者定时）向 Web Server 发送请求，Web Server<br>再用服务器脚本进行处理（生成资源or写入数据之类的），把资源返回给客户端，客户端用得到的资源来实现动态效果或其他改变。</li>
-</ol>
-</blockquote>
+          <h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h2><h3 id="用-position"><a href="#用-position" class="headerlink" title="用 position"></a>用 position</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150805/#more" rel="contents">
+            <a class="btn" href="/2015/08/css-layout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -471,8 +458,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/learn-compass/" itemprop="url">
-                  Compass 初探
+                <a class="post-title-link" href="/2015/08/note-for-20150805/" itemprop="url">
+                  学习笔记 - 2015.8.5
                 </a>
               
             
@@ -485,8 +472,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
-              2015-08-04
+            <time itemprop="dateCreated" datetime="2015-08-05T00:00:00+08:00" content="2015-08-05">
+              2015-08-05
             </time>
           </span>
 
@@ -496,8 +483,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/learn-compass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-compass/" itemprop="commentsCount"></span>
+                <a href="/2015/08/note-for-20150805/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150805/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -521,124 +508,22 @@
 
       
         
-          <p>Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在已有Ruby的环境下，在命令行输入命令：</p>
-<pre><code>gem install compass
-</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="compass-create"><a href="#compass-create" class="headerlink" title="compass create"></a>compass create</h3><p>使用 <code>compass create</code> 命令可创建一个 Compass 项目：</p>
-<pre><code>compass create myproject
-</code></pre><p>该命令会生成以下目录结构：</p>
-<ul>
-<li>sass目录，存放 sass 源文件</li>
-<li>stylesheets目录，存放编译好的 CSS</li>
-<li>config.rb文件，Compass 的配置文件</li>
-</ul>
+          <h2 id="一个普通网站的访问过程"><a href="#一个普通网站的访问过程" class="headerlink" title="一个普通网站的访问过程"></a>一个普通网站的访问过程</h2><p>参见知乎上Web基本概念介绍中张秋怡同学的 <a href="http://zhihu.com/question/22689579/answer/22318058">回答</a> 。</p>
+<blockquote>
+<ol>
+<li>用户操作浏览器访问，浏览器向服务器发出一个 HTTP 请求；</li>
+<li>服务器接收到 HTTP 请求，Web Server 进行相应的初步处理，使用服务器脚本生成页面；</li>
+<li>服务器脚本（利用Web Framework）调用本地和客户端传来的数据，生成页面；</li>
+<li>Web Server 将生成的页面作为 HTTP 响应的 body，根据不同的处理结果生成 HTTP header，发回给客户端；</li>
+<li>客户端（浏览器）接收到 HTTP 响应，通常第一个请求得到的 HTTP 响应的 body 里是 HTML 代码，于是对 HTML 代码开始解析；</li>
+<li>解析过程中遇到引用的服务器上的资源（额外的 CSS、JS代码，图片、音视频，附件等），再向 Web Server 发送请求，Web Server 找到对应的文件，发送回来；</li>
+<li>浏览器解析 HTML 包含的内容，用得到的 CSS 代码进行外观上的进一步渲染，JS 代码也可能会对外观进行一定的处理；</li>
+<li>用户与页面交互（点击，悬停等等）时，JS 代码对此作出一定的反应，添加特效与动画；</li>
+<li>交互的过程中可能需要向服务器索取或提交额外的数据（局部的刷新，类似微博的新消息通知），一般不是跳转就是通过 JS 代码（响应某个动作或者定时）向 Web Server 发送请求，Web Server<br>再用服务器脚本进行处理（生成资源or写入数据之类的），把资源返回给客户端，客户端用得到的资源来实现动态效果或其他改变。</li>
+</ol>
+</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/learn-compass/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
-                  写出优雅的CSS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
-              2015-08-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
-<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
-<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
+            <a class="btn" href="/2015/08/note-for-20150805/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -781,6 +666,119 @@ sass --watch dir/sass:dir/css
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/learn-compass/" itemprop="url">
+                  Compass 初探
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/learn-compass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-compass/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在已有Ruby的环境下，在命令行输入命令：</p>
+<pre><code>gem install compass
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="compass-create"><a href="#compass-create" class="headerlink" title="compass create"></a>compass create</h3><p>使用 <code>compass create</code> 命令可创建一个 Compass 项目：</p>
+<pre><code>compass create myproject
+</code></pre><p>该命令会生成以下目录结构：</p>
+<ul>
+<li>sass目录，存放 sass 源文件</li>
+<li>stylesheets目录，存放编译好的 CSS</li>
+<li>config.rb文件，Compass 的配置文件</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/learn-compass/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -826,7 +824,7 @@ sass --watch dir/sass:dir/css
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">78</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
