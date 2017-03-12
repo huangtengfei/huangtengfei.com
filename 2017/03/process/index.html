@@ -1,0 +1,723 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,NodeJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文主要对 Node.js 中进程管理相关的东西做一个简单介绍，包括 process 对象、child_process 模块和 cluster 模块，详细的 API 可以查看官方文档。
+Process 对象process 是 Node.js 的一个全局对象，可以在任何地方直接使用而不需要 require 命令加载。process 对象提供了 当前 node 进程 的命令行参数、标准输入输出、运行环">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 中的进程管理">
+<meta property="og:url" content="http://yoursite.com/2017/03/process/index.html">
+<meta property="og:site_name" content="黄腾飞的个人网站">
+<meta property="og:description" content="本文主要对 Node.js 中进程管理相关的东西做一个简单介绍，包括 process 对象、child_process 模块和 cluster 模块，详细的 API 可以查看官方文档。
+Process 对象process 是 Node.js 的一个全局对象，可以在任何地方直接使用而不需要 require 命令加载。process 对象提供了 当前 node 进程 的命令行参数、标准输入输出、运行环">
+<meta property="og:updated_time" content="2017-03-12T13:14:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js 中的进程管理">
+<meta name="twitter:description" content="本文主要对 Node.js 中进程管理相关的东西做一个简单介绍，包括 process 对象、child_process 模块和 cluster 模块，详细的 API 可以查看官方文档。
+Process 对象process 是 Node.js 的一个全局对象，可以在任何地方直接使用而不需要 require 命令加载。process 对象提供了 当前 node 进程 的命令行参数、标准输入输出、运行环">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/process/"/>
+
+  <title> Node.js 中的进程管理 | 黄腾飞的个人网站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ac83e0660172eeeff50795f9ded95a82";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">黄腾飞的个人网站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node.js 中的进程管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-12T00:00:00+08:00" content="2017-03-12">
+              2017-03-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/process/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/process/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要对 Node.js 中进程管理相关的东西做一个简单介绍，包括 <a href="https://nodejs.org/api/process.html" target="_blank" rel="external">process 对象</a>、<a href="https://nodejs.org/api/child_process.html" target="_blank" rel="external">child_process 模块</a>和 <a href="https://nodejs.org/api/cluster.html" target="_blank" rel="external">cluster 模块</a>，详细的 API 可以查看官方文档。</p>
+<h2 id="Process-对象"><a href="#Process-对象" class="headerlink" title="Process 对象"></a>Process 对象</h2><p><code>process</code> 是 Node.js 的一个全局对象，可以在任何地方直接使用而不需要 <code>require</code> 命令加载。<code>process</code> 对象提供了 <strong>当前 node 进程</strong> 的命令行参数、标准输入输出、运行环境和运行状态等信息。</p>
+<a id="more"></a>
+<h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><h4 id="argv"><a href="#argv" class="headerlink" title="argv"></a>argv</h4><p><code>process.argv</code> 属性返回一个数组，第一个元素是 node，第二个元素是脚本文件名称，其余成员是脚本文件的参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ node process-2.js one two=three four</span><br><span class="line"></span><br><span class="line">0: /usr/<span class="built_in">local</span>/bin/node</span><br><span class="line">1: /Users/mjr/work/node/process-2.js</span><br><span class="line">2: one</span><br><span class="line">3: two=three</span><br><span class="line">4: four</span><br></pre></td></tr></table></figure>
+<h4 id="env"><a href="#env" class="headerlink" title="env"></a>env</h4><p><code>process.env</code> 返回一个对象，包含了当前 Shell 的所有环境变量，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  TERM: &apos;xterm-256color&apos;,</span><br><span class="line">  SHELL: &apos;/bin/zsh&apos;,</span><br><span class="line">  USER: &apos;huangtengfei&apos;,</span><br><span class="line">  PATH: &apos;~/.bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&apos;,</span><br><span class="line">  PWD: &apos;/Users/huangtengfei&apos;,</span><br><span class="line">  HOME: &apos;/Users/huangtengfei&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个属性通常的使用场景是，新建一个 <code>NODE_ENV</code> 变量，用来确定当前所处的开发阶段，生成阶段设为 <code>production</code>，开发阶段设为 <code>develop</code> ，然后在脚本中读取 <code>process.env.NODE_ENV</code> 再做相应处理即可。</p>
+<p>运行脚本时可以这样改变环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export NODE_ENV=production &amp;&amp; node app.js</span><br><span class="line"># 或者</span><br><span class="line">$ NODE_ENV=production node app.js</span><br></pre></td></tr></table></figure>
+<h4 id="stdin-stdout"><a href="#stdin-stdout" class="headerlink" title="stdin/stdout"></a>stdin/stdout</h4><p><code>process.stdin</code> 指向标准输入（键盘到缓冲区里的东西），返回一个可读的流：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line">process.stdin.on(<span class="string">'readable'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">var</span> chunk = process.stdin.read();</span><br><span class="line">  <span class="keyword">if</span> (chunk !== <span class="literal">null</span>) &#123;</span><br><span class="line">    process.stdout.write(<span class="string">`data: <span class="subst">$&#123;chunk&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.stdin.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">  process.stdout.write(<span class="string">'end'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>process.stdout</code> 指向标准输出（向用户显示内容），返回一个可写的流：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">fs.createReadStream(<span class="string">'wow.txt'</span>)</span><br><span class="line">  .pipe(process.stdout);</span><br></pre></td></tr></table></figure>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="cwd"><a href="#cwd" class="headerlink" title="cwd()"></a>cwd()</h4><p><code>process.cwd()</code> 返回运行 Node 的工作目录（绝对路径），比如在目录 <code>/Users/huangtengfei/abc</code> 下执行 <code>node server.js</code>，那么 <code>process.cwd()</code> 返回的就是 <code>/Users/huangtengfei/abc</code>。</p>
+<p>另一个常用的获取路径的方法是 <code>__dirname</code>，它返回的是执行文件时该文件在文件系统中所在的目录。注意 <code>process.cwd()</code> 和 <code>__dirname</code> 的不同，前者是进程发起时的位置，后者是脚本的位置，两者可能不一致。</p>
+<h4 id="on"><a href="#on" class="headerlink" title="on()"></a>on()</h4><p><code>process</code> 对象部署了 EventEmitter 接口，可以使用 <code>process.on()</code> 方法监听各种事件，并指定回调函数。比如监听到系统发出进程终止信号时关闭服务器然后退出进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">process.on(&apos;SIGTERM&apos;, function () &#123;</span><br><span class="line">  server.close(function () &#123;</span><br><span class="line">    process.exit(0);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="exit"><a href="#exit" class="headerlink" title="exit()"></a>exit()</h4><p><code>process.exit()</code> 会让 Node 立即终止当前进程（同步），参数为一个退出状态码，<code>0</code> 表示成功，大于 <code>0</code> 的任意整数表示失败。</p>
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill()"></a>kill()</h4><p><code>process.kill()</code> 用来对特定 id 的进程（process.pid）发送信号，默认为 <code>SIGINT</code> 信号。比如杀死当前进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">process.kill(process.pid, &apos;SIGTERM&apos;);</span><br></pre></td></tr></table></figure>
+<p>虽然名字叫 kill ，但其实 <code>process.kill()</code> 只是负责发送信号，具体发送完信号之后这个怎么处理这个指定进程，取决于信号种类和接收到这个信号之后做了什么操作（比如 <code>process.exit()</code> 或者只是 <code>console.log(&#39;Ignored this single&#39;)</code>）。</p>
+<h2 id="Child-Process-模块"><a href="#Child-Process-模块" class="headerlink" title="Child Process 模块"></a>Child Process 模块</h2><p>child_process 模块用于创建和控制子进程，其中最核心的是 <code>.spawn()</code> ，其他 API 算是针对特定场景对它的封装。使用前要先 require 进来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const cp = require(&apos;child_process&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="exec-command-options-callback"><a href="#exec-command-options-callback" class="headerlink" title="exec(command[, options][, callback])"></a>exec(command[, options][, callback])</h3><p><code>exec()</code> 方法用于执行 shell 命令，它的第一个参数是字符串形式的命令，第二个参数（可选）用来指定子进程运行时的定制化操作，第三个参数（可选）用来设置执行完命令的回调函数。比如在一个特定目录 <code>/Users/huangtengfei/abc</code> 下执行 <code>ls -l</code> 命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cp.exec(<span class="string">'ls -l'</span>, &#123;</span><br><span class="line">  cwd: <span class="string">'/Users/huangtengfei/abc'</span></span><br><span class="line">&#125;, (error, stdout, stderr) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">`exec error: <span class="subst">$&#123;error&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stdout: <span class="subst">$&#123;stdout&#125;</span>`</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stderr: <span class="subst">$&#123;stderr&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="spawn-command-args-options"><a href="#spawn-command-args-options" class="headerlink" title="spawn(command[, args][, options])"></a>spawn(command[, args][, options])</h3><p><code>spawn()</code> 用来创建一个子进程执行特定命令，与 <code>exec()</code> 的区别是它没有回调函数，只能通过监听事件来获取运行结果，它适用于子进程长时间运行的情况，可以实时输出结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ls = cp.spawn(<span class="string">'ls'</span>, [<span class="string">'-l'</span>]);</span><br><span class="line"></span><br><span class="line">ls.stdout.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stdout: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ls.stderr.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stderr: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ls.on(<span class="string">'close'</span>, (code) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`child process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>使用 spawn 可以实现一个简单的守护进程，在工作进程不正常退出时重启工作进程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* daemon.js */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawn</span>(<span class="params">mainModule</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> worker = cp.spawn(<span class="string">'node'</span>, [ mainModule ]);</span><br><span class="line"></span><br><span class="line">    worker.on(<span class="string">'exit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">            spawn(mainModule);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spawn(<span class="string">'worker.js'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="fork-modulePath-args-options"><a href="#fork-modulePath-args-options" class="headerlink" title="fork(modulePath[, args][, options])"></a>fork(modulePath[, args][, options])</h3><p><code>fork()</code> 用来创建一个子进程执行 node 脚本，<code>fork(&#39;./child.js&#39;)</code> 相当于 <code>spawn(&#39;node&#39;, [&#39;./child.js&#39;])</code>，区别在于 <code>fork</code> 会在父子进程之间建立一个通信管道（<code>fork()</code> 的返回值），用于进程间通信。对该通信管道对象可以监听 message 事件，用来获取子进程返回的信息，也可以向子进程发送信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/* main.js */</span><br><span class="line">const proc = cp.fork(&apos;./child.js&apos;);</span><br><span class="line">proc.on(&apos;message&apos;, function(msg) &#123;</span><br><span class="line">  console.log(`parent got message: $&#123;msg&#125;`);</span><br><span class="line">&#125;);</span><br><span class="line">proc.send(&#123; hello: &apos;world&apos; &#125;);</span><br><span class="line"></span><br><span class="line">/* child.js */</span><br><span class="line">process.on(&apos;message&apos;, function(msg) &#123;</span><br><span class="line">  console.log(`child got message: $&#123;msg&#125;`);</span><br><span class="line">&#125;);</span><br><span class="line">process.send(&#123; foo: &apos;bar&apos; &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Cluster-模块"><a href="#Cluster-模块" class="headerlink" title="Cluster 模块"></a>Cluster 模块</h2><p>Node.js 默认单进程执行，但这样就无法利用多核计算机的资源，cluster 模块的出现就是为了解决这个问题的。在开发服务器程序时，可以通过 cluster 创建一个主进程和多个 worker 进程，让每个 worker 进程运行在一个核上，统一通过主进程监听端口和分发请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cluster = <span class="built_in">require</span>(<span class="string">'cluster'</span>);</span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> numCPUs = <span class="built_in">require</span>(<span class="string">'os'</span>).cpus().length;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cluster.isMaster) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Master <span class="subst">$&#123;process.pid&#125;</span> is running`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Fork workers.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numCPUs; i++) &#123;</span><br><span class="line">    cluster.fork();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cluster.on(<span class="string">'exit'</span>, (worker, code, signal) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`worker <span class="subst">$&#123;worker.process.pid&#125;</span> died`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// Workers can share any TCP connection</span></span><br><span class="line">  <span class="comment">// In this case it is an HTTP server</span></span><br><span class="line">  http.createServer((req, res) =&gt; &#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>);</span><br><span class="line">    res.end(<span class="string">'hello world\n'</span>);</span><br><span class="line">  &#125;).listen(<span class="number">8000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Worker <span class="subst">$&#123;process.pid&#125;</span> started`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="常用属性和方法"><a href="#常用属性和方法" class="headerlink" title="常用属性和方法"></a>常用属性和方法</h3><h4 id="isMaster-isWorker"><a href="#isMaster-isWorker" class="headerlink" title="isMaster/isWorker"></a>isMaster/isWorker</h4><p><code>cluster.isMaster</code> 用来判断当前进程是否是主进程，<code>cluster.isWorker</code> 用来判断当前进程是否是工作进程，两者返回的都是布尔值。</p>
+<h4 id="workers"><a href="#workers" class="headerlink" title="workers"></a>workers</h4><p><code>cluster.workers</code> 是一个包含所有 worker 进程的对象，key 为 <code>worker.id</code>，value 为 <code>worker</code> 进程对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 遍历所有 workers</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eachWorker</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> id <span class="keyword">in</span> cluster.workers) &#123;</span><br><span class="line">    callback(cluster.workers[id]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">eachWorker((worker) =&gt; &#123;</span><br><span class="line">  worker.send(<span class="string">'big announcement to all workers'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="fork-env"><a href="#fork-env" class="headerlink" title="fork([env])"></a>fork([env])</h4><p><code>cluster.fork()</code> 方法用来新建一个 worker 进程，默认上下文复制主进程，只有主进程可调用。</p>
+<h3 id="常用事件"><a href="#常用事件" class="headerlink" title="常用事件"></a>常用事件</h3><h4 id="listening"><a href="#listening" class="headerlink" title="listening"></a>listening</h4><p>在工作进程调用 listen 方法后，会触发一个 listening 事件，这个事件可以被 <code>cluster.on(&#39;listening&#39;)</code> 监听。</p>
+<p>比如每当一个 worker 进程连进来时，输出一条 log 信息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cluster.on(<span class="string">'listening'</span>, (worker, address) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(</span><br><span class="line">    <span class="string">`A worker is now connected to <span class="subst">$&#123;address.address&#125;</span>:<span class="subst">$&#123;address.port&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="exit-1"><a href="#exit-1" class="headerlink" title="exit"></a>exit</h4><p>在工作进程挂掉时，会触发一个 exit 事件，这个事件可以被 <code>cluster.on(&#39;exit&#39;)</code> 监听。</p>
+<p>比如自动重启 worker：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cluster.on(<span class="string">'exit'</span>, (worker, code, signal) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'worker %d died (%s). restarting...'</span>,</span><br><span class="line">    worker.process.pid, signal || code);</span><br><span class="line">  cluster.fork();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="worker-对象"><a href="#worker-对象" class="headerlink" title="worker 对象"></a>worker 对象</h3><p>worker 对象是 <code>cluster.fork()</code> 的返回值，代表一个 worker 进程。</p>
+<h4 id="worker-id"><a href="#worker-id" class="headerlink" title="worker.id"></a>worker.id</h4><p><code>worker.id</code> 是当前 worker 的唯一标识，也是保存在 <code>cluster.workers</code> 中的 key 值。</p>
+<h4 id="worker-process"><a href="#worker-process" class="headerlink" title="worker.process"></a>worker.process</h4><p>所有的 worker 进程都是通过 <code>child_process.fork()</code> 生成的，这个进程对象保存在 <code>worker.process</code> 中。</p>
+<h4 id="worker-send"><a href="#worker-send" class="headerlink" title="worker.send()"></a>worker.send()</h4><p><code>worker.send()</code> 用在主进程给子进程发送消息，在子进程中，使用 <code>process.on()</code> 监听消息并使用 <code>process.send()</code> 发送消息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (cluster.isMaster) &#123;</span><br><span class="line">  <span class="keyword">const</span> worker = cluster.fork();</span><br><span class="line">  worker.send(<span class="string">'hi there'</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (cluster.isWorker) &#123;</span><br><span class="line">  process.on(<span class="string">'message'</span>, (msg) =&gt; &#123;</span><br><span class="line">    process.send(msg);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://nodejs.org/api/process.html" target="_blank" rel="external">Node.js 官方文档</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/process.html" target="_blank" rel="external">JavaScript 标准教程 - Node.js</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="HTF WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="HTF Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/NodeJS/" rel="tag">#NodeJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/the-recommended-style-of-react/" rel="next" title="ReactJS 书写建议">
+                <i class="fa fa-chevron-left"></i> ReactJS 书写建议
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/process/"
+           data-title="Node.js 中的进程管理" data-url="http://yoursite.com/2017/03/process/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="HTF" />
+          <p class="site-author-name" itemprop="name">HTF</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/huangtengfei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/htf1012?is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fu-sheng-20-28" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-对象"><span class="nav-number">1.</span> <span class="nav-text">Process 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用属性"><span class="nav-number">1.1.</span> <span class="nav-text">常用属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#argv"><span class="nav-number">1.1.1.</span> <span class="nav-text">argv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#env"><span class="nav-number">1.1.2.</span> <span class="nav-text">env</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stdin-stdout"><span class="nav-number">1.1.3.</span> <span class="nav-text">stdin/stdout</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">1.2.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cwd"><span class="nav-number">1.2.1.</span> <span class="nav-text">cwd()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#on"><span class="nav-number">1.2.2.</span> <span class="nav-text">on()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exit"><span class="nav-number">1.2.3.</span> <span class="nav-text">exit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kill"><span class="nav-number">1.2.4.</span> <span class="nav-text">kill()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Child-Process-模块"><span class="nav-number">2.</span> <span class="nav-text">Child Process 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exec-command-options-callback"><span class="nav-number">2.1.</span> <span class="nav-text">exec(command[, options][, callback])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spawn-command-args-options"><span class="nav-number">2.2.</span> <span class="nav-text">spawn(command[, args][, options])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fork-modulePath-args-options"><span class="nav-number">2.3.</span> <span class="nav-text">fork(modulePath[, args][, options])</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cluster-模块"><span class="nav-number">3.</span> <span class="nav-text">Cluster 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用属性和方法"><span class="nav-number">3.1.</span> <span class="nav-text">常用属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#isMaster-isWorker"><span class="nav-number">3.1.1.</span> <span class="nav-text">isMaster/isWorker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#workers"><span class="nav-number">3.1.2.</span> <span class="nav-text">workers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fork-env"><span class="nav-number">3.1.3.</span> <span class="nav-text">fork([env])</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用事件"><span class="nav-number">3.2.</span> <span class="nav-text">常用事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#listening"><span class="nav-number">3.2.1.</span> <span class="nav-text">listening</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exit-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">exit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#worker-对象"><span class="nav-number">3.3.</span> <span class="nav-text">worker 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#worker-id"><span class="nav-number">3.3.1.</span> <span class="nav-text">worker.id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#worker-process"><span class="nav-number">3.3.2.</span> <span class="nav-text">worker.process</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#worker-send"><span class="nav-number">3.3.3.</span> <span class="nav-text">worker.send()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HTF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"huangtengfei"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

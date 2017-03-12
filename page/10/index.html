@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150813/" itemprop="url">
-                  学习笔记 - 2015.08.13
+                <a class="post-title-link" href="/2015/08/javascript-style-guide/" itemprop="url">
+                  JavaScript 编码规范
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-13T00:00:00+08:00" content="2015-08-13">
-              2015-08-13
+            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
+              2015-08-10
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150813/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150813/" itemprop="commentsCount"></span>
+                <a href="/2015/08/javascript-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/javascript-style-guide/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,13 +298,10 @@
 
       
         
-          <h2 id="纯-CSS-制作-Tab-选项卡"><a href="#纯-CSS-制作-Tab-选项卡" class="headerlink" title="纯 CSS 制作 Tab 选项卡"></a>纯 CSS 制作 Tab 选项卡</h2><p>有两种使用纯 CSS 制作 Tab 选项卡的方式。</p>
-<p>第一种：使用使用表单的单选按钮（radio）来实现当前 Tab 显示和隐藏，首页 Tab 里的内容默认隐藏，如果单选按钮为选中状态（<code>:checked</code>）就显示内容。</p>
-<p>参考 <a href="http://www.shejidaren.com/css3-tabs.html">纯CSS3制作的Tab选项卡</a> 可以快速实现一个demo。</p>
-<p>第二种：通过点击 <code>:target</code> 时令对应的z-index变大，重复覆盖在上一层。可参考 <a href="https://css-tricks.com/css3-tabs/">CSS3-Only Tabbed Area</a> 。不过并不推荐。</p>
-<p>参考：<a href="http://caibaojian.com/css3-tabs.html">纯CSS3制作TAB选项卡的两种方式</a> 和 一个很漂亮的使用第一种方式实现的 <a href="http://www.html5tricks.com/demo/css3-responsive-tab-menu/index.html">demo</a> </p>
+          <h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>每行不得超过 <code>120</code> 个字符。运算符处换行时，运算符必须在新行的行首。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (user.isAuthenticated()</span><br><span class="line">    &amp;&amp; user.isInRole(<span class="string">'admin'</span>)</span><br><span class="line">    &amp;&amp; user.hasAuthority(<span class="string">'add-admin'</span>)</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="comment">// 建议最终将右括号 ) 与左大括号 &#123; 放在独立一行，保证与 if 内语句块能容易视觉辨识。</span></span><br><span class="line">    <span class="comment">// Code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不同行为或逻辑的语句集，使用空行隔开，更易阅读。</span></span><br><span class="line"><span class="keyword">var</span> result = number1 + number2 + number3</span><br><span class="line">    + number4 + number5;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 特别的，对于HTML片段的拼接，通过缩进，保持和HTML相同的结构。</span></span><br><span class="line"><span class="keyword">var</span> html = <span class="string">''</span> <span class="comment">// 此处用一个空字符串，以便整个HTML片段都在新行严格对齐</span></span><br><span class="line">    + <span class="string">'&lt;article&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;h1&gt;Title here&lt;/h1&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;p&gt;This is a paragraph&lt;/p&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;footer&gt;Complete&lt;/footer&gt;'</span></span><br><span class="line">    + <span class="string">'&lt;/article&gt;'</span>;    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 三元运算符由3部分组成，因此其换行应当根据每个部分的长度不同，形成不同的情况。</span></span><br><span class="line"><span class="keyword">var</span> result = thisIsAVeryVeryLongCondition</span><br><span class="line">    ? resultA : resultB;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当参数过多时，将每个参数独立写在一行上，并将结束的右括号 ) 独立一行。</span></span><br><span class="line"><span class="comment">// 所有参数必须增加一个缩进。</span></span><br><span class="line">foo(</span><br><span class="line">    aVeryVeryLongArgument,</span><br><span class="line">    anotherVeryLongArgument,</span><br><span class="line">    callback</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和对象初始化的混用，严格按照每个对象的 &#123; 和结束 &#125; 在独立一行的风格书写。</span></span><br><span class="line"><span class="keyword">var</span> array = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150813/#more" rel="contents">
+            <a class="btn" href="/2015/08/javascript-style-guide/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -355,8 +352,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/json-style-guide/" itemprop="url">
-                  JSON 数据传输标准
+                <a class="post-title-link" href="/2015/08/css-style-guid/" itemprop="url">
+                  CSS编码规范
                 </a>
               
             
@@ -369,8 +366,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-12T00:00:00+08:00" content="2015-08-12">
-              2015-08-12
+            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
+              2015-08-10
             </time>
           </span>
 
@@ -380,8 +377,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/json-style-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/json-style-guide/" itemprop="commentsCount"></span>
+                <a href="/2015/08/css-style-guid/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/css-style-guid/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -405,18 +402,12 @@
 
       
         
-          <h2 id="JSON-数据类型"><a href="#JSON-数据类型" class="headerlink" title="JSON 数据类型"></a>JSON 数据类型</h2><p>传输的数据，包括对象属性以及数组成员， 必须是6种JSON数据类型之一。 杜绝使用function、Date等js对象类型。</p>
-<p>基本数据类型：</p>
-<ul>
-<li>Number可以表示整数和浮点数。 </li>
-<li>Boolean可以表示真假，值为true或false。 </li>
-<li>String表示一个字符串。</li>
-<li>Null通常用于表示空对象</li>
-</ul>
-<p>复合数据类型：Object 和 Array。</p>
-<p>非字符串类型数据（如 <code>&quot;false&quot;</code> 、<code>&quot;0&quot;</code>）输出时一定不要为两端加上双引号，否则可能产生不希望的后果。</p>
+          <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p><code>选择器</code> 与 <code>{</code> 之间必须包含空格。属性名 与之后的 <code>:</code> 之间不允许包含空格， <code>:</code> 与 属性值 之间必须包含空格。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.selector</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当一个 <code>rule</code> 包含多个 <code>selector</code> 时，每个选择器声明必须独占一行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.post</span>,</span><br><span class="line"><span class="selector-class">.page</span>,</span><br><span class="line"><span class="selector-class">.comment</span> &#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/json-style-guide/#more" rel="contents">
+            <a class="btn" href="/2015/08/css-style-guid/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -467,8 +458,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/directory-style-guide/" itemprop="url">
-                  项目目录结构规范
+                <a class="post-title-link" href="/2015/08/html-style-guide/" itemprop="url">
+                  HTML 编码规范
                 </a>
               
             
@@ -481,8 +472,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-12T00:00:00+08:00" content="2015-08-12">
-              2015-08-12
+            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
+              2015-08-10
             </time>
           </span>
 
@@ -492,8 +483,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/directory-style-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/directory-style-guide/" itemprop="commentsCount"></span>
+                <a href="/2015/08/html-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/html-style-guide/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -517,25 +508,13 @@
 
       
         
-          <h2 id="资源分类"><a href="#资源分类" class="headerlink" title="资源分类"></a>资源分类</h2><p>资源分成两大类：</p>
-<ul>
-<li>源代码资源：指开发者编写的源代码，包括js、html、css、template等。</li>
-<li>内容资源：指希望做为内容提供给访问者的资源，包括图片、字体、flash、pdf等。</li>
-</ul>
-<h2 id="目录命名原则"><a href="#目录命名原则" class="headerlink" title="目录命名原则"></a>目录命名原则</h2><p>简洁。有习惯性缩写的单词必须采用容易理解的缩写。如：源代码目录使用src，不使用source。下面是更多例子：</p>
-<ul>
-<li>img： 图片。 不允许使用image、images、imgs等。 </li>
-<li>js： javascript脚本。不允许使用script、scripts等。 </li>
-<li>css： 样式表。 不允许使用style、styles等。 </li>
-<li>swf： flash。不允许使用flash等。 </li>
-<li>src： 源文件目录。 不允许使用source等。 </li>
-<li>tpl：存放template资源文件。</li>
-<li>font： 存放字体资源文件。</li>
-<li>dep： 引入的第三方依赖包目录。 不允许使用lib、library、dependency等。</li>
-</ul>
-<p>不允许使用复数形式。如：imgs、docs是不被允许的。</p>
+          <h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>使用 <code>4</code> 个空格做为一个缩进层级，不允许使用 <code>2</code> 个空格 或 <code>tab</code> 字符。</p>
+<p><code>class</code> 必须单词全字母小写，单词间以 <code>-</code> 分隔。<code>class</code> 必须代表相应模块或部件的内容或功能，不得以样式信息进行命名。</p>
+<p>对于无需自闭合的标签，不允许自闭合。常见无需自闭合标签有 <code>input</code>、<code>br</code>、<code>img</code>、<code>hr</code> 等。对 HTML5 中规定允许省略的闭合标签，不允许省略闭合标签。</p>
+<p>布尔类型的属性，建议不添加属性值。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/directory-style-guide/#more" rel="contents">
+            <a class="btn" href="/2015/08/html-style-guide/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -586,8 +565,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150811/" itemprop="url">
-                  学习笔记 2015.8.11
+                <a class="post-title-link" href="/2015/08/div-center/" itemprop="url">
+                  如何让 DIV 居中
                 </a>
               
             
@@ -600,8 +579,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-11T00:00:00+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2015-08-07T00:00:00+08:00" content="2015-08-07">
+              2015-08-07
             </time>
           </span>
 
@@ -611,8 +590,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150811/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150811/" itemprop="commentsCount"></span>
+                <a href="/2015/08/div-center/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/div-center/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -636,13 +615,9 @@
 
       
         
-          <h2 id="html-dl-dt-dd标签元素语法结构与使用"><a href="#html-dl-dt-dd标签元素语法结构与使用" class="headerlink" title="html dl dt dd标签元素语法结构与使用"></a>html dl dt dd标签元素语法结构与使用</h2><p><code>&lt;dl&gt;</code> 标签用于定义列表类型标签，常用于 页面 footer 部分的分类链接，如 task0001 的 footer 部分即使用 <code>&lt;dl&gt;</code> 完成。</p>
-<p><code>dl</code> <code>dt</code> <code>dd</code> 是一个组合型标签，<code>dt</code> 和 <code>dd</code> 是放于 <code>dl</code> 标签内，标签 <code>dt</code> 与 <code>dd</code> 处于 <code>dl</code> 下相同级。</p>
-<p>举个栗子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>列表标题<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span>列表内容<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span>列表内容<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>参考：<a href="http://www.divcss5.com/html/h88.shtml">html dl dt dd标签元素语法结构与使用</a></p>
+          <h2 id="两种-div-居中方式"><a href="#两种-div-居中方式" class="headerlink" title="两种 div 居中方式"></a>两种 div 居中方式</h2><h3 id="绝对定位居中"><a href="#绝对定位居中" class="headerlink" title="绝对定位居中"></a>绝对定位居中</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;  </span><br><span class="line">    <span class="attribute">position</span>: absolute;  </span><br><span class="line">    <span class="attribute">margin</span>: auto;  </span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150811/#more" rel="contents">
+            <a class="btn" href="/2015/08/div-center/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -693,8 +668,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/deploy-github-repository-to-github-pages/" itemprop="url">
-                  如何部署 Github 仓库到 Github Pages
+                <a class="post-title-link" href="/2015/08/css-layout/" itemprop="url">
+                  两栏布局和三栏布局的实现
                 </a>
               
             
@@ -707,8 +682,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-11T00:00:00+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2015-08-06T00:00:00+08:00" content="2015-08-06">
+              2015-08-06
             </time>
           </span>
 
@@ -718,8 +693,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/deploy-github-repository-to-github-pages/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/deploy-github-repository-to-github-pages/" itemprop="commentsCount"></span>
+                <a href="/2015/08/css-layout/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/css-layout/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -743,12 +718,9 @@
 
       
         
-          <p><code>Github Pages</code> 是 Github 提供的开放的公共静态页面搭建托管服务。通过 <code>Github Pages</code> 可以搭建免费的静态博客网站（比如本网站），或者实现静态 demo 演示。</p>
-<p>那么，如何将 Github 仓库 部署到 <code>Github Pages</code> 呢？</p>
-<p>以本次百度前端学院的作业 task0001 为例说明：</p>
-<h2 id="新建一个-Github-仓库"><a href="#新建一个-Github-仓库" class="headerlink" title="新建一个 Github 仓库"></a>新建一个 Github 仓库</h2><p>新建一个 <code>task0001</code> 仓库，添加 <code>README.md</code> 和 <code>LICENCE</code> 文件。此时处于 <code>master</code> 分支下。</p>
+          <h2 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h2><h3 id="用-position"><a href="#用-position" class="headerlink" title="用 position"></a>用 position</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/deploy-github-repository-to-github-pages/#more" rel="contents">
+            <a class="btn" href="/2015/08/css-layout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -782,7 +754,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -823,7 +795,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -833,7 +805,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -899,7 +871,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/javascript-style-guide/" itemprop="url">
-                  JavaScript 编码规范
+                <a class="post-title-link" href="/2015/08/bfc-and-float/" itemprop="url">
+                  BFC 及 浮动
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
-              2015-08-10
+            <time itemprop="dateCreated" datetime="2015-08-05T00:00:00+08:00" content="2015-08-05">
+              2015-08-05
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/javascript-style-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/javascript-style-guide/" itemprop="commentsCount"></span>
+                <a href="/2015/08/bfc-and-float/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/bfc-and-float/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,10 +298,13 @@
 
       
         
-          <h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>每行不得超过 <code>120</code> 个字符。运算符处换行时，运算符必须在新行的行首。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (user.isAuthenticated()</span><br><span class="line">    &amp;&amp; user.isInRole(<span class="string">'admin'</span>)</span><br><span class="line">    &amp;&amp; user.hasAuthority(<span class="string">'add-admin'</span>)</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="comment">// 建议最终将右括号 ) 与左大括号 &#123; 放在独立一行，保证与 if 内语句块能容易视觉辨识。</span></span><br><span class="line">    <span class="comment">// Code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不同行为或逻辑的语句集，使用空行隔开，更易阅读。</span></span><br><span class="line"><span class="keyword">var</span> result = number1 + number2 + number3</span><br><span class="line">    + number4 + number5;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 特别的，对于HTML片段的拼接，通过缩进，保持和HTML相同的结构。</span></span><br><span class="line"><span class="keyword">var</span> html = <span class="string">''</span> <span class="comment">// 此处用一个空字符串，以便整个HTML片段都在新行严格对齐</span></span><br><span class="line">    + <span class="string">'&lt;article&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;h1&gt;Title here&lt;/h1&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;p&gt;This is a paragraph&lt;/p&gt;'</span></span><br><span class="line">    +     <span class="string">'&lt;footer&gt;Complete&lt;/footer&gt;'</span></span><br><span class="line">    + <span class="string">'&lt;/article&gt;'</span>;    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 三元运算符由3部分组成，因此其换行应当根据每个部分的长度不同，形成不同的情况。</span></span><br><span class="line"><span class="keyword">var</span> result = thisIsAVeryVeryLongCondition</span><br><span class="line">    ? resultA : resultB;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当参数过多时，将每个参数独立写在一行上，并将结束的右括号 ) 独立一行。</span></span><br><span class="line"><span class="comment">// 所有参数必须增加一个缩进。</span></span><br><span class="line">foo(</span><br><span class="line">    aVeryVeryLongArgument,</span><br><span class="line">    anotherVeryLongArgument,</span><br><span class="line">    callback</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和对象初始化的混用，严格按照每个对象的 &#123; 和结束 &#125; 在独立一行的风格书写。</span></span><br><span class="line"><span class="keyword">var</span> array = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+          <h2 id="BFC（块级格式化上下文）"><a href="#BFC（块级格式化上下文）" class="headerlink" title="BFC（块级格式化上下文）"></a>BFC（块级格式化上下文）</h2><p>创建了 BFC的元素就是一个独立的盒子，里面的子元素不会在布局上影响外面的元素，反之亦然，同时BFC任然属于文档中的普通流。</p>
+<h3 id="BFC的应用"><a href="#BFC的应用" class="headerlink" title="BFC的应用"></a>BFC的应用</h3><h4 id="不和浮动元素重叠"><a href="#不和浮动元素重叠" class="headerlink" title="不和浮动元素重叠"></a>不和浮动元素重叠</h4><p>如果一个浮动元素后面跟着一个非浮动的元素，那么就会产生一个覆盖的现象。而根据 CSS Floats 中的描述，创建了 BFC 的元素不能与浮动元素重叠。问题解决。</p>
+<h4 id="清除元素内部浮动"><a href="#清除元素内部浮动" class="headerlink" title="清除元素内部浮动"></a>清除元素内部浮动</h4><p>根据 CSS2.1 规范的高度计算规则，在进行普通流中的块级非替换元素的高度计算时，浮动子元素不参与计算。而在计算生成了 BFC 的元素的高度时，其浮动子元素应该参与计算。</p>
+<p>所以，只要把父元素设为BFC就可以清理子元素的浮动，使浮动元素闭合。</p>
+<h4 id="解决上下相邻两个元素重叠"><a href="#解决上下相邻两个元素重叠" class="headerlink" title="解决上下相邻两个元素重叠"></a>解决上下相邻两个元素重叠</h4><p>根据 CSS 规范，生成 BFC 的元素不会和在流中的子元素发生空白边折叠。所以解决这种问题的办法是要为两个容器添加具有BFC的包裹容器。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/javascript-style-guide/#more" rel="contents">
+            <a class="btn" href="/2015/08/bfc-and-float/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -352,8 +355,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/html-style-guide/" itemprop="url">
-                  HTML 编码规范
+                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
+                  写出优雅的CSS
                 </a>
               
             
@@ -366,8 +369,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
-              2015-08-10
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
             </time>
           </span>
 
@@ -377,8 +380,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/html-style-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/html-style-guide/" itemprop="commentsCount"></span>
+                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -402,13 +405,11 @@
 
       
         
-          <h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>使用 <code>4</code> 个空格做为一个缩进层级，不允许使用 <code>2</code> 个空格 或 <code>tab</code> 字符。</p>
-<p><code>class</code> 必须单词全字母小写，单词间以 <code>-</code> 分隔。<code>class</code> 必须代表相应模块或部件的内容或功能，不得以样式信息进行命名。</p>
-<p>对于无需自闭合的标签，不允许自闭合。常见无需自闭合标签有 <code>input</code>、<code>br</code>、<code>img</code>、<code>hr</code> 等。对 HTML5 中规定允许省略的闭合标签，不允许省略闭合标签。</p>
-<p>布尔类型的属性，建议不添加属性值。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">disabled</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
+<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
+<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/html-style-guide/#more" rel="contents">
+            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -459,8 +460,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/css-style-guid/" itemprop="url">
-                  CSS编码规范
+                <a class="post-title-link" href="/2015/08/learn-sass/" itemprop="url">
+                  Sass 初探
                 </a>
               
             
@@ -473,8 +474,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-10T00:00:00+08:00" content="2015-08-10">
-              2015-08-10
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
             </time>
           </span>
 
@@ -484,8 +485,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/css-style-guid/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/css-style-guid/" itemprop="commentsCount"></span>
+                <a href="/2015/08/learn-sass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-sass/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -509,12 +510,19 @@
 
       
         
-          <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p><code>选择器</code> 与 <code>{</code> 之间必须包含空格。属性名 与之后的 <code>:</code> 之间不允许包含空格， <code>:</code> 与 属性值 之间必须包含空格。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.selector</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当一个 <code>rule</code> 包含多个 <code>selector</code> 时，每个选择器声明必须独占一行。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.post</span>,</span><br><span class="line"><span class="selector-class">.page</span>,</span><br><span class="line"><span class="selector-class">.comment</span> &#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Sass 需要 Ruby 运行环境，在 Windows 上使用需要先安装 Ruby。</p>
+<p>然后，在命令行下输入命令：</p>
+<pre><code>gem install sass
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Sass 命令的格式如下：</p>
+<pre><code>sass [选项] [输入文件] [输出文件]
+</code></pre><p>也可以让 Sass 监听某个文件或目录，一旦源文件有变动，就自动生成编译后的版本：</p>
+<pre><code>// 监控文件
+sass --watch input.scss:output.css
+// 监控目录
+sass --watch dir/sass:dir/css
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/css-style-guid/#more" rel="contents">
+            <a class="btn" href="/2015/08/learn-sass/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -565,8 +573,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/div-center/" itemprop="url">
-                  如何让 DIV 居中
+                <a class="post-title-link" href="/2015/08/learn-compass/" itemprop="url">
+                  Compass 初探
                 </a>
               
             
@@ -579,8 +587,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-07T00:00:00+08:00" content="2015-08-07">
-              2015-08-07
+            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
+              2015-08-04
             </time>
           </span>
 
@@ -590,8 +598,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/div-center/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/div-center/" itemprop="commentsCount"></span>
+                <a href="/2015/08/learn-compass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/learn-compass/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -615,9 +623,19 @@
 
       
         
-          <h2 id="两种-div-居中方式"><a href="#两种-div-居中方式" class="headerlink" title="两种 div 居中方式"></a>两种 div 居中方式</h2><h3 id="绝对定位居中"><a href="#绝对定位居中" class="headerlink" title="绝对定位居中"></a>绝对定位居中</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="selector-class">.wrapper</span> &#123;  </span><br><span class="line">    <span class="attribute">position</span>: absolute;  </span><br><span class="line">    <span class="attribute">margin</span>: auto;  </span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <p>Sass 本身只是一个编译器，Compass 在它的基础上，封装了一系列有用的模块和模板，补充 Sass 的功能。它们之间的关系类似于 Javascript 和 jQuery。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在已有Ruby的环境下，在命令行输入命令：</p>
+<pre><code>gem install compass
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="compass-create"><a href="#compass-create" class="headerlink" title="compass create"></a>compass create</h3><p>使用 <code>compass create</code> 命令可创建一个 Compass 项目：</p>
+<pre><code>compass create myproject
+</code></pre><p>该命令会生成以下目录结构：</p>
+<ul>
+<li>sass目录，存放 sass 源文件</li>
+<li>stylesheets目录，存放编译好的 CSS</li>
+<li>config.rb文件，Compass 的配置文件</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/div-center/#more" rel="contents">
+            <a class="btn" href="/2015/08/learn-compass/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -668,8 +686,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150806/" itemprop="url">
-                  学习笔记 2015.8.6
+                <a class="post-title-link" href="/2015/07/jquery/" itemprop="url">
+                  jQuery 学习笔记
                 </a>
               
             
@@ -682,8 +700,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-06T00:00:00+08:00" content="2015-08-06">
-              2015-08-06
+            <time itemprop="dateCreated" datetime="2015-07-30T00:00:00+08:00" content="2015-07-30">
+              2015-07-30
             </time>
           </span>
 
@@ -693,8 +711,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150806/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150806/" itemprop="commentsCount"></span>
+                <a href="/2015/07/jquery/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/jquery/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -718,11 +736,10 @@
 
       
         
-          <h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>CSS 盒模型包括内容(content)、填充(padding)、边框(border)、边界(margin)四个属性。</p>
-<p>标准 w3c 盒模型的 width 指 content width，盒子需要占据的宽度为：<br>content width + (padding left + padding right) + (border left + border right) + (margin left + margin right)</p>
-<p>ie 盒子模型的 content 部分包含了 border 和 padding，盒子需要占据的宽度为：<br>content width + (margin left + margin right)</p>
+          <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><p>当前 HTML 元素：<code>$(this)</code><br>按ID查找： <code>$(&#39;#abc&#39;)</code><br>按tag查找： <code>$(&#39;p&#39;)</code><br>按class查找： <code>$(&#39;.red&#39;)</code><br>按属性查找： <code>$(&#39;[name=email]&#39;)</code><br>组合查找： <code>$(&#39;tr.red&#39;)</code><br>多项选择器： <code>$(&#39;p.red,p.green&#39;)</code></p>
+<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>层级选择器：<code>$(&#39;ancestor descendant&#39;)</code><br>子选择器：<code>$(&#39;parent&gt;child&#39;)</code><br>过滤器：一般不单独使用，附加在选择器上，<code>:first-child</code>，<code>:last-child</code><br>，<code>nth-child(2)</code>，<code>nth-child(even)</code>，<code>nth-child(odd)</code></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150806/#more" rel="contents">
+            <a class="btn" href="/2015/07/jquery/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -756,7 +773,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -797,7 +814,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -807,7 +824,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -873,7 +890,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

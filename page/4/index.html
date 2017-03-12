@@ -248,6 +248,219 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/angular-directive/" itemprop="url">
+                  AngularJS 指令入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T00:00:00+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/angular-directive/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/angular-directive/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>指令是运行在特定 dom 元素上的函数，用来扩展元素的功能。</p>
+<p>一个简版的 directive 的形式是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.directive(<span class="string">'myDirective'</span>, myDirective);</span><br><span class="line"></span><br><span class="line">myDirective.$inject = [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myDirective</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">"AE"</span>,</span><br><span class="line">        template: <span class="string">''</span></span><br><span class="line">        scope: &#123;&#125;,</span><br><span class="line">        link: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/angular-directive/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/basic-of-fe/" itemprop="url">
+                  前端基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-11T00:00:00+08:00" content="2016-03-11">
+              2016-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/basic-of-fe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/basic-of-fe/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p><code>闭包</code> 就是有权访问另一个函数作用域中的变量的函数。</p>
+<p>两个作用：一是封装私有变量（通过闭包读取函数内部的变量），二是延长变量的寿命（让这些变量的值始终存在于内存中）。</p>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>每个函数都有自己的执行环境（关联一个变量对象），执行环境定义了变量或函数有权访问的其他数据。</p>
+<p>当执行流进入一个函数时，函数的环境会被推入一个环境栈中，在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。</p>
+<p>任何执行上下文时刻的作用域，都是由作用域链来实现。</p>
+<p>代码在一个环境中执行时，会创建变量对象的一个作用域链。作用域链保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/basic-of-fe/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/questions-and-answers-of-angularjs/" itemprop="url">
                   关于 AngularJS 的一些问题
                 </a>
@@ -556,222 +769,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/summary-of-2015/" itemprop="url">
-                  2015 小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-28T00:00:00+08:00" content="2015-12-28">
-              2015-12-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/summary-of-2015/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/summary-of-2015/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>时间过得真快，马上 2015 就要完了，作为毕业后工作第一年，好像是该写点什么。</p>
-<p>去年 12 月底，在忙完校招答辩等一大堆事情后，觉得闲着也是闲着，就跟人事商量了以下提前过来实习。很幸运，有飞哥 @<a href="https://github.com/xufei">徐飞</a> 作为带教，提前联系了一下。12 月 22 号，来南京开始了实习。</p>
-<p>实习时间持续两个多月，在此期间，做了一个类似 <a href="https://leancloud.cn/">LeanCloud</a> 的 BaaS demo，并对开发中遇到的问题做了一个 <a href="http://huangtengfei.com/2015/02/problems-and-solutions-encountered-in-project-start/">总结</a> ，写了 <a href="http://huangtengfei.com/2015/02/how-to-build-a-web-app-based-on-start/">使用说明</a> 。只不过当时没怎么用 github，代码全在本地。另外，使用 <a href="http://hexo.io/">hexo</a> 基于 <a href="http://huangtengfei.com/2015/08/deploy-github-repository-to-github-pages/">Github Pages</a> 搭建了一个 <a href="http://huangtengfei.com/">个人博客</a> ，对 <a href="http://huangtengfei.com/2015/03/learn-git/">Git基本命令</a> 、<a href="http://huangtengfei.com/2015/03/front-end-development-tool-yeoman/">前端工具 grunt、bower 等</a> 和 <a href="http://huangtengfei.com/2015/03/the-basic-grammer-of-javascript/">JavaScript 基本语法</a> 做了简单学习。</p>
-<p>在实习期间，跟一个喜欢健身的小伙伴去健身了有一个多月时间，本想后面一直坚持着，说不定能长点肉，可惜后来他不在这边工作了，自己便也没去过了。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/summary-of-2015/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/2015-d2/" itemprop="url">
-                  参加第10届 D2 的收获
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-20T00:00:00+08:00" content="2015-12-20">
-              2015-12-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/2015-d2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/2015-d2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在飞哥@<a href="https://www.zhihu.com/people/sharpmaster">徐飞</a>的号召下，我们小组这次基本上全员出动（除一个小伙伴临时有事没来），来膜拜大神，学习新姿势。（貌似我没有写是五花肉的前男友就顺利通过D2申请了，哈哈[骄傲脸]）。</p>
-<p>这次D2的主题是融合，演讲主题主要分两大块，一块是 Node.js，一块是 React + React Native（果然是2015最火技术），然而在我们这边的实际项目中并没有用到这两个，所以估计对我们小组的人员来说，全听懂还是有困难的（经验丰富的大师兄和乔大师@乔梁除外）。好在自己之前做过一些跟 Node.js 相关的，在来之前也稍微补了一下 React ，写了小demo，所以也还能勉强听懂一些。</p>
-<p>上午第一场听的是不四老师@dead-horse 的用《Node.js 构建海量页面渲染服务》，看到了在阿里，Node.js 确实是被广泛使用的（仅次于PHP，不知道有没有记错。。。），并且用来承载一些核心业务（比如淘宝首页促销页等），并能经得起双十一这样高峰值的考验。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/2015-d2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -812,7 +814,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -822,7 +824,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -888,7 +890,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

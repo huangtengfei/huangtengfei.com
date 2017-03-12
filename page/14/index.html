@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/the-design-patterns-of-javascript/" itemprop="url">
-                  JavaScript 设计模式
+                <a class="post-title-link" href="/2015/03/set-proxy-for-npm-and-git-and-bower/" itemprop="url">
+                  为 NPM/Git/Bower 设置代理
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-07T00:00:00+08:00" content="2015-07-07">
-              2015-07-07
+            <time itemprop="dateCreated" datetime="2015-03-08T17:20:12+08:00" content="2015-03-08">
+              2015-03-08
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/the-design-patterns-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/the-design-patterns-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/03/set-proxy-for-npm-and-git-and-bower/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/set-proxy-for-npm-and-git-and-bower/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,13 +298,14 @@
 
       
         
-          <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>确保只有一个实例，并提供一个全局访问点。</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>线程池、全局缓存、浏览器中的Window对象等。</p>
-<h3 id="通用的惰性单例"><a href="#通用的惰性单例" class="headerlink" title="通用的惰性单例"></a>通用的惰性单例</h3><p>依据单一职责原则，创建对象和管理单例的逻辑应该分开放置。</p>
-<p>管理单例的逻辑是，用一个变量标记是否创建过对象，如果是，则下次直接返回这个已经创建好的对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">if</span>(!obj)&#123;</span><br><span class="line">    obj = xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="代理上网"><a href="#代理上网" class="headerlink" title="代理上网"></a>代理上网</h2><p>在局域网内工作，可以通过 CCproxy 代理上网，具体教程可参考 <a href="http://jingyan.baidu.com/article/8275fc86d0564546a03cf623.html">此文</a>，下文假设代理服务器地址为 10.24.48.6，端口为808.</p>
+<h2 id="为-NPM-设置代理"><a href="#为-NPM-设置代理" class="headerlink" title="为 NPM 设置代理"></a>为 NPM 设置代理</h2><pre><code>npm config set proxy http://10.24.48.6:808
+npm config set https-proxy http://10.24.48.6:808
+</code></pre><p>注意不要遗漏 “http://“ ，否则可能安装某些 package 时可能会报：</p>
+<pre><code>ERR! Error: Invalid protocol
+</code></pre><p>这个问题我在安装 hexo 时碰到过，后来参考 <a href="https://github.com/npm/npm/issues/1880">此文</a> 解决。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/the-design-patterns-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/03/set-proxy-for-npm-and-git-and-bower/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -355,8 +356,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/stock/" itemprop="url">
-                  血的教训
+                <a class="post-title-link" href="/2015/03/front-end-development-tool-yeoman/" itemprop="url">
+                  前端开发利器：Yeoman
                 </a>
               
             
@@ -369,8 +370,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-07T00:00:00+08:00" content="2015-07-07">
-              2015-07-07
+            <time itemprop="dateCreated" datetime="2015-03-06T17:20:12+08:00" content="2015-03-06">
+              2015-03-06
             </time>
           </span>
 
@@ -380,8 +381,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/stock/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/stock/" itemprop="commentsCount"></span>
+                <a href="/2015/03/front-end-development-tool-yeoman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/front-end-development-tool-yeoman/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -405,9 +406,21 @@
 
       
         
-          <p>入市到现在，刚好四十天，战况惨不忍睹。分别在5月28号和6月19号两次买入，结果刚好赶上两次大盘暴跌，而入手的这只更是八次跌停，股价已经跌去了一半，虽然心痛，但交了这么昂贵的学费也还是学到点东西的，总结一下，权作以后的警示。</p>
+          <h2 id="Yeoman介绍"><a href="#Yeoman介绍" class="headerlink" title="Yeoman介绍"></a>Yeoman介绍</h2><p>Yeoman是一套针对Web应用开发流程进行管理的工具集，包括三个部分：</p>
+<ul>
+<li>grunt：构建工具，主要用来运行各种任务，比如文件压缩、合并、打包等。生成、预览和自动化测试项目。</li>
+<li>bower：包管理器，主要用来做前端资源依赖管理，跟npm很像，区别在于：npm管理的是node模块的依赖，bower管理的是前端资源的依赖，如css、javascript文件等。</li>
+<li>yo：脚手架工具，主要作用是创建项目骨架（跟grunt-init有点像）。快速生成一个新的应用，包括配置好Grunt任务及有可能用到的Bower依赖。</li>
+</ul>
+<p>在用到Yeoman的项目中，工作流程一般是：</p>
+<ul>
+<li>创建项目骨架：运行yo工具，通过各种yeoman-generator（模板）创建项目骨架</li>
+<li>下载前端资源：运行bower install，下载项目中依赖的前端资源，比如jQuery、bootstrap、angularjs等（非必要）</li>
+<li>运行构建任务：运行grunt跑自动化构建任务（非必要）</li>
+</ul>
+<p><img src="http://huangtengfei.qiniudn.com/yeoman.png" alt="Yeoman"></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/stock/#more" rel="contents">
+            <a class="btn" href="/2015/03/front-end-development-tool-yeoman/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -458,8 +471,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/css-position/" itemprop="url">
-                  CSS 定位
+                <a class="post-title-link" href="/2015/03/learn-git/" itemprop="url">
+                  Git 入门
                 </a>
               
             
@@ -472,8 +485,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-01T00:00:00+08:00" content="2015-07-01">
-              2015-07-01
+            <time itemprop="dateCreated" datetime="2015-03-02T18:44:12+08:00" content="2015-03-02">
+              2015-03-02
             </time>
           </span>
 
@@ -483,8 +496,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/css-position/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/css-position/" itemprop="commentsCount"></span>
+                <a href="/2015/03/learn-git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/learn-git/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -508,11 +521,16 @@
 
       
         
-          <h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>display 属性规定元素应该生成的框的类型。一切皆为框，比如块级元素div、h1、p生成的“块框”，内联元素strong、span生成的“行内框”。</p>
-<h2 id="position属性"><a href="#position属性" class="headerlink" title="position属性"></a>position属性</h2><p>CSS 有三种基本的定位机制：普通流（static、relative）、浮动（float）和绝对定位（absolute、fixed）。</p>
-<p>正常情况下，所有框都在普通流中定位，块级框从上到下一个接一个地排列（框之间的垂直距离由框的垂直外边距计算出来），行内框在一行中水平布置（可以使用水平内边距、边框和外边距调整它们的间距）。</p>
+          <h2 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h2><p>安装教程： <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000">安装Git</a><br>安装完成后，设置用户名和Email</p>
+<pre><code>$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
+</code></pre><h2 id="初始化一个Git仓库"><a href="#初始化一个Git仓库" class="headerlink" title="初始化一个Git仓库"></a>初始化一个Git仓库</h2><p>创建一个本地版本库（Repository）</p>
+<pre><code>$ git init
+</code></pre><p>从远程库克隆（可以使用原生 <code>git</code> 协议或 <code>https</code> 协议）</p>
+<pre><code>$ git clone
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/css-position/#more" rel="contents">
+            <a class="btn" href="/2015/03/learn-git/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -563,8 +581,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/sui-sui-nian/" itemprop="url">
-                  碎碎念
+                <a class="post-title-link" href="/2015/02/learn-node/" itemprop="url">
+                  《Node入门》读书笔记
                 </a>
               
             
@@ -577,8 +595,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-10T00:00:00+08:00" content="2015-06-10">
-              2015-06-10
+            <time itemprop="dateCreated" datetime="2015-02-09T17:52:12+08:00" content="2015-02-09">
+              2015-02-09
             </time>
           </span>
 
@@ -588,8 +606,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/sui-sui-nian/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/sui-sui-nian/" itemprop="commentsCount"></span>
+                <a href="/2015/02/learn-node/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/learn-node/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -613,10 +631,13 @@
 
       
         
-          <h2 id="关于近况"><a href="#关于近况" class="headerlink" title="关于近况"></a>关于近况</h2><p>好久没整理思绪了，感觉最近过得一团乱。从四月一号刚入职就“幸运地”分到了项目间，到现在，两个多月了，几乎每天加班到九点以后。所有的计划，包括看书、写博客、做东西、健身，全都落空。总得来说，过得很累，情绪也一直比较低落。</p>
-<p>好在项目终于快要结束了，如果能如期，那么后面应该可以好好执行我的计划了。</p>
+          <p>原文链接：<a href="http://www.nodebeginner.org/index-zh-cn.html">Node入门</a></p>
+<h3 id="基于事件驱动的回调"><a href="#基于事件驱动的回调" class="headerlink" title="基于事件驱动的回调"></a>基于事件驱动的回调</h3><p>不论是在等待用户的按键行为，还是在等待远程服务器的批量数据，所需要做的都只是定义一个回调。</p>
+<p>给某个方法传递了一个函数，这个方法在有相应事件发生时调用这个函数来进行回调。 </p>
+<h3 id="构建应用的模块"><a href="#构建应用的模块" class="headerlink" title="构建应用的模块"></a>构建应用的模块</h3><p>只要把不同功能的代码放入不同的模块中，保持代码分离还是相当简单的。 </p>
+<p>这种方法允许你拥有一个干净的主文件（main file），你可以用Node.js执行它；同时你可以拥有干净的模块，它们可以被主文件和其他的模块调用。 </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/sui-sui-nian/#more" rel="contents">
+            <a class="btn" href="/2015/02/learn-node/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -667,8 +688,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/best-practices-of-css/" itemprop="url">
-                  CSS最佳实践
+                <a class="post-title-link" href="/2015/02/problems-and-solutions-encountered-in-project-start/" itemprop="url">
+                  Start开发中遇到的问题及解决办法
                 </a>
               
             
@@ -681,8 +702,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-06-02T00:00:00+08:00" content="2015-06-02">
-              2015-06-02
+            <time itemprop="dateCreated" datetime="2015-02-06T20:45:00+08:00" content="2015-02-06">
+              2015-02-06
             </time>
           </span>
 
@@ -692,8 +713,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/best-practices-of-css/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/best-practices-of-css/" itemprop="commentsCount"></span>
+                <a href="/2015/02/problems-and-solutions-encountered-in-project-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/problems-and-solutions-encountered-in-project-start/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -717,16 +738,13 @@
 
       
         
-          <h2 id="高维护性的CSS"><a href="#高维护性的CSS" class="headerlink" title="高维护性的CSS"></a>高维护性的CSS</h2><h3 id="高效组织CSS代码"><a href="#高效组织CSS代码" class="headerlink" title="高效组织CSS代码"></a>高效组织CSS代码</h3><h4 id="组织CSS代码文件"><a href="#组织CSS代码文件" class="headerlink" title="组织CSS代码文件"></a>组织CSS代码文件</h4><p>将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css</p>
-<pre><code>+css
- ++lib
- ++business
- --default.css
- --common.css
- --ie-style.css
-</code></pre><p>default.css的作用是重置元素的默认样式，目的是让元素在各浏览器中有统一的外观。</p>
+          <h2 id="AngularJS相关问题"><a href="#AngularJS相关问题" class="headerlink" title="AngularJS相关问题"></a>AngularJS相关问题</h2><h3 id="ng-repeat中的ng-model"><a href="#ng-repeat中的ng-model" class="headerlink" title="ng-repeat中的ng-model"></a>ng-repeat中的ng-model</h3><p><strong>问题描述</strong>：</p>
+<p>实现一个通用表单，表单中的元素类型固定，但数量和名称不固定。由于数量和名称不固定，所以不能逐一写出表单元素，只能采用ng-repeat产生元素。代码如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scope.fields = [<span class="string">'author'</span>, <span class="string">'content'</span>, <span class="string">'time'</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">"field in fields"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>&#123;&#123;field&#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"field"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>很显然，这样会出现一个绑定问题，具体参见 <a href="https://github.com/angular/angular.js/issues/1267">don’t bind to primitives</a></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/best-practices-of-css/#more" rel="contents">
+            <a class="btn" href="/2015/02/problems-and-solutions-encountered-in-project-start/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -760,7 +778,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -801,7 +819,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -811,7 +829,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -877,7 +895,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

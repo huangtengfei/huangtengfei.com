@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/how-to-write-css/" itemprop="url">
-                  写出优雅的CSS
+                <a class="post-title-link" href="/2015/07/css-position/" itemprop="url">
+                  CSS 定位
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-04T00:00:00+08:00" content="2015-08-04">
-              2015-08-04
+            <time itemprop="dateCreated" datetime="2015-07-01T00:00:00+08:00" content="2015-07-01">
+              2015-07-01
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/how-to-write-css/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/how-to-write-css/" itemprop="commentsCount"></span>
+                <a href="/2015/07/css-position/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/css-position/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,11 +298,11 @@
 
       
         
-          <h2 id="CSS-设计模式"><a href="#CSS-设计模式" class="headerlink" title="CSS 设计模式"></a>CSS 设计模式</h2><h3 id="OOCSS"><a href="#OOCSS" class="headerlink" title="OOCSS"></a>OOCSS</h3><p>OOCSS（Object-Oriented CSS，面向对象的CSS），将页面的UI组件看作对象，再以这些对象为单位考虑CSS的可重用性。</p>
-<p>OOCSS的目的主要是减少对 HTML 结构的依赖，增加 CSS class 重复性的使用。</p>
-<h4 id="结构与外观分离"><a href="#结构与外观分离" class="headerlink" title="结构与外观分离"></a>结构与外观分离</h4><p>结构对象，是指那些设定高度和宽度的样式属性。外观是指文字颜色、背景色等样式。</p>
+          <h2 id="display属性"><a href="#display属性" class="headerlink" title="display属性"></a>display属性</h2><p>display 属性规定元素应该生成的框的类型。一切皆为框，比如块级元素div、h1、p生成的“块框”，内联元素strong、span生成的“行内框”。</p>
+<h2 id="position属性"><a href="#position属性" class="headerlink" title="position属性"></a>position属性</h2><p>CSS 有三种基本的定位机制：普通流（static、relative）、浮动（float）和绝对定位（absolute、fixed）。</p>
+<p>正常情况下，所有框都在普通流中定位，块级框从上到下一个接一个地排列（框之间的垂直距离由框的垂直外边距计算出来），行内框在一行中水平布置（可以使用水平内边距、边框和外边距调整它们的间距）。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/how-to-write-css/#more" rel="contents">
+            <a class="btn" href="/2015/07/css-position/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -353,8 +353,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/jquery/" itemprop="url">
-                  jQuery 学习笔记
+                <a class="post-title-link" href="/2015/06/sui-sui-nian/" itemprop="url">
+                  碎碎念
                 </a>
               
             
@@ -367,8 +367,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-30T00:00:00+08:00" content="2015-07-30">
-              2015-07-30
+            <time itemprop="dateCreated" datetime="2015-06-10T00:00:00+08:00" content="2015-06-10">
+              2015-06-10
             </time>
           </span>
 
@@ -378,8 +378,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/jquery/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/jquery/" itemprop="commentsCount"></span>
+                <a href="/2015/06/sui-sui-nian/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/sui-sui-nian/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -403,10 +403,10 @@
 
       
         
-          <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><p>当前 HTML 元素：<code>$(this)</code><br>按ID查找： <code>$(&#39;#abc&#39;)</code><br>按tag查找： <code>$(&#39;p&#39;)</code><br>按class查找： <code>$(&#39;.red&#39;)</code><br>按属性查找： <code>$(&#39;[name=email]&#39;)</code><br>组合查找： <code>$(&#39;tr.red&#39;)</code><br>多项选择器： <code>$(&#39;p.red,p.green&#39;)</code></p>
-<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>层级选择器：<code>$(&#39;ancestor descendant&#39;)</code><br>子选择器：<code>$(&#39;parent&gt;child&#39;)</code><br>过滤器：一般不单独使用，附加在选择器上，<code>:first-child</code>，<code>:last-child</code><br>，<code>nth-child(2)</code>，<code>nth-child(even)</code>，<code>nth-child(odd)</code></p>
+          <h2 id="关于近况"><a href="#关于近况" class="headerlink" title="关于近况"></a>关于近况</h2><p>好久没整理思绪了，感觉最近过得一团乱。从四月一号刚入职就“幸运地”分到了项目间，到现在，两个多月了，几乎每天加班到九点以后。所有的计划，包括看书、写博客、做东西、健身，全都落空。总得来说，过得很累，情绪也一直比较低落。</p>
+<p>好在项目终于快要结束了，如果能如期，那么后面应该可以好好执行我的计划了。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/jquery/#more" rel="contents">
+            <a class="btn" href="/2015/06/sui-sui-nian/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -457,8 +457,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/the-basic-knowledge-of-javascript/" itemprop="url">
-                  JavaScript 基础
+                <a class="post-title-link" href="/2015/06/best-practices-of-css/" itemprop="url">
+                  CSS最佳实践
                 </a>
               
             
@@ -471,8 +471,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-17T00:00:00+08:00" content="2015-07-17">
-              2015-07-17
+            <time itemprop="dateCreated" datetime="2015-06-02T00:00:00+08:00" content="2015-06-02">
+              2015-06-02
             </time>
           </span>
 
@@ -482,8 +482,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/the-basic-knowledge-of-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/the-basic-knowledge-of-javascript/" itemprop="commentsCount"></span>
+                <a href="/2015/06/best-practices-of-css/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/best-practices-of-css/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -507,10 +507,16 @@
 
       
         
-          <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><code>null</code> 表示一个空的值，而 <code>undefined</code> 表示值未定义，然而区分两者的意义不大，大多数情况下都应该用 <code>null</code>，<code>undefined</code> 仅在判断函数参数是否传递的情况下有用。</p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><code>indexOf()</code> 会搜索指定字符串出现的位置。<br><code>substring(start, end)</code> 返回指定索引区间的子串。<br><code>substr(start, length)</code> 返回从start下标开始的指定数目的子串。</p>
+          <h2 id="高维护性的CSS"><a href="#高维护性的CSS" class="headerlink" title="高维护性的CSS"></a>高维护性的CSS</h2><h3 id="高效组织CSS代码"><a href="#高效组织CSS代码" class="headerlink" title="高效组织CSS代码"></a>高效组织CSS代码</h3><h4 id="组织CSS代码文件"><a href="#组织CSS代码文件" class="headerlink" title="组织CSS代码文件"></a>组织CSS代码文件</h4><p>将通用类和业务类的代码放置于不同目录，通常css下包含lib文件夹、业务css文件夹和default.css、common.css、ie-style.css</p>
+<pre><code>+css
+ ++lib
+ ++business
+ --default.css
+ --common.css
+ --ie-style.css
+</code></pre><p>default.css的作用是重置元素的默认样式，目的是让元素在各浏览器中有统一的外观。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/the-basic-knowledge-of-javascript/#more" rel="contents">
+            <a class="btn" href="/2015/06/best-practices-of-css/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -561,8 +567,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/regular-expressions-of-js/" itemprop="url">
-                  JavaScript 正则表达式
+                <a class="post-title-link" href="/2015/03/the-standard-library-of-javascript/" itemprop="url">
+                  JavaScript 学习系列二：Object 对象
                 </a>
               
             
@@ -575,8 +581,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-16T00:00:00+08:00" content="2015-07-16">
-              2015-07-16
+            <time itemprop="dateCreated" datetime="2015-03-12T11:45:30+08:00" content="2015-03-12">
+              2015-03-12
             </time>
           </span>
 
@@ -586,8 +592,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/regular-expressions-of-js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/regular-expressions-of-js/" itemprop="commentsCount"></span>
+                <a href="/2015/03/the-standard-library-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/the-standard-library-of-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -611,12 +617,14 @@
 
       
         
-          <h2 id="创建一个正则表达式（-…-）"><a href="#创建一个正则表达式（-…-）" class="headerlink" title="创建一个正则表达式（/…/）"></a>创建一个正则表达式（/…/）</h2><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>JavaScript有两种方式创建一个正则表达式：一种是直接通过 <code>/正则表达式/</code> 写出来，另一种是通过 <code>new RegExp(&#39;正则表达式&#39;)</code> 创建一个RegExp对象。</p>
-<p>RegExp对象的 <code>test()</code> 方法用于测试给定的字符串是否符合条件，返回 <code>true</code> 或者 <code>false</code>。</p>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>用正则表达式切分字符串比用固定的字符更灵活。如果用户输入了一组标签，可能用逗号、分号或空格分隔，现在需要用正则表达式来把不规范的输入转化成正确的数组：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a,b;; c  d'</span>.split(<span class="regexp">/[\s\,\;]+/</span>); <span class="comment">// ['a', 'b', 'c', 'd']</span></span><br></pre></td></tr></table></figure>
+          <h2 id="Object对象的方法"><a href="#Object对象的方法" class="headerlink" title="Object对象的方法"></a>Object对象的方法</h2><p>Object作为构造函数使用时，可以接受一个参数。如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象。利用这一点，可以写一个判断变量是否为对象的函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value === <span class="built_in">Object</span>(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>要在Object对象上面部署一个方法，有两种做法。</p>
+<ul>
+<li>部署在Object对象本身</li>
+<li>部署在Object.prototype对象</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/regular-expressions-of-js/#more" rel="contents">
+            <a class="btn" href="/2015/03/the-standard-library-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -667,8 +675,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/the-understanding-of-this-and-call-and-apply-and-closures/" itemprop="url">
-                  对 js 中 this、apply、call 和闭包的理解
+                <a class="post-title-link" href="/2015/03/the-basic-grammer-of-javascript/" itemprop="url">
+                  JavaScript 学习系列一：基本语法
                 </a>
               
             
@@ -681,8 +689,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-15T00:00:00+08:00" content="2015-07-15">
-              2015-07-15
+            <time itemprop="dateCreated" datetime="2015-03-10T16:25:00+08:00" content="2015-03-10">
+              2015-03-10
             </time>
           </span>
 
@@ -692,8 +700,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/the-understanding-of-this-and-call-and-apply-and-closures/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/the-understanding-of-this-and-call-and-apply-and-closures/" itemprop="commentsCount"></span>
+                <a href="/2015/03/the-basic-grammer-of-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/the-basic-grammer-of-javascript/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -717,13 +725,14 @@
 
       
         
-          <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>绑定到对象上的函数称为方法，在一个方法内部，<code>this</code> 是一个特殊变量，它始终指向当前对象。</p>
-<p>定义一个对象：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    text: <span class="string">'hello world'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.text);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果这样调用，显然是没问题的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.foo();  <span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+          <h2 id="语法概述"><a href="#语法概述" class="headerlink" title="语法概述"></a>语法概述</h2><h3 id="基本句法和变量"><a href="#基本句法和变量" class="headerlink" title="基本句法和变量"></a>基本句法和变量</h3><p>语句以分号结尾，一个分号就表示一个语句结束。</p>
+<p>JavaScript允许省略var，直接对未声明的变量赋值。也就是说，var a = 1 与 a = 1，这两条语句的效果相同。但是由于这样的做法很容易不知不觉地创建全局变量（尤其是在函数内部），所以建议总是使用var命令声明变量。</p>
+<p>JavaScript引擎的工作方式是，先解析代码，获取所有被声明的变量，然后再一行一行地运行。这造成的结果，就是所有的变量的声明语句（var 命令声明的变量），都会被提升到代码的头部，这就叫做变量提升（hoisting）。</p>
+<p>JavaScript语言的标识符对大小写敏感。</p>
+<p>JavaScript使用大括号将语句组成区块，但与大多数编程语言不一样，JavaScript的区块不构成单独的作用域（scope）。</p>
+<p>else代码块总是跟随离自己最近的那个if语句。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/the-understanding-of-this-and-call-and-apply-and-closures/#more" rel="contents">
+            <a class="btn" href="/2015/03/the-basic-grammer-of-javascript/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -757,7 +766,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -798,7 +807,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -808,7 +817,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -874,7 +883,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

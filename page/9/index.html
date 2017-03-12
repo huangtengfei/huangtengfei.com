@@ -248,8 +248,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/note-for-20150902/" itemprop="url">
-                  学习笔记 2015.9.2
+                <a class="post-title-link" href="/2015/09/scope-and-scope-chain-of-js/" itemprop="url">
+                  JavaScript 作用域与作用域链
                 </a>
               
             
@@ -262,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-02T00:00:00+08:00" content="2015-09-02">
-              2015-09-02
+            <time itemprop="dateCreated" datetime="2015-09-06T00:00:00+08:00" content="2015-09-06">
+              2015-09-06
             </time>
           </span>
 
@@ -273,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/09/note-for-20150902/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/note-for-20150902/" itemprop="commentsCount"></span>
+                <a href="/2015/09/scope-and-scope-chain-of-js/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/scope-and-scope-chain-of-js/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,227 +298,13 @@
 
       
         
-          <h2 id="访问兄弟节点"><a href="#访问兄弟节点" class="headerlink" title="访问兄弟节点"></a>访问兄弟节点</h2><p>由于IE以外的其他浏览器不会忽略节点间生成的空白文本节点（例如换行符号），因此 <code>nextSibling</code> 属性返回的某个节点之后紧跟的节点可能并不符合预期（处于同一树层级中）。</p>
-<p>解决办法：判断节点 <code>nodeType</code> 是否为1, 如是为元素节点，跳过。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_nextSibling</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = n.nextSibling;</span><br><span class="line">    <span class="keyword">while</span>(x &amp;&amp; x.nodeType != <span class="number">1</span>) &#123;</span><br><span class="line">        x = x.nextSibling;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = get_nextSibling(x);</span><br></pre></td></tr></table></figure>
+          <p>与C、Java等语言不同，JavaScript的作用域不是以花括号包围的块级作用域，而是函数决定的块级作用域。</p>
+<h2 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h2><p>JS是一种脚本语言， JS的执行过程， 是一种翻译执行的过程。</p>
+<p>但是，在JS中是有预编译的过程的。JS 在执行每一段代码之前，都会首先处理 <code>var</code> 关键字和 <code>function</code> 定义式。在调用函数执行之前，会首先创建一个活动对象，然后搜寻这个函数中的局部变量定义和函数定义。将变量名和函数名都做为这个活动对象的同名属性。对于局部变量定义，变量的值会在真正执行的时候才计算，此时只是简单的赋为 <code>undefined</code>。</p>
+<p>对于函数的定义，有一个要注意的地方：对于函数定义式，会将函数定义提前，而函数表达式，会在执行过程中才计算。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">// undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 函数定义式</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 函数表达式</span></span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/note-for-20150902/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/note-for-20150831/" itemprop="url">
-                  学习笔记 2015.8.31
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-31T00:00:00+08:00" content="2015-08-31">
-              2015-08-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150831/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150831/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="键盘上下键选择文字（输入提示）"><a href="#键盘上下键选择文字（输入提示）" class="headerlink" title="键盘上下键选择文字（输入提示）"></a>键盘上下键选择文字（输入提示）</h2><p>步骤：</p>
-<p>1、定义一个全局变量表示当前候选元素 <code>selectedIndex</code> ，在每次触发上下方向键时改变其值，所以初始值为-1；</p>
-<p>2、为输入框绑定 <code>keyup</code> 事件；</p>
-<p>3、愉快地 <code>switch(event.keyCode)</code>，并按顺序执行：取消前一个候选元素的颜色、更改 <code>selectedIndex</code> 、设置当前候选元素的颜色；</p>
-<p>4、在选择上下键时别忘了两件事：如果长度向上或向下超出，更新  <code>selectedIndex</code> 为 <code>0</code> 或者 <code>length-1</code>，并手动清除 <code>index</code> 为 <code>length-1</code> 和 <code>0</code> 的过期元素样式。</p>
-<p><a href="http://huangtengfei.github.io/task0002/task0002_4.html">demo</a> 和 <a href="https://github.com/huangtengfei/task0002/blob/gh-pages/js/task0002_4.js">代码</a></p>
-<p>参考：<a href="http://www.jb51.net/article/65616.htm">js实现键盘上下左右键选择文字并显示在文本框的方法</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150831/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/note-for-20150824/" itemprop="url">
-                  学习笔记 2015.8.24
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-24T00:00:00+08:00" content="2015-08-24">
-              2015-08-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150824/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150824/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="浏览器的判断"><a href="#浏览器的判断" class="headerlink" title="浏览器的判断"></a>浏览器的判断</h2><h3 id="各种浏览器的特征"><a href="#各种浏览器的特征" class="headerlink" title="各种浏览器的特征"></a>各种浏览器的特征</h3><p>IE：只有IE支持创建 <code>ActiveX</code> 控件，因此她有一个其他浏览器没有的东西，就是 <code>ActiveXObject</code> 函数。只要判断window对象存在 <code>ActiveXObject</code> 函数，就可以明确判断出当前浏览器是IE。</p>
-<p>Firefox：Firefox中的DOM元素都有一个 <code>getBoxObjectFor</code> 函数，用来获取该DOM元素的位置和大小。</p>
-<p>Opera：Opera提供了专门的浏览器标志 <code>window.opera</code> 属性。</p>
-<p>Safari：Safari浏览器中有一个其他浏览器没有的 <code>openDatabase</code> 函数，可做为判断Safari的标志。</p>
-<p>Chrome：Chrome 有一个 <code>MessageEvent</code> 函数，但Firefox也有。不过，好在Chrome并没有Firefox的 <code>getBoxObjectFor</code> 函数，根据这两个条件还是可以准确判断出Chrome浏览器的。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150824/#more" rel="contents">
+            <a class="btn" href="/2015/09/scope-and-scope-chain-of-js/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -680,8 +466,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/note-for-20150817/" itemprop="url">
-                  学习笔记 - 2015.08.17
+                <a class="post-title-link" href="/2015/08/directory-style-guide/" itemprop="url">
+                  项目目录结构规范
                 </a>
               
             
@@ -694,8 +480,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-17T00:00:00+08:00" content="2015-08-17">
-              2015-08-17
+            <time itemprop="dateCreated" datetime="2015-08-12T00:00:00+08:00" content="2015-08-12">
+              2015-08-12
             </time>
           </span>
 
@@ -705,8 +491,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/note-for-20150817/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/note-for-20150817/" itemprop="commentsCount"></span>
+                <a href="/2015/08/directory-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/directory-style-guide/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -730,13 +516,243 @@
 
       
         
-          <h2 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h2><h3 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h3><p>对于 array 对象的 <code>slice</code> 方法，返回一个数组的一段。（仍为数组）</p>
-<pre><code>arrayObj.slice(start, [end])
-</code></pre><h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p><code>concat()</code> 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
-<pre><code>arrayObject.concat(arrayX,arrayX,......,arrayX)
-</code></pre>
+          <h2 id="资源分类"><a href="#资源分类" class="headerlink" title="资源分类"></a>资源分类</h2><p>资源分成两大类：</p>
+<ul>
+<li>源代码资源：指开发者编写的源代码，包括js、html、css、template等。</li>
+<li>内容资源：指希望做为内容提供给访问者的资源，包括图片、字体、flash、pdf等。</li>
+</ul>
+<h2 id="目录命名原则"><a href="#目录命名原则" class="headerlink" title="目录命名原则"></a>目录命名原则</h2><p>简洁。有习惯性缩写的单词必须采用容易理解的缩写。如：源代码目录使用src，不使用source。下面是更多例子：</p>
+<ul>
+<li>img： 图片。 不允许使用image、images、imgs等。 </li>
+<li>js： javascript脚本。不允许使用script、scripts等。 </li>
+<li>css： 样式表。 不允许使用style、styles等。 </li>
+<li>swf： flash。不允许使用flash等。 </li>
+<li>src： 源文件目录。 不允许使用source等。 </li>
+<li>tpl：存放template资源文件。</li>
+<li>font： 存放字体资源文件。</li>
+<li>dep： 引入的第三方依赖包目录。 不允许使用lib、library、dependency等。</li>
+</ul>
+<p>不允许使用复数形式。如：imgs、docs是不被允许的。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/note-for-20150817/#more" rel="contents">
+            <a class="btn" href="/2015/08/directory-style-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/json-style-guide/" itemprop="url">
+                  JSON 数据传输标准
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-12T00:00:00+08:00" content="2015-08-12">
+              2015-08-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/json-style-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/json-style-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="JSON-数据类型"><a href="#JSON-数据类型" class="headerlink" title="JSON 数据类型"></a>JSON 数据类型</h2><p>传输的数据，包括对象属性以及数组成员， 必须是6种JSON数据类型之一。 杜绝使用function、Date等js对象类型。</p>
+<p>基本数据类型：</p>
+<ul>
+<li>Number可以表示整数和浮点数。 </li>
+<li>Boolean可以表示真假，值为true或false。 </li>
+<li>String表示一个字符串。</li>
+<li>Null通常用于表示空对象</li>
+</ul>
+<p>复合数据类型：Object 和 Array。</p>
+<p>非字符串类型数据（如 <code>&quot;false&quot;</code> 、<code>&quot;0&quot;</code>）输出时一定不要为两端加上双引号，否则可能产生不希望的后果。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/json-style-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/deploy-github-repository-to-github-pages/" itemprop="url">
+                  如何部署 Github 仓库到 Github Pages
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-11T00:00:00+08:00" content="2015-08-11">
+              2015-08-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/deploy-github-repository-to-github-pages/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/deploy-github-repository-to-github-pages/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>Github Pages</code> 是 Github 提供的开放的公共静态页面搭建托管服务。通过 <code>Github Pages</code> 可以搭建免费的静态博客网站（比如本网站），或者实现静态 demo 演示。</p>
+<p>那么，如何将 Github 仓库 部署到 <code>Github Pages</code> 呢？</p>
+<p>以本次百度前端学院的作业 task0001 为例说明：</p>
+<h2 id="新建一个-Github-仓库"><a href="#新建一个-Github-仓库" class="headerlink" title="新建一个 Github 仓库"></a>新建一个 Github 仓库</h2><p>新建一个 <code>task0001</code> 仓库，添加 <code>README.md</code> 和 <code>LICENCE</code> 文件。此时处于 <code>master</code> 分支下。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/deploy-github-repository-to-github-pages/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -770,7 +786,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -811,7 +827,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -821,7 +837,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -887,7 +903,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
